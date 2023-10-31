@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/public/css/admin/assetlist.css" />
+    <link rel="stylesheet" href="/public/css/admin/bar.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <!-- ! side bar -->
+    <nav class="sidebar close text-center">
+        <header >
+            <div class="sidebar-logo">
+                <a href="#" >BORROWING</a>
+            </div>
+        </header>
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="nav-link">
+                    <a href="/views/admin/dashboard.html">
+                        <span class="text nav-text text-center">Dashboard</span>
+                    </a>
+                </li>   
+                <li class="nav-link disabled" style="background-color: #454545;">
+                    <a href="#">
+                        <span class="text nav-text text-center">Asset list</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="/views/admin/history.html">
+                        <span class="text nav-text text-center">History</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="#" id="logout">
+                        <span class="text nav-text text-center">Logout</span>
+                    </a>
+                </li>
+            </div>
+        </div>
+    </nav>
+    
+    <section class="home">
+        <!-- ! nav bar -->
+        <nav class="navbar navbar-expand-lg ">
+            <button class="btn" id="sidebarToggle">
+                <i class="fa fa-bars"  ></i>
+            </button>
+            <li class="searchbox" >
+                <i class="fas fa-search icon_search" ></i>
+                <input class="searchinput"  type="search" placeholder="Search..." >
+            </li>
+            <a href="/views/admin/add.html">
+
+                <button class="btn" id="users">
+                    <i class="fas fa-plus"></i>
+                    Add
+                </button>
+            </a>
+        </nav>
+        <!-- ! Home -->
+        <div class="container p-5">
+            <!-- ! Table -->
+                <table class="">
+                    <thead>
+                        <tr>
+                            <th scope="col">NO</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">PHOTO</th>
+                            <th scope="col">NAME</th>
+                            <th scope="col">STATUS</th>
+                            <th scope="col">ENABLE</th>
+                        </tr>
+                    </thead>
+                    <tbody class="">
+                        
+                    </tbody>
+                </table>
+            
+            <!-- !footer -->
+            <footer class="m-2 d-flex">
+                <div class="d-flex me-4 ">
+                    <div class="bg-success circle">
+                    </div>
+                    <div class="me-2">
+                        Avalible
+                    </div>
+                </div>
+                <div class="d-flex me-4 ">
+                    <div class="bg-warning circle">
+                    </div>
+                    <div class="me-2">
+                        Inprogress
+                    </div>
+                </div>
+                <div class="d-flex me-4 ">
+                    <div class="bg-danger circle">
+                    </div>
+                    <div class="me-2">
+                        Borrowed
+                    </div>
+                </div>
+                <div class="d-flex me-4 ">
+                    <div class="bg-dark circle">
+                    </div>
+                    <div class="me-2">
+                        disable
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </section>
+        <script src="/public/js/admin/bar.js"></script>
+        <script src="/public/js/admin/assetlist.js"></script>
+  </body>
+</html>

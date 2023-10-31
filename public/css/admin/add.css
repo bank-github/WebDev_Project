@@ -1,0 +1,46 @@
+
+#back{
+    color: var(--sidebar-color);
+    font-size: 1.5rem;
+}
+#edit-name{
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 0.4rem;
+    height: 3rem;
+    width: 13rem;
+}
+#edit-photo{
+    background-color:var(--sidebar-color);
+    border: none;
+    border-radius: 0.4rem;
+    height: 15rem;
+    width: 20rem;
+    color: var(--primary-color);
+}
+#edit-detail{
+    background-color:var(--primary-color);
+    border: none;
+    border-radius: 0.4rem;
+    height: 15rem;
+    width: 30rem;
+}
+#confirm{
+    background-color:var(--sidebar-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 0.8rem;
+    height: 3rem;
+    width: 27rem;
+}
+#edit-tag{
+    color: var(--primary-color);
+    font-size: 1.5rem;
+}
+#delete-button{
+    background-color: #FFA559;
+    border: none;
+    border-radius: 0.4rem;
+    height: 2.5rem;
+    width: 8rem;
+}

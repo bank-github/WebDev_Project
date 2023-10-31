@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/css/bootstrap-icons-1.5.0/bootstrap-icons.css">
+    <script src="/public/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js"></script>
+    <title>Borrow</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar ps-1 pe-3 shadow" style="background-color: #454545; height: 6rem;">
+        <a class="text-white" data-bs-toggle="offcanvas" href="#menu">
+            <i class="bi bi-list" style="font-size: 36px;color: #FFE6C7;"></i>
+        </a>
+        <h1 class="text-white">Borrow</h1>
+        <button class="btn btn-sm border-2 border-black rounded-5 shadow fw-bold" id="signout" style="background-color: #FFE6C7;">Sign out</button>
+    </nav>
+    <!-- form -->
+    <div class="container" style="width: 350px;">
+        <form class="mt-5">
+            <!-- borrow -->
+            <div class="mb-3">
+                <h3>Borrow time</h3>
+                <input class="form-control mb-2 border-2 border-dark rounded-5 fw-bold" type="text"
+                    onfocus="(this.type='time')" onblur="(this.type='text')" id="brtime" placeholder="Borrowing time">
+                <input class="form-control border-2 border-dark rounded-5 fw-bold" type="text"
+                    onfocus="(this.type='date')" onblur="(this.type='text')" id="brdate" placeholder="Borrowing date">
+            </div>
+            <!-- return -->
+            <div>
+                <h3>Return time</h3>
+                <input class="form-control mb-2 border-2 border-dark rounded-5 fw-bold" type="text"
+                    onfocus="(this.type='time')" onblur="(this.type='text')" id="rttime" placeholder="Return time">
+                <input class="form-control border-2 border-dark rounded-5 fw-bold" type="text"
+                    onfocus="(this.type='date')" onblur="(this.type='text')" id="rtdate" placeholder="Return date">
+            </div>
+            <!-- amount -->
+            <div class="text-center mt-4">
+                <div class="d-inline-block">
+                    <div class="input-group">
+                        <button class="btn btn-outline-dark border-2">-</button>
+                        <span class="d-flex align-items-center px-3 border border-dark border-2">Amount: ...</span>
+                        <button class="btn btn-outline-dark border-2">+</button>
+                    </div>
+                </div>
+            </div>
+            <!-- button -->
+            <div class="d-flex justify-content-between mt-5">
+                <a class="btn btn-sm border-2 border-dark rounded-5 fw-bold" href="/views/user/b-asset.html"
+                    style="background-color: #FFE6C7;">Cancel</a>
+                <a class="btn btn-sm border-2 border-dark rounded-5 fw-bold" href="#confirm" data-bs-toggle="modal"
+                    style="background-color: #FFA559;">Comfirm</a>
+            </div>
+        </form>
+    </div>
+    <!-- offcanvas -->
+    <div class="offcanvas offcanvas-start rounded-end-5" id="menu">
+        <div class="offcanvas-header">
+            <i class="bi bi-list offcanvas-title" style="font-size: 36px;"></i>
+            <h3 class="offcanvas-title">Menu</h3>
+            <button class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item disabled my-2" style="background-color: #FFE6C7;">
+                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
+                    <a class="text-decoration-none fw-bold text-dark" href="#">Asset borrowing</a>
+                </li>
+                <li class="list-group-item my-2">
+                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
+                    <a class="text-decoration-none fw-bold text-dark" href="proj-List.html">List</a>
+                </li>
+                <li class="list-group-item my-2">
+                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
+                    <a class="text-decoration-none fw-bold text-dark" href="proj-msg.html">Messages</a>
+                </li>
+                <li class="list-group-item my-2">
+                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
+                    <a class="text-decoration-none fw-bold text-dark" href="proj-profile.html">Profile</a>
+                </li>
+                <li class="list-group-item my-2">
+                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
+                    <a class="text-decoration-none fw-bold text-dark" href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWtDpKsfRfdcRVpqTHkQTtgHKNdJlZQCWgnvKfDmxgjWCKbgscXFxkKnNVrpCFfpXPbnZgHtl">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- modal -->'
+    <div class="modal" id="confirm">
+        <div class="modal-dialog-centered modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Do you want to borrow?</h4>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body fw-bold">
+                    <p>Name:</p>
+                    <p>Return Date:</p>
+                    <p>Amount:</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-sm border-2 border-dark rounded-5 fw-bold" data-bs-dismiss="modal"
+                        style="background-color: #FFE6C7;">Cancel</button>
+                    <button class="btn btn-sm border-2 border-dark rounded-5 fw-bold"
+                        style="background-color: #FFA559;">Confirm</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="/public/js/user/b-borrow.js"></script>
+</body>
+
+</html>

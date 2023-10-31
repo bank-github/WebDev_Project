@@ -1,0 +1,148 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --striped-color:#FFA559;
+    --stripedcontrast-color:#FFE6C7;
+    --horver-table-color:#fabb93;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+}
+
+th{
+    background-color: var(--sidebar-color);
+    color: var(--primary-color);
+}
+
+tr:nth-child(odd) {
+        background-color: var(--striped-color) ; /* Odd rows background color */
+}
+
+tr:nth-child(even) {
+        background-color: var(--stripedcontrast-color) ; /* even rows background color */
+}
+
+tr:hover {
+    background-color: var(--horver-table-color);
+}
+
+.circle{
+    margin-right: 0.4rem;
+    border-radius: 30rem;
+    width: 1.2rem;
+    height: 1.2rem;  
+}
+
+.circle-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.imagetable-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.imagetable{
+    background-color: #FFFFFF;
+    width: 6rem;
+    height: 6rem;
+    border-radius: 0.25rem;
+}
+.toggle-switch-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.toggle-switch{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 2rem;
+    cursor: pointer;
+    width:  5.5rem;
+}
+.toggle-switch .switch-on{
+    position: relative;
+    height: 2rem;
+    width: 5.5rem;
+    border-radius: 0.7rem;
+    background-color: var(--sidebar-color);
+    
+}
+.switch-on::before{
+    font-weight: 600;
+    font-size: small;
+    text-align: center; 
+    line-height: 2rem;
+    color: var(--sidebar-color);
+    height: 2rem;
+    width: 3.5rem;
+    content: 'ON';
+    position: absolute;
+    border-radius: 0.7rem;
+    top: 50%;
+    right: 50%;
+    transform: translateY(-50%);
+    background-color: #FFFFFF;
+    transition: var(--tran-03);
+}
+
+.switch-off{
+    position: relative;
+    height: 2rem;
+    width: 5.5rem;
+    border-radius: 0.7rem;
+    background-color: var(--sidebar-color);   
+}
+
+.switch-off::before{
+    font-weight: 600;
+    font-size: small;
+    text-align: center; 
+    line-height: 2rem;
+    color: var(--sidebar-color);
+    height: 2rem;
+    width: 3.5rem;
+    content: 'OFF';
+    position: absolute;
+    border-radius: 0.7rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #FFFFFF;
+    transition: var(--tran-03);
+}
+
+/* ! edit&add page */
+.switch-off-edit::before{
+    font-weight: 600;
+    font-size: small;
+    text-align: center; 
+    line-height: 2rem;
+    color: var(--sidebar-color);
+    height: 2rem;
+    width: 3.5rem;
+    content: 'OFF';
+    position: absolute;
+    border-radius: 0.7rem;
+    top: 50%;
+    right: -10% ;
+    transform: translateY(-50%);
+    background-color: #FFFFFF;
+    transition: var(--tran-03);
+}

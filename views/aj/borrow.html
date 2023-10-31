@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/css/bootstrap-icons-1.5.0/bootstrap-icons.css">
+    <script src="/public/js/bootstrap.bundle.min.js"></script>
+    <title>borrow</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar ps-1 pe-3 shadow" style="background-color: #454545; height: 6rem;">
+        <a class="text-white" data-bs-toggle="offcanvas" href="#menu">
+            <i class="bi bi-list" style="font-size: 36px;color: #FFE6C7;"></i>
+        </a>
+        <h1 class="text-white">Borrow</h1>
+        <a class="btn btn-sm border-2 border-black rounded-5 shadow fw-bold"
+            style="background-color: #FF6000; color: #FFE6C7;" href="/views/login.html">Sign out</a>
+    </nav>
+    <!-- content -->
+    <div class="container">
+        <!-- img -->
+        <div class="d-flex justify-content-between mt-5">
+            <div class="d-flex justify-content mt-5">
+                <div class="card border-1 border-black rounded-5 shadow p-3 me-5" style="width: 400px;">
+                    <div class="container">
+                        <h3>Assets Example 1</h3>
+                        <p class="card-text">Book name :.........</p>
+                        <p class="card-text">Return deadline : ............</p>
+                        <p class="card-text">Amount : ............</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-1 border-black rounded-5 shadow p-3 my-5" style="width: 20rem;">
+                <img class="card-img-top" src="/public/img/bootstrap5.png" alt="asset img" width="500px">
+            </div>
+
+        </div>
+
+        <!-- detail -->
+        <div class="d-flex justify-content-sm-evenly p-5 my-5">
+            <a class="btn btn border-2 border-black rounded-5 fw-bold" style="background-color: #9CCC76;"
+                href="/views/aj/list.html">Approved</a>
+            <a class="btn btn border-2 border-black rounded-5 fw-bold" style="background-color: #D40E0E;" href="#re"
+                data-bs-toggle="modal">Reject</a>
+        </div>
+    </div>
+
+    <!-- offcanvas -->
+    <div class="offcanvas offcanvas-start rounded-end-5" id="menu">
+        <div class="offcanvas-header">
+            <i class="bi bi-list offcanvas-title" style="font-size: 36px;"></i>
+            <h3 class="offcanvas-title">Menu</h3>
+            <button class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item disabled my-2" style="background-color: #FFE6C7;">
+                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
+                    <a class="text-decoration-none fw-bold text-dark" href="#">Asset borrowing</a>
+                </li>
+                <li class="list-group-item my-2">
+                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
+                    <a class="text-decoration-none fw-bold text-dark" href="/views/aj/Aj_proj-List.html">List</a>
+                </li>
+                <li class="list-group-item my-2">
+                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
+                    <a class="text-decoration-none fw-bold text-dark" href="/views/aj/Aj_proj-msg.html">Messages</a>
+                </li>
+                <li class="list-group-item my-2">
+                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
+                    <a class="text-decoration-none fw-bold text-dark" href="/views/aj/Aj_proj-profile.html">Profile</a>
+                </li>
+                <li class="list-group-item my-2">
+                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
+                    <a class="text-decoration-none fw-bold text-dark" href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWtDpKsfRfdcRVpqTHkQTtgHKNdJlZQCWgnvKfDmxgjWCKbgscXFxkKnNVrpCFfpXPbnZgHtl">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="modal" id="re">
+    <div class="modal-dialog-centered modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Reason for reject ?</h4>
+                <button class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body fw-bold">
+                <input type="text" class="form-control" id="rejectionReason" placeholder="Enter your reason...">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-sm border-2 border-dark rounded-5 fw-bold" data-bs-dismiss="modal"
+                    style="background-color: #FFE6C7;">Cancel</button>
+                <a class="btn btn-sm border-2 border-dark rounded-5 fw-bold" style="background-color: #FFA559;"
+                    href="/views/aj/list.html" onclick="submitRejectionReason()">Confirm</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css">
+    <script src="/public/js/bootstrap.bundle.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="shadow d-flex justify-content-center" style="background-color: #FFA559; height: 6rem;">
+        <div class="d-flex flex-column justify-content-center">
+            <h1>Forgot Password</h1>
+        </div>
+    </nav>
+    <!-- content -->
+    <div class="container mt-3" style="width: 500px;">
+        <div class="card border-dark rounded-5 px-4 shadow" style="margin-top: 15rem;">
+            <!-- form Login -->
+            <form class="mt-4">
+                <!-- Email -->
+                <label class="fw-bold form-label" for="txtemail">Email</label>
+                <div class="mb-3 form-floating">
+                    <input class="form-control border-black border-2 rounded-5 shadow" type="email" id="txtemail"
+                        placeholder="Email">
+                    <label class="form-label ms-2" for="txtemail">Email</label>
+                </div>
+            </form>
+
+            <!-- login button -->
+            <div class="d-inline-flex justify-content-between mb-4">
+                <a class="text-decoration-none ps-3 text-dark" href="/views/b-login.html">Cancle</a>
+                <a class="btn btn-sm border-black rounded-5 border-2 fw-bold shadow"
+                    style="background-color: #FFA559; width: 10rem" href="/views/user/b-repass.html">Forgot Password</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

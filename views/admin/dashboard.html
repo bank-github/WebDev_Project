@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/public/css/admin/dashboard.css" />
+    <link rel="stylesheet" href="/public/css/admin/bar.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+    <!-- ! side bar -->
+    <nav class="sidebar close text-center">
+        <header >
+            <div class="sidebar-logo">
+                <a href="#" >BORROWING</a>
+            </div>
+        </header>
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="nav-link disabled" style="background-color: #454545;">
+                    <a href="#">
+                        <span class="text nav-text text-center">Dashboard</span>
+                    </a>
+                </li>   
+                <li class="nav-link">
+                    <a href="/views/admin/assetlist.html">
+                        <span class="text nav-text text-center">Asset list</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="/views/admin/history.html">
+                        <span class="text nav-text text-center">History</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="#" id="logout">
+                        <span class="text nav-text text-center">Logout</span>
+                    </a>
+                </li>
+            </div>
+        </div>
+    </nav>
+    
+    <section class="home">
+        <!-- ! nav bar -->
+        <nav class="navbar navbar-expand-lg ">
+            <button class="btn" id="sidebarToggle">
+                <i class="fa fa-bars"  ></i>
+            </button>
+            <li class="searchbox" >
+                <i class="fas fa-search icon_search" ></i>
+                <input class="searchinput"  type="search" placeholder="Search..." >
+            </li>
+            <button class="btn" id="users">
+                <i class="fas fa-user"></i>                
+            </button>
+        </nav>
+        <!-- ! Home -->
+        <div class="container p-5">
+            <div class="d-flex flex-md-row justify-content-center ">
+                <div class="contents_left ">
+                    <div class="amount d-flex align-items-center justify-content-center">
+                        <!-- <img src="" alt="Amount_of_borrowing" > -->
+                        <h4 class="content_text">Amount of borrowing</h4>
+                    </div>
+                    <div class="graph d-flex align-items-center justify-content-center">
+                        <!-- <img src="" alt="Rate_of_returned_asset_not_on_time">     -->
+                        <h4 class="content_text">Rate of returned asset not on time</h4>
+                    </div>
+                </div>
+                <div class="contents_right">
+                    <div class="graph d-flex align-items-center justify-content-center">
+                            <!-- <img src="" alt="Rate_of_approve">     -->
+                            <h4 class="content_text">Rate of approve</h4>
+                    </div>                    
+                    <div class="amount d-flex align-items-center justify-content-center">
+                        <!-- <img src="" alt="Amount_of_assets" > -->
+                        <h4 class="content_text">Amount of assets</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+        <script src="/public/js/admin/bar.js"></script>
+  </body>
+</html>

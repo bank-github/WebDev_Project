@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css">
+    <script src="/public/js/bootstrap.bundle.min.js"></script>
+    <title>Regsister</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="shadow d-flex justify-content-center" style="background-color: #FFA559; height: 6rem;">
+        <div class="d-flex flex-column justify-content-center">
+            <h1>Register</h1>
+        </div>
+    </nav>
+    <!-- form register -->
+    <div class="container m-auto mt-5" style="width: 350px;">
+        <form class="d-flex flex-column justify-content-center">
+            <!-- name -->
+            <div class="form-floating">
+                <input class="form-control mb-3 border-2 border-black rounded-pill shadow" type="text" id="txtname"
+                    placeholder="Name">
+                <label class="ms-2 fw-bold" for="txtname">Name</label>
+            </div>
+            <!-- email -->
+            <div class="form-floating">
+                <input class="form-control mb-3 border-2 border-black rounded-pill shadow" type="email" id="txtemail"
+                    placeholder="Email">
+                <label class="ms-2 fw-bold" for="txtemail">Email</label>
+            </div>
+            <!-- password -->
+            <div class="form-floating">
+                <input class="form-control mb-3 border-2 border-black rounded-pill shadow" type="password"
+                    id="txtpassword" placeholder="Password">
+                <label class="ms-2 fw-bold" for="txtpassword">Password</label>
+            </div>
+            <!-- confirm password -->
+            <div class="form-floating">
+                <input class="form-control mb-3 border-2 border-black rounded-pill shadow" type="confirmpass"
+                    id="txtconfirmpass" placeholder="Confirm Password">
+                <label class="ms-2 fw-bold" for="txtconfirmpass">Confirm Password</label>
+            </div>
+            <!-- select -->
+            <div class="d-inline-flex justify-content-between mb-3">
+                <!-- major -->
+                <div>
+                    <label class="fw-bold" for="slcMajor">Major</label>
+                    <select class="border-2 border-black shadow" name="Major" id="slcMajor">
+                        <option value="ce">Conputer Engineer</option>
+                        <option value="se">Software Engineer</option>
+                        <option value="mta">MTA</option>
+                    </select>
+                </div>
+                <!-- year -->
+                <div>
+                    <label class="fw-bold" for="slcYear">Year</label>
+                    <select class="border-2 border-black shadow" name="year" id="slcYear">
+                        <option value="1">1<sup>st</sup></option>
+                        <option value="2">2<sup>nd</sup></option>
+                        <option value="3">3<sup>rd</sup></option>
+                        <option value="4">4<sup>th</sup></option>
+                    </select>
+                </div>
+            </div>
+            <!-- phone number -->
+            <div class="form-floating">
+                <input class="form-control mb-3 border-2 border-black rounded-pill shadow" type="number" id="txtphone"
+                    placeholder="Phone Number">
+                <label class="ms-2 fw-bold" for="txtphone">Phone Number</label>
+            </div>
+            <!-- student id -->
+            <div class="form-floating">
+                <input class="form-control mb-3 border-2 border-black rounded-pill shadow" type="number" id="txtStuID"
+                    placeholder="Student ID">
+                <label class="ms-2 fw-bold" for="txtStuID">Student ID</label>
+            </div>
+            <!-- button -->
+            <div class="d-flex justify-content-between mb-3">
+                <!-- cancel -->
+                <a class="btn border-2 border-black rounded-5 shadow fw-bold"
+                    style="background-color: #FFE6C7;" href="/views/b-login.html">Cancel</a>
+                <!-- register -->
+                <a class="btn border-2 border-black rounded-5 shadow fw-bold"
+                    style="background-color: #FFA559;" href="/views/user/b-main.html">Register</a>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

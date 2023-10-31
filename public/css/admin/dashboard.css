@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.amount{
+    height: 10rem;
+    width: 25;
+    background-color: var(--primary-color);
+    border-radius: 0.3rem;
+    margin-bottom: 1.75rem;
+}
+.graph{
+    height: 25rem;
+    width: 25rem;
+    background-color: var(--primary-color);
+    border-radius: 0.3rem;
+    margin-bottom: 1.75rem;
+}
+
+.contents_left{
+    /* background-color: red; */
+    margin-right: 1rem;
+}
+.contents_right{
+
+    /* background-color: red; */
+    margin-left: 1rem;
+}
+.content_text{
+    color: var(--sidebar-color);
+}
