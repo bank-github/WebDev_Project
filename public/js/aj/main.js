@@ -12,7 +12,7 @@ document.querySelector('#signout').onclick = function(){
         
       }).then((result) => {
         if (result.isConfirmed) {
-          window.location.replace('/views/b-login.html');
+          window.location.replace('/');
         }
       });
 }

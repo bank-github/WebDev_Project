@@ -18,29 +18,29 @@
     </nav>
     <!-- form register -->
     <div class="container m-auto mt-5" style="width: 350px;">
-        <form class="d-flex flex-column justify-content-center">
+        <form class="d-flex flex-column justify-content-center" id="formInput">
             <!-- name -->
             <div class="form-floating">
-                <input class="form-control mb-3 border-2 border-black rounded-pill shadow" type="text" id="txtname"
-                    placeholder="Name">
+                <input class="form-control mb-3 border-2 border-black rounded-pill shadow" type="text" name="txtname"
+                    placeholder="Name" required>
                 <label class="ms-2 fw-bold" for="txtname">Name</label>
             </div>
             <!-- email -->
             <div class="form-floating">
-                <input class="form-control mb-3 border-2 border-black rounded-pill shadow" type="email" id="txtemail"
-                    placeholder="Email">
+                <input class="form-control mb-3 border-2 border-black rounded-pill shadow" type="email" name="txtemail"
+                    placeholder="Email" required>
                 <label class="ms-2 fw-bold" for="txtemail">Email</label>
             </div>
             <!-- password -->
             <div class="form-floating">
                 <input class="form-control mb-3 border-2 border-black rounded-pill shadow" type="password"
-                    id="txtpassword" placeholder="Password">
+                    name="txtpassword" placeholder="Password" minlength="8" required>
                 <label class="ms-2 fw-bold" for="txtpassword">Password</label>
             </div>
             <!-- confirm password -->
             <div class="form-floating">
-                <input class="form-control mb-3 border-2 border-black rounded-pill shadow" type="confirmpass"
-                    id="txtconfirmpass" placeholder="Confirm Password">
+                <input class="form-control mb-3 border-2 border-black rounded-pill shadow" type="password"
+                    name="txtconfirmpass" placeholder="Confirm Password" minlength="8" required>
                 <label class="ms-2 fw-bold" for="txtconfirmpass">Confirm Password</label>
             </div>
             <!-- select -->
@@ -48,16 +48,16 @@
                 <!-- major -->
                 <div>
                     <label class="fw-bold" for="slcMajor">Major</label>
-                    <select class="border-2 border-black shadow" name="Major" id="slcMajor">
-                        <option value="ce">Conputer Engineer</option>
-                        <option value="se">Software Engineer</option>
-                        <option value="mta">MTA</option>
+                    <select class="border-2 border-black shadow" name="Major" id="slcMajor" required>
+                        <option value="CE">Computer Engineer</option>
+                        <option value="SE">Software Engineer</option>
+                        <option value="MTA">MTA</option>
                     </select>
                 </div>
                 <!-- year -->
                 <div>
                     <label class="fw-bold" for="slcYear">Year</label>
-                    <select class="border-2 border-black shadow" name="year" id="slcYear">
+                    <select class="border-2 border-black shadow" name="year" id="slcYear" required>
                         <option value="1">1<sup>st</sup></option>
                         <option value="2">2<sup>nd</sup></option>
                         <option value="3">3<sup>rd</sup></option>
@@ -67,27 +67,28 @@
             </div>
             <!-- phone number -->
             <div class="form-floating">
-                <input class="form-control mb-3 border-2 border-black rounded-pill shadow" type="number" id="txtphone"
-                    placeholder="Phone Number">
+                <input class="form-control mb-3 border-2 border-black rounded-pill shadow" type="text" name="txtphone"
+                    placeholder="Phone Number" maxlength="10" minlength="10" pattern="[0]{1}[0-9]{9}" title="Format (0xxxxxxxxx)" required> 
                 <label class="ms-2 fw-bold" for="txtphone">Phone Number</label>
             </div>
             <!-- student id -->
             <div class="form-floating">
-                <input class="form-control mb-3 border-2 border-black rounded-pill shadow" type="number" id="txtStuID"
-                    placeholder="Student ID">
+                <input class="form-control mb-3 border-2 border-black rounded-pill shadow" type="text" name="txtstuID"
+                    placeholder="Student ID" maxlength="10" minlength="10" title="Student ID invalid" required>
                 <label class="ms-2 fw-bold" for="txtStuID">Student ID</label>
             </div>
             <!-- button -->
             <div class="d-flex justify-content-between mb-3">
                 <!-- cancel -->
                 <a class="btn border-2 border-black rounded-5 shadow fw-bold"
-                    style="background-color: #FFE6C7;" href="/views/b-login.html">Cancel</a>
+                    style="background-color: #FFE6C7;" href="/">Cancel</a>
                 <!-- register -->
-                <a class="btn border-2 border-black rounded-5 shadow fw-bold"
-                    style="background-color: #FFA559;" href="/views/user/b-main.html">Register</a>
+                <button class="btn border-2 border-black rounded-5 shadow fw-bold" id="register"
+                    style="background-color: #FFA559;" type="submit" >Register</button>
             </div>
         </form>
     </div>
+    <script src="/public/js/user/register.js"></script>
 </body>
 
 </html>

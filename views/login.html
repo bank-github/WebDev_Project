@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css">
+    <script src="/public/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js"></script>
+    <title>Login</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="vw-100 shadow" style="background-color: #FFA559; height: 6rem;"></nav>
+
+    <!-- Content -->
+    <div class="container mt-3" style="width: 350px;">
+
+        <!-- Logo and Login text -->
+        <div class="text-center">
+            <img src="/public/img/bootstrap5.png" alt="Logo" height="48">
+            <h3>Login</h3>
+        </div>
+
+        <!-- form Login -->
+        <form class="mt-4" id="formLogin">
+
+            <!-- Email -->
+            <label class="fw-bold form-label" for="txtemail">Email</label>
+            <div class="mb-3 form-floating">
+                <input class="form-control border-black border-2 rounded-5 shadow" type="email" id="txtemail"
+                    placeholder="Email">
+                <label class="form-label ms-2" for="txtemail">Email</label>
+            </div>
+
+            <!-- Password -->
+            <label class="fw-bold" for="txtpassword">Password</label>
+            <div class="mb-3 form-floating">
+                <input class="form-control border-black border-2 rounded-5 shadow" type="password" id="txtpassword"
+                    placeholder="Password">
+                <label class="form-label ms-2" for="txtpassword">Password</label>
+            </div>
+
+
+            <!-- forgot password -->
+            <div class="text-end text-primary my-2 ">
+                <a class="text-decoration-none" href="/views/user/b-forgot.html">Forgot password</a>
+            </div>
+
+            <!-- login button -->
+            <div class="text-center mb-4">
+                <button class="btn btn-sm border-black rounded-5 border-2 fw-bold shadow" type="submit"
+                    style="background-color: #FFA559; width: 5rem">Login</button>
+            </div>
+
+            <!-- Register -->
+            <div class="text-center">
+                <span class="fw-bold">Do not have account?</span>
+                <a class="text-decoration-none" href="/user/register">Register</a>
+            </div>
+        </form>
+    </div>
+    <script src="/public/js/login.js"></script>
+</body>
+
+</html>

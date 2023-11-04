@@ -20,7 +20,7 @@ sidebar.querySelector('#logout').onclick = function () {
         ,cancelButtonText: 'No'
       }).then((result) => {
         if (result.isConfirmed) {
-          window.location.replace('#');
+          window.location.replace('/admin/login');
         }
       });
     console.log('Test');
