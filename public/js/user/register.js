@@ -42,3 +42,8 @@ formInput.onsubmit = async function (e) {
         alert(err.message);
     }
 }
+
+// click cancel button
+function goBack(){
+    window.location.replace('/');
+}
