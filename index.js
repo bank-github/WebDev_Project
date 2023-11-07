@@ -14,8 +14,8 @@ const mainUser = require('./Routes/user/main');
 //=== aj ===\\
 const mainAj = require('./Routes/aj/main');
 //=== admin ===\\
-const loginAdmin = require('./Routes/admin/login')
-const mainAdmin = require('./Routes/admin/main')
+const mainAdmin = require('./Routes/admin/main');
+const listAdmin = require('./Routes/admin/list');
 
 // set public path
 app.use("/public", express.static(path.join(__dirname, "public")));
@@ -37,8 +37,8 @@ app.use('/user',mainUser) // main page
 app.use('/aj',mainAj);
 
 // ============ admin ===========\\
-app.use('/admin',loginAdmin);
 app.use('/admin',mainAdmin)
+app.use('/admin',listAdmin)
 
 // root file user
 app.get('/', function (req, res) {

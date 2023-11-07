@@ -22,9 +22,18 @@ router.post('/login',function (req,res) {
                     res.status(500).send('Password compare error');
                 }else{
                     if (same) {
-                        res.status(200).send(`${results[0].role}`);
-                        // console.log(results[0].role);
-                        // res.status(200).send('Login success');
+                        //! ----- check role ----- 
+                        //? ----- 0 => aj ----- 
+                        //? ----- 1 => user ----- 
+                        //? ----- 2 => admin -----
+                        if(results[0].role == 0){
+                            res.status(200).send('/aj/main');
+                        }else if(results[0].role == 2){
+                            res.status(200).send('/admin/main');
+                        }else{
+                            res.status(200).send('/user/main');
+                        }
+                        
                     }else{
                         res.status(401).send('Wrong password');
                     }
