@@ -75,37 +75,19 @@ updateUserInfo();
 function logout() {
   Swal.fire({
     title: 'Do you want to sign out',
-    color:'#FFA559',
+    color: '#FFA559',
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#FFA559',
     cancelButtonColor: '#FFE6C7',
     cancelButtonText: 'Cancel',
     confirmButtonText: 'Sure'
-    
+
   }).then((result) => {
     if (result.isConfirmed) {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 1000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer);
-          toast.addEventListener('mouseleave', Swal.resumeTimer);
-        }
-      });
-    
-      Toast.fire({
-        icon: 'success',
-        title: 'Signed out successfully'
-      }).then(()=>{
-        window.location.replace('/views/b-login.html');
-      })
+      window.location.replace('/');
     }
   });
-    
   }
 
   function showReadMailConfirmation() {

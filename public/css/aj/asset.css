@@ -1,0 +1,13 @@
+.row.content {
+   display: flex;
+   justify-content: center;
+}
+
+.custom-card {
+   background-color: #FFE6C7; 
+}
+
+.centered-canvas {
+   display: block;
+   margin: 0 auto;
+}

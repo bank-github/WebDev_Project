@@ -58,36 +58,77 @@
 .rounded-2heading {
 	background-color: white;
 	margin-top: 100px;
-	margin-left: 100px;
+	margin-left: 50px;
 }
 
 .rounded-3heading {
 	background-color: white;
 	margin-top: 200px;
-	margin-left: 100px;
+	margin-left: 50px;
 }
 
 .rounded-4heading {
 	background-color: white;
 	margin-top: 300px;
-	margin-left: 100px;
+	margin-left: 50px;
 }
 
 .rounded-5heading {
 	background-color: white;
 	margin-top: 400px;
-	margin-left: 100px;
+	margin-left: 50px;
 }
 
 .rounded-6heading {
 	background-color: white;
 	margin-top: 500px;
-	margin-left: 100px;
+	margin-left: 50px;
 }
 
 .custom-swal {
     width: 80%; 
     height: 900px; 
+}
+
+/* Rounded status styles */
+.status,
+.status2,
+.status3,
+.status4,
+.status5 {
+	font-weight: bolder;
+	border-radius: 18px;
+	padding: 10px 20px;
+	position: fixed;
+	text-align: center;	
+	border: 2px solid black;
+	box-shadow: 0 0 0 rgba(0, 0, 0, 0.3), 5px 5px 0 rgba(0, 0, 0, 0.3),
+		-5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+.status2 {
+	background-color: rgb(156, 204, 118);
+	margin-top: 110px;
+	margin-left: 50px;
+}
+
+.status3 {
+	background-color: rgb(255, 154, 89);
+	margin-top: 210px;
+	margin-left: 50px;
+}
+
+.status4 {
+	background-color: rgb(156, 204, 118);
+	margin-top: 310px;
+	margin-left: 50px;
+}
+
+.status5 {
+	background-color: rgb(255, 89, 89);
+	margin-top: 410px;
+	margin-left: 50px;
 }
 
 #green-button,
@@ -106,6 +147,7 @@
 	/* Rounded corners */
 	padding: 10px 20px;
 	cursor: pointer;
+	margin-left: 100px;
 	
 }
 #green-button{
@@ -203,11 +245,21 @@
 .ht7{
 	color:rgb(255, 154, 89);
 }
-.ht8{
+.ht8,.ht9{
 	color:rgb(214, 38, 38); 
 }
-.ht9{
-	color:rgb(214, 38, 38); 
+.info-ht {
+	border-radius: 20px;
+	background-color: rgb(255, 255, 255);
+	padding: 10px;
+	margin-top: 100px;
+	margin: 20px;
+	border: 2px solid black;
+	height:200px;
+	width: 1200px !important;
+	margin-left: 50px;
+	margin-top: 50px;
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.3), 5px 5px 0px rgba(0, 0, 0, 0.3), -5px 5px 10px rgba(0, 0, 0, 0.3);	
 }
 
 
@@ -267,19 +319,7 @@
     background-color: rgb(214, 38, 38); 
 	color: #ffffff;
 }
-.info-ht {
-	border-radius: 20px;
-	background-color: rgb(255, 255, 255);
-	padding: 10px;
-	margin-top: 100px;
-	margin: 20px;
-	border: 2px solid black;
-	height:200px;
-	width: 1200px !important;
-	margin-left: 50px;
-	margin-top: 50px;
-	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.3), 5px 5px 0px rgba(0, 0, 0, 0.3), -5px 5px 10px rgba(0, 0, 0, 0.3);
-}
+
 /* DATE */
 
 .date-1,

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/public/css/bootstrap.min.css">
     <script src="/public/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js"></script>
     <title>Document</title>
 </head>
 
@@ -18,26 +19,27 @@
     </nav>
     <!-- content -->
     <div class="container mt-3" style="width: 500px;">
-        <div class="card border-dark rounded-5 px-4 shadow" style="margin-top: 15rem;">
-            <!-- form Login -->
-            <form class="mt-4">
+        <div class="card border-dark rounded-5 px-4 shadow" style="margin-top: 12rem;">
+            <!-- form forgot -->
+            <form class="mt-4" id="forgot">
                 <!-- Email -->
                 <label class="fw-bold form-label" for="txtemail">Email</label>
                 <div class="mb-3 form-floating">
-                    <input class="form-control border-black border-2 rounded-5 shadow" type="email" id="txtemail"
-                        placeholder="Email">
+                    <input class="form-control border-black border-2 rounded-5 shadow" type="email" name="txtemail"
+                        placeholder="Email" required>
                     <label class="form-label ms-2" for="txtemail">Email</label>
                 </div>
-            </form>
 
-            <!-- login button -->
-            <div class="d-inline-flex justify-content-between mb-4">
-                <a class="text-decoration-none ps-3 text-dark" href="/views/b-login.html">Cancle</a>
-                <a class="btn btn-sm border-black rounded-5 border-2 fw-bold shadow"
-                    style="background-color: #FFA559; width: 10rem" href="/views/user/b-repass.html">Forgot Password</a>
-            </div>
+                <!-- button -->
+                <div class="d-flex justify-content-between mb-4">
+                    <button class="btn text-decoration-none ps-3 text-dark" type="button" onclick="goBack()">Cancle</button>
+                    <button class="btn btn-sm border-black rounded-5 border-2 fw-bold shadow"
+                        style="background-color: #FFA559; width: 10rem" type="submit">Forgot Password</button>
+                </div>
+            </form>
         </div>
     </div>
+    <script src="/public/js/user/forgot.js"></script>
 </body>
 
 </html>

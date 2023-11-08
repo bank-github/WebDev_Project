@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/css/bootstrap-icons-1.5.0/bootstrap-icons.css">
     <script src="/public/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js"></script>
     <title>Login</title>
@@ -12,7 +13,11 @@
 
 <body>
     <!-- navbar -->
-    <nav class="vw-100 shadow" style="background-color: #FFA559; height: 6rem;"></nav>
+    <nav class="navbar vw-100 shadow" style="background-color: #FFA559; height: 6rem;">
+        <button class="btn text-white ps-3" onclick="goLanding()">
+            <i class="bi bi-arrow-left" style="font-size: 36px;"></i>
+        </button>
+    </nav>
 
     <!-- Content -->
     <div class="container mt-3" style="width: 350px;">
@@ -30,7 +35,7 @@
             <label class="fw-bold form-label" for="txtemail">Email</label>
             <div class="mb-3 form-floating">
                 <input class="form-control border-black border-2 rounded-5 shadow" type="email" id="txtemail"
-                    placeholder="Email">
+                    placeholder="Email" required>
                 <label class="form-label ms-2" for="txtemail">Email</label>
             </div>
 
@@ -38,14 +43,14 @@
             <label class="fw-bold" for="txtpassword">Password</label>
             <div class="mb-3 form-floating">
                 <input class="form-control border-black border-2 rounded-5 shadow" type="password" id="txtpassword"
-                    placeholder="Password">
+                    placeholder="Password" required>
                 <label class="form-label ms-2" for="txtpassword">Password</label>
             </div>
 
 
             <!-- forgot password -->
             <div class="text-end text-primary my-2 ">
-                <a class="text-decoration-none" href="/views/user/b-forgot.html">Forgot password</a>
+                <button class="btn text-primary" type="button" onclick="goForgot()">Forgot password</button>
             </div>
 
             <!-- login button -->
@@ -57,7 +62,7 @@
             <!-- Register -->
             <div class="text-center">
                 <span class="fw-bold">Do not have account?</span>
-                <a class="text-decoration-none" href="/user/register">Register</a>
+                <button class="btn text-primary" type="button" onclick="goRegister()">Register</button>
             </div>
         </form>
     </div>
