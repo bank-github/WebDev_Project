@@ -8,100 +8,25 @@
     <link rel="stylesheet" href="/public/css/bootstrap-icons-1.5.0/bootstrap-icons.css">
     <script src="/public/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <link rel="stylesheet" href="/public/css/aj/asset.css">
     <title>Asset</title>
+
 </head>
 
 <body>
+
+
     <!-- navbar -->
     <nav class="navbar ps-1 pe-3 shadow" style="background-color: #FFA559; height: 6rem;">
         <a class="text-white" data-bs-toggle="offcanvas" href="#menu">
             <i class="bi bi-list" style="font-size: 36px;"></i>
         </a>
         <h1>Asset borrowing</h1>
-        <button class="btn btn-sm border-2 border-black rounded-5 shadow fw-bold" id="signout" style="background-color: #FFE6C7;">Sign out</button>
+        <button class="btn btn-sm border-2 border-black rounded-5 shadow fw-bold" id="signout"
+            style="background-color: #FFE6C7;">Sign out</button>
     </nav>
-    <!-- search bar -->
-    <div class="container text-center">
-        <div class="d-inline-flex">
-            <div class="input-group mt-3" role="group">
-                <input class="form-control rounded-start-5 border-1 border-black border-end-0" type="text" name=""
-                    id="txtsearch" placeholder="Search">
-                <a class="input-group-text btn px-3 rounded-end-5 border-1 border-black border-start-0" href="#"
-                    style="background-color:#FFE6C7;">
-                    <i class="bi bi-search"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-    <!-- content -->
-    <div class="row p-5">
-        <!-- asset 2 -->
-        <a class="col text-decoration-none mt-4" href="/views/aj/borrow.html">
-            <div class="card-group text-center" style="width: 15rem;">
-                <div class="card">
-                    <img class="card-img-top p-3" src="/public/img/bootstrap5.png" alt="img asset">
-                    <div class="card-body">
-                        <h3 class="card-title">Asset ...</h3>
-                    </div>
-                </div>
-            </div>
-        </a>
-        <!-- asset 2 -->
-        <a class="col text-decoration-none mt-4" href="/views/aj/borrow.html">
-            <div class="card-group text-center" style="width: 15rem;">
-                <div class="card">
-                    <img class="card-img-top p-3" src="/public/img/bootstrap5.png" alt="img asset">
-                    <div class="card-body">
-                        <h3 class="card-title">Asset ...</h3>
-                    </div>
-                </div>
-            </div>
-        </a>
-        <!-- asset 3 -->
-        <a class="col text-decoration-none mt-4" href="/views/aj/borrow.html">
-            <div class="card-group text-center" style="width: 15rem;">
-                <div class="card">
-                    <img class="card-img-top p-3" src="/public/img/bootstrap5.png" alt="img asset">
-                    <div class="card-body">
-                        <h3 class="card-title">Asset ...</h3>
-                    </div>
-                </div>
-            </div>
-        </a>
-        <!-- asset 4 -->
-        <a class="col text-decoration-none mt-4" href="/views/aj/borrow.html">
-            <div class="card-group text-center" style="width: 15rem;">
-                <div class="card">
-                    <img class="card-img-top p-3" src="/public/img/bootstrap5.png" alt="img asset">
-                    <div class="card-body">
-                        <h3 class="card-title">Asset ...</h3>
-                    </div>
-                </div>
-            </div>
-        </a>
-        <!-- asset 5 -->
-        <a class="col text-decoration-none mt-4" href="/views/aj/borrow.html">
-            <div class="card-group text-center" style="width: 15rem;">
-                <div class="card">
-                    <img class="card-img-top p-3" src="/public/img/bootstrap5.png" alt="img asset">
-                    <div class="card-body">
-                        <h3 class="card-title">Asset ...</h3>
-                    </div>
-                </div>
-            </div>
-        </a>
-        <!-- asset 6 -->
-        <a class="col text-decoration-none mt-4" href="/views/aj/borrow.html">
-            <div class="card-group text-center" style="width: 15rem;">
-                <div class="card">
-                    <img class="card-img-top p-3" src="/public/img/bootstrap5.png" alt="img asset">
-                    <div class="card-body">
-                        <h3 class="card-title">Asset ...</h3>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
+
     <!-- offcanvas -->
     <div class="offcanvas offcanvas-start rounded-end-5" id="menu">
         <div class="offcanvas-header">
@@ -129,12 +54,94 @@
                 </li>
                 <li class="list-group-item my-2">
                     <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
-                    <a class="text-decoration-none fw-bold text-dark" href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWtDpKsfRfdcRVpqTHkQTtgHKNdJlZQCWgnvKfDmxgjWCKbgscXFxkKnNVrpCFfpXPbnZgHtl">Contact</a>
+                    <a class="text-decoration-none fw-bold text-dark" href="/views/aj/history.html">History</a>
+                </li>
+                <li class="list-group-item my-2">
+                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
+                    <a class="text-decoration-none fw-bold text-dark"
+                        href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWtDpKsfRfdcRVpqTHkQTtgHKNdJlZQCWgnvKfDmxgjWCKbgscXFxkKnNVrpCFfpXPbnZgHtl">Contact</a>
+                </li>
+                <li class="list-group-item my-2">
+                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
+                    <a class="text-decoration-none fw-bold text-dark" href="#" onclick="logout()">Sign Out</a>
                 </li>
             </ul>
         </div>
     </div>
+
+    <!-- Dashboard  -->
+    <div class="container-fluid mt-5">
+        <div class="row content">
+            <div class="col-sm-9">
+                <div class="row d-flex justify-content-center align-items-center">
+                    <div class="col-sm-3">
+                        <div class="card custom-card">
+                            <div class="card-body">
+                                <h4 class="card-title">Amount: 23</h4>
+                                <p class="card-text">Amount of request</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card custom-card">
+                            <div class="card-body">
+                                <h4 class="card-title">Amount: 17</h4>
+                                <p class="card-text">Amount of borrowing</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card custom-card">
+                            <div class="card-body">
+                                <h4 class="card-title">Amount: 5</h4>
+                                <p class="card-text">Amount of late return</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script src="/public/js/aj/main.js"></script>
+
+    <div class="container-fluid mt-5 ">
+        <div class="row content">
+            <div class="col-sm-9">
+                <div class="row">
+                    <div class="col-sm-12 text-center">
+                        <canvas id="myChart" class="centered-canvas" style="max-width: 600px;"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        var xValues = ["Amount of request", "Amount of borrowing", "Amount of late return"];
+        var yValues = [23, 17, 5];
+        var barColors = [
+            "#b91d47",
+            "#00aba9",
+            "#2b5797"
+        ];
+    
+        new Chart("myChart", {
+            type: "pie",
+            data: {
+                labels: xValues,
+                datasets: [{
+                    backgroundColor: barColors,
+                    data: yValues
+                }]
+            },
+            
+        });
+    </script>
+    <script src="/public/js/aj/main.js"></script>
+
 </body>
 
 </html>

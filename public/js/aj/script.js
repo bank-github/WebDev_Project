@@ -71,42 +71,59 @@ updateUserInfo();
 
 
 
-
 function logout() {
   Swal.fire({
     title: 'Do you want to sign out',
-    color:'#FFA559',
+    color: '#FFA559',
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#FFA559',
     cancelButtonColor: '#FFE6C7',
     cancelButtonText: 'Cancel',
     confirmButtonText: 'Sure'
-    
+
   }).then((result) => {
     if (result.isConfirmed) {
-      const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 1000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener('mouseenter', Swal.stopTimer);
-          toast.addEventListener('mouseleave', Swal.resumeTimer);
-        }
-      });
-    
-      Toast.fire({
-        icon: 'success',
-        title: 'Signed out successfully'
-      }).then(()=>{
-        window.location.replace('/views/aj/login.html');
-      })
+      window.location.replace('/');
     }
   });
-    
   }
+  
+// function logout() {
+//   Swal.fire({
+//     title: 'Do you want to sign out',
+//     color:'#FFA559',
+//     icon: 'warning',
+//     showCancelButton: true,
+//     confirmButtonColor: '#FFA559',
+//     cancelButtonColor: '#FFE6C7',
+//     cancelButtonText: 'Cancel',
+//     confirmButtonText: 'Sure'
+    
+//   }).then((result) => {
+//     if (result.isConfirmed) {
+//       const Toast = Swal.mixin({
+//         toast: true,
+//         position: 'top-end',
+//         showConfirmButton: false,
+//         timer: 1000,
+//         timerProgressBar: true,
+//         didOpen: (toast) => {
+//           toast.addEventListener('mouseenter', Swal.stopTimer);
+//           toast.addEventListener('mouseleave', Swal.resumeTimer);
+//         }
+//       });
+    
+//       Toast.fire({
+//         icon: 'success',
+//         title: 'Signed out successfully'
+//       }).then(()=>{
+//         window.location.replace('/views/aj/login.html');
+//       })
+//     }
+//   });
+    
+//   }
 
   function showReadMailConfirmation() {
   const emailContent = "Your Assets Active now until 12 November 2023   So, Please return the asset on time. to avoid being punished."
@@ -262,23 +279,25 @@ function showHistoryAlert() {
       title: 'History',
       html: `
       <div class="container mt-4 rounded-container dark">
-            <div class="row">          
-                <div class="info-ht">
-                    <h3 class="ht2">Assets Example 5 Detail :</h3>
-                    <h3 class="ht6">Aprroved</h3>
-                    <h3 class="ht7">Will Return 3 Nov 2023</h3>
-                </div>               
-                <div class="info-ht">
-                    <h3 class="ht3">Assets Example 6 Detail :</h3>
-                    <h3 class="ht6">Approved</h3>
-                    <h3 class="ht7">Returned , Asset new Avaliable !</h3>
-                </div>               
-                <div class="info-ht">
-                    <h3 class="ht4">Assets Example 7 Detail :</h3>
-                    <h3 class="ht9"> Assets Lost!!</h3>
-                    <h3 class="ht8">Has been punished</h3>
-                </div>               
+        <div class="row">          
+            <div class="info-ht">
+                <h3 class="ht2">Assets Example 5 Detail :</h3>
+                <h3 class="ht6">Aprroved BY TA.Boat</h3>
+                <h3 class="ht7">Will Return 3 Nov 2023</h3>
+            </div>               
+            <div class="info-ht">
+                <h3 class="ht3">Assets Example 6 Detail :</h3>
+                <h3 class="ht6">Approved BY AJ.Surapong</h3>
+                <h3 class="ht7">Returned , Asset new Avaliable !</h3>
+            </div>               
+            <div class="info-ht">
+                <h3 class="ht4">Assets Example 7 Detail :</h3>
+                <h3 class="ht9"> Assets Lost!! Borrower is USER01</h3>
+                <h3 class="ht8">Has been punished</h3>
+            </div>               
+    </div>
         </div>
+    </div>
       `,
       showCloseButton: true,
       showConfirmButton: false,

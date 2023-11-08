@@ -40,3 +40,8 @@ formLogin.onsubmit = async function (e) {
   });
 }
 };
+
+// go back
+function goBack(){
+  window.location.replace('/');
+}

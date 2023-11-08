@@ -51,5 +51,5 @@ formRepass.onsubmit = async function (e) {
 
 // when click cancel
 function goBack() {
-    window.location.replace('/');
+    window.location.replace('/login');
 }

@@ -2,8 +2,11 @@ const express = require('express');
 const router = express.Router();
 const con = require('../config/db');
 const bcrypt = require('bcrypt');
-// const path = require('path');
+const path = require('path');
 
+router.get('/login',function(req,res){
+    res.sendFile(path.join(__dirname,'../views/login.html'));
+})
 
 router.post('/login',function (req,res) {
     const { email, password } = req.body;

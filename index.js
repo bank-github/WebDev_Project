@@ -42,7 +42,7 @@ app.use('/admin',mainAdmin)
 
 // root file user
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, "views/login.html"));
+    res.sendFile(path.join(__dirname, "views/landing.html"));
 });
 
 // run server
