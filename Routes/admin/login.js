@@ -7,6 +7,7 @@ const path = require('path');
 router.get('/login',function(req,res){
     res.sendFile(path.join(__dirname,'../../views/admin/login.html'))
 });
+
  router.post('/login',function (req,res) {
     const { email, password } = req.body;
     const sql = "SELECT email,password FROM admin WHERE email=?";
@@ -25,7 +26,7 @@ router.get('/login',function(req,res){
                 }else{
                     if (same) {
                         // console.log(results[0].role);
-                        res.status(200).send('Login success');
+                        res.status(200).send('/admin/main');
                         
                     }else{
                         res.status(401).send('Wrong password');

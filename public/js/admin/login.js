@@ -13,11 +13,12 @@ formLogin.onsubmit = async function (e) {
   const response = await fetch("/admin/login", options);
   if (response.ok) {
     const data = await response.text();
-   if (data == 'Login success') {
-    localStorage.setItem('auth_admin',1);
-    window.location.replace('/admin/main');
+  //  if (data == 'Login success') {
+  //   localStorage.setItem('auth_admin',1);
+  //   window.location.replace('/admin/main');
 
-   }
+  //  }
+  window.location.replace(data);
     // Notiflix.Report.success("Success", data, "OK");
   } else if (response.status == 401) {
     const data = await response.text();
