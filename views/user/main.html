@@ -18,14 +18,15 @@
             <i class="bi bi-list" style="font-size: 36px;"></i>
         </a>
         <h1>Asset borrowing</h1>
-        <button class="btn btn-sm border-2 border-black rounded-5 shadow fw-bold" id="signout" style="background-color: #FFE6C7;">Sign out</button>
+        <button class="btn btn-sm border-2 border-black rounded-5 shadow fw-bold" onclick="logout()"
+            style="background-color: #FFE6C7;">Sign out</button>
     </nav>
     <!-- search bar -->
     <div class="container text-center">
         <div class="d-inline-flex">
             <div class="input-group mt-3" role="group">
                 <input class="form-control rounded-start-5 border-1 border-black border-end-0" type="text" name=""
-                    id="txtsearch" placeholder="Search">
+                    id="txtsearch" placeholder="Search" onkeyup="searchAsset()">
                 <a class="input-group-text btn px-3 rounded-end-5 border-1 border-black border-start-0" href="#"
                     style="background-color:#FFE6C7;">
                     <i class="bi bi-search"></i>
@@ -34,8 +35,39 @@
         </div>
     </div>
     <!-- content -->
-    <div class="row p-5" id="all-asset">
-        <!-- asset 2 -->
+    <div class="m-5 mt-3 text-center">
+        <table class="table table-bordered table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <td>Image</td>
+                    <td>Name</td>
+                    <td>Description</td>
+                    <td>borrow</td>
+                </tr>
+            </thead>
+            <tbody id="all-asset">
+                <!-- <tr>
+                    <td><img src="/public/img/chair.png" alt="asset image" height="40px"></td>
+                    <td>Chair</td>
+                    <td><p class="text-start">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium reprehenderit itaque fuga,
+                        quos earum laudantium corporis ex delectus tempore beatae cupiditate numquam ab autem asperiores odit architecto magnam,
+                        sed totam!
+                    </p></td>
+                    <td><a class="btn btn bg-success text-white" href="borrow.html">Borrowed</a></td>
+                </tr> -->
+                <!-- <tr>
+                    <td><img src="/public/img/chair.png" alt="asset image" height="40px"></td>
+                    <td>Chair</td>
+                    <td><p class="text-start">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Praesentium reprehenderit itaque fuga,
+                        quos earum laudantium corporis ex delectus tempore beatae cupiditate numquam ab autem asperiores odit architecto magnam,
+                        sed totam!
+                    </p></td>
+                    <td><a class="btn btn bg-success text-white" href="borrow.html">Borrowed</a></td>
+                </tr> -->
+            </tbody>
+        </table>
         <!-- <a class="col text-decoration-none mt-4" href="/views/user/b-asset.html">
             <div class="card-group text-center" style="width: 15rem;">
                 <div class="card">
@@ -62,19 +94,28 @@
                 </li>
                 <li class="list-group-item my-2">
                     <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
-                    <a class="text-decoration-none fw-bold text-dark" href="proj-List.html">List</a>
+                    <a class="text-decoration-none fw-bold text-dark" href="/user/list">List</a>
                 </li>
                 <li class="list-group-item my-2">
                     <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
-                    <a class="text-decoration-none fw-bold text-dark" href="proj-msg.html">Messages</a>
+                    <a class="text-decoration-none fw-bold text-dark" href="/user/message">Messages</a>
                 </li>
                 <li class="list-group-item my-2">
                     <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
-                    <a class="text-decoration-none fw-bold text-dark" href="proj-profile.html">Profile</a>
+                    <a class="text-decoration-none fw-bold text-dark" href="/user/profile">Profile</a>
                 </li>
                 <li class="list-group-item my-2">
                     <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
-                    <a class="text-decoration-none fw-bold text-dark" href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWtDpKsfRfdcRVpqTHkQTtgHKNdJlZQCWgnvKfDmxgjWCKbgscXFxkKnNVrpCFfpXPbnZgHtl">Contact</a>
+                    <a class="text-decoration-none fw-bold text-dark" href="/user/history">History</a>
+                </li>
+                <li class="list-group-item my-2">
+                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
+                    <a class="text-decoration-none fw-bold text-dark"
+                        href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWtDpKsfRfdcRVpqTHkQTtgHKNdJlZQCWgnvKfDmxgjWCKbgscXFxkKnNVrpCFfpXPbnZgHtl">Contact</a>
+                </li>
+                <li class="list-group-item my-2">
+                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
+                    <a class="text-decoration-none fw-bold text-dark" href="#" onclick="logout()">Sign Out</a>
                 </li>
             </ul>
         </div>

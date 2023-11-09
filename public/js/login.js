@@ -41,3 +41,18 @@ formLogin.onsubmit = async function (e) {
     });
   }
 };
+
+// go to Landing
+function goLanding(){
+  window.location.replace('/');
+}
+
+// go to Register
+function goRegister(){
+  window.location.replace('/user/register');
+}
+
+// go to Repassword
+function goForgot(){
+  window.location.replace('/user/forgot');
+}

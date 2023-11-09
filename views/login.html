@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/public/css/bootstrap-icons-1.5.0/bootstrap-icons.css">
     <script src="/public/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js"></script>
     <title>Login</title>
@@ -12,7 +13,11 @@
 
 <body>
     <!-- navbar -->
-    <nav class="vw-100 shadow" style="background-color: #FFA559; height: 6rem;"></nav>
+    <nav class="navbar vw-100 shadow" style="background-color: #FFA559; height: 6rem;">
+        <button class="btn text-white ps-3" onclick="goLanding()">
+            <i class="bi bi-arrow-left" style="font-size: 36px;"></i>
+        </button>
+    </nav>
 
     <!-- Content -->
     <div class="container mt-3" style="width: 350px;">
@@ -45,7 +50,7 @@
 
             <!-- forgot password -->
             <div class="text-end text-primary my-2 ">
-                <a class="text-decoration-none" href="user/forgot">Forgot password</a>
+                <button class="btn text-primary" type="button" onclick="goForgot()">Forgot password</button>
             </div>
 
             <!-- login button -->
@@ -57,7 +62,7 @@
             <!-- Register -->
             <div class="text-center">
                 <span class="fw-bold">Do not have account?</span>
-                <a class="text-decoration-none" href="/user/register">Register</a>
+                <button class="btn text-primary" type="button" onclick="goRegister()">Register</button>
             </div>
         </form>
     </div>

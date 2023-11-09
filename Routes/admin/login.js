@@ -1,16 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const con = require('../config/db');
+const con = require('../../config/db');
 const bcrypt = require('bcrypt');
 const path = require('path');
 
 router.get('/login',function(req,res){
-    res.sendFile(path.join(__dirname,'../views/login.html'));
-})
+    res.sendFile(path.join(__dirname,'../../views/admin/login.html'))
+});
 
-router.post('/login',function (req,res) {
+ router.post('/login',function (req,res) {
     const { email, password } = req.body;
-    const sql = "SELECT role, email, user_id, password FROM user WHERE email=?";
+    const sql = "SELECT email,password FROM admin WHERE email=?";
     con.query(sql,[email],function (err, results) {
         if (err) {
             console.log(err);
@@ -25,17 +25,8 @@ router.post('/login',function (req,res) {
                     res.status(500).send('Password compare error');
                 }else{
                     if (same) {
-                        //! ----- check role ----- 
-                        //? ----- 0 => aj ----- 
-                        //? ----- 1 => user ----- 
-                        //? ----- 2 => admin -----
-                        if(results[0].role == 0){
-                            res.status(200).send('/aj/main');
-                        }else if(results[0].role == 2){
-                            res.status(200).send('/admin/main');
-                        }else{
-                            res.status(200).send('/user/main');
-                        }
+                        // console.log(results[0].role);
+                        res.status(200).send('/admin/main');
                         
                     }else{
                         res.status(401).send('Wrong password');
@@ -44,6 +35,7 @@ router.post('/login',function (req,res) {
             })
         }
     })
+    
 })
 
 module.exports = router;

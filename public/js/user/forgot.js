@@ -36,5 +36,5 @@ formForgot.onsubmit = async function (e) {
 
 // click cancel button
 function goBack(){
-    window.location.replace('/');
+    window.location.replace('/login');
 }
