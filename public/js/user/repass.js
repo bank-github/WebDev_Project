@@ -4,11 +4,9 @@ formRepass.onsubmit = async function (e) {
     const password = formRepass.elements['txtpass'].value;
     const rePassword = formRepass.elements['txtrepass'].value;
     const repassID = localStorage.getItem('repassID');
-    // console.log(password);
-    // console.log(rePassword);
+
     const data = {
-        "password": password,
-        "rePassword": rePassword
+        "password": password
     }
     const options = {
         method: 'POST',
@@ -16,6 +14,10 @@ formRepass.onsubmit = async function (e) {
         body: JSON.stringify(data)
     }
     try {
+        // check pass word match or not
+        if (password != rePassword) {
+            throw Error('Password not match!');
+        }
         const response = await fetch(`/user/repass/${repassID}`, options);
         if (response.ok) {
             const data = await response.text();

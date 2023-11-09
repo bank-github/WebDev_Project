@@ -1,9 +1,4 @@
 // go to userLogin
-function goUser(){
+function goLogin(){
     window.location.replace('/login');
-}
-
-// go to AdminLogin
-function goAdmin(){
-    window.location.replace('/admin/login');
 }

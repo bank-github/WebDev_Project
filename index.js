@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-// const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 
-               // router \\
+// router \\
 const login = require('./Routes/login');
 //=== user===\\
 const forgotUser = require('./Routes/user/forgot');
@@ -20,7 +20,6 @@ const borrowUser = require('./Routes/user/borrow');
 const mainAj = require('./Routes/aj/main');
 
 //=== admin ===\\
-const loginAdmin = require('./Routes/admin/login')
 const mainAdmin = require('./Routes/admin/main')
 
 // set public path
@@ -34,27 +33,35 @@ app.use(express.urlencoded({ extended: true }));
 app.use(login) //user login
 
 //===========user============\\
-app.use('/user',forgotUser); //user forgot password
-app.use('/user',repassUser); // user repassword
-app.use('/user',registerUser); //user register
-app.use('/user',mainUser) // main page
-app.use('/user',listUser) // list page
-app.use('/user',messageUser) // message page
-app.use('/user',profileUser) // profile page
-app.use('/user',historyUser) // history page
-app.use('/user',borrowUser) // borrow page
+app.use('/user', forgotUser); //user forgot password
+app.use('/user', repassUser); // user repassword
+app.use('/user', registerUser); //user register
+app.use('/user', mainUser) // main page
+app.use('/user', listUser) // list page
+app.use('/user', messageUser) // message page
+app.use('/user', profileUser) // profile page
+app.use('/user', historyUser) // history page
+app.use('/user', borrowUser) // borrow page
 
 //=============aj==========\\
-app.use('/aj',mainAj);
+app.use('/aj', mainAj);
 
 // ============ admin ===========\\
-app.use('/admin',loginAdmin);
-app.use('/admin',mainAdmin)
+app.use('/admin', mainAdmin)
 
 // root file user
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, "views/landing.html"));
 });
+
+// app.get('/hash/:pass', function (req, res) {
+//     bcrypt.hash(req.params.pass, 10, function (err, hash) {
+//         if (err) {
+//             return res.status(500).send('Hash error')
+//         }
+//         res.send(hash);
+//     })
+// })
 
 // run server
 const port = 7777;

@@ -10,7 +10,7 @@ router.get('/login',function(req,res){
 
 router.post('/login',function (req,res) {
     const { email, password } = req.body;
-    const sql = "SELECT role, email, user_id, password FROM user WHERE email=?";
+    const sql = "SELECT * FROM user WHERE email=?";
     con.query(sql,[email],function (err, results) {
         if (err) {
             console.log(err);
@@ -18,7 +18,7 @@ router.post('/login',function (req,res) {
             res.status(500).send('DB error');
         }else if(results.length != 1){
             // !client error
-            res.status(401).send('email or password is wrong');
+            res.status(401).send('This email not found!');
         }else{
             bcrypt.compare(password, results[0].password, function (err, same) {
                 if (err) {
