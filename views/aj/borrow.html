@@ -44,8 +44,9 @@
 
         <!-- detail -->
         <div class="d-flex justify-content-sm-evenly p-5 my-5">
-            <a class="btn btn border-2 border-black rounded-5 fw-bold" style="background-color: #9CCC76;"
-                href="/views/aj/list.html">Approved</a>
+            <button type="button" class="btn btn border-2 border-black rounded-5 fw-bold" style="background-color: #9CCC76;" id="approved">
+                Approved
+            </button>
             <a class="btn btn border-2 border-black rounded-5 fw-bold" style="background-color: #D40E0E;" href="#re"
                 data-bs-toggle="modal">Reject</a>
         </div>
@@ -66,7 +67,7 @@
                 </li>
                 <li class="list-group-item my-2">
                     <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
-                    <a class="text-decoration-none fw-bold text-dark" href="/views/aj/Aj_proj-List.html">List</a>
+                    <a class="text-decoration-none fw-bold text-dark" href="/views/aj/list">List</a>
                 </li>
                 <li class="list-group-item my-2">
                     <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
@@ -106,7 +107,7 @@
                 <button class="btn btn-sm border-2 border-dark rounded-5 fw-bold" data-bs-dismiss="modal"
                     style="background-color: #FFE6C7;">Cancel</button>
                 <a class="btn btn-sm border-2 border-dark rounded-5 fw-bold" style="background-color: #FFA559;"
-                    href="/views/aj/list.html" onclick="submitRejectionReason()">Confirm</a>
+                    href="aj/list" onclick="submitRejectionReason()">Confirm</a>
             </div>
         </div>
     </div>

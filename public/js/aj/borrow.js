@@ -35,4 +35,8 @@ function showdata(data) {
     img.src = `/public/img/${data.image}`; 
 }
 
+document.querySelector('#approved').onclick = function () {
+    
+}
+
 getdata(borrow_id);

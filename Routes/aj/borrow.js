@@ -8,7 +8,6 @@ router.get('/borrow',function (req,res) {
 })
 
 router.get('/borrow-getdata-approve/:borrow_id', function (req, res) {
-     
     const borrow_id = req.params.borrow_id;
     // console.log(borrow_id);
     // res.send(borrow_id);
@@ -27,6 +26,10 @@ router.get('/borrow-getdata-approve/:borrow_id', function (req, res) {
       }
     });
   })
-  
+
+router.delete('/borrow-delete/:borrow_id',function (req,res) {
+    const borrow_id = req.params.borrow_id;
+    const query = ``
+})
 
 module.exports = router;
