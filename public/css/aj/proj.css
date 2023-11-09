@@ -6,6 +6,9 @@
 }
 /* List Page */
 
+
+
+
 .container-wrapper {
 	align-items: center;
 	justify-content: center;
@@ -34,6 +37,8 @@
 	color:rgb(255, 230, 199);
 	padding-left: 180px;
 }
+
+
 /* Rounded heading styles */
 .rounded-heading,
 .rounded-2heading,

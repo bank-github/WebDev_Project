@@ -13,6 +13,9 @@ const mainUser = require('./Routes/user/main');
 
 //=== aj ===\\
 const mainAj = require('./Routes/aj/main');
+const listAj = require('./Routes/aj/list');
+const borrowAj = require('./Routes/aj/borrow');
+
 //=== admin ===\\
 const mainAdmin = require('./Routes/admin/main');
 const listAdmin = require('./Routes/admin/list');
@@ -35,6 +38,8 @@ app.use('/user',mainUser) // main page
 
 //=============aj==========\\
 app.use('/aj',mainAj);
+app.use('/aj',listAj);
+app.use('/aj',borrowAj);
 
 // ============ admin ===========\\
 app.use('/admin',mainAdmin)
