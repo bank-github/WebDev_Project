@@ -10,9 +10,15 @@ const forgotUser = require('./Routes/user/forgot');
 const repassUser = require('./Routes/user/repass');
 const registerUser = require('./Routes/user/register');
 const mainUser = require('./Routes/user/main');
+const listUser = require('./Routes/user/list');
+const messageUser = require('./Routes/user/message');
+const profileUser = require('./Routes/user/profile');
+const historyUser = require('./Routes/user/history');
+const borrowUser = require('./Routes/user/borrow');
 
 //=== aj ===\\
 const mainAj = require('./Routes/aj/main');
+
 //=== admin ===\\
 const loginAdmin = require('./Routes/admin/login')
 const mainAdmin = require('./Routes/admin/main')
@@ -32,6 +38,11 @@ app.use('/user',forgotUser); //user forgot password
 app.use('/user',repassUser); // user repassword
 app.use('/user',registerUser); //user register
 app.use('/user',mainUser) // main page
+app.use('/user',listUser) // list page
+app.use('/user',messageUser) // message page
+app.use('/user',profileUser) // profile page
+app.use('/user',historyUser) // history page
+app.use('/user',borrowUser) // borrow page
 
 //=============aj==========\\
 app.use('/aj',mainAj);

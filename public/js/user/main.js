@@ -18,7 +18,7 @@ async function getData() {
           <td><p>
           ${asset.detail}
           </p></td>
-          <td class="text-center"><a id="${asset.asset_id}" class="btn btn bg-success text-white" href="borrow.html">Borrow</a></td>
+          <td class="text-center"><a id="${asset.asset_id}" class="btn btn bg-success text-white" href="/user/borrow">Borrow</a></td>
       </tr>`
       });
       // console.log(content);
