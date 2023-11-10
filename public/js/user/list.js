@@ -20,6 +20,12 @@ async function getList() {
         const borrow_nd = data[1]; 
         const borrow_rd = data[2]; 
         const borrow_th = data[3]; 
+        
+        const formatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+        const formattedDateND = new Date(borrow_nd.borrow_date).toLocaleString(undefined, formatOptions);
+        const formattedDateRD = new Date(borrow_rd.borrow_date).toLocaleString(undefined, formatOptions);
+        const formattedDateTH = new Date(borrow_th.borrow_date).toLocaleString(undefined, formatOptions);
+        const formattedDate = new Date(borrow.borrow_date).toLocaleString(undefined, formatOptions);
 
         content = `
         <div class="col-md-4">
@@ -35,16 +41,16 @@ async function getList() {
           <div class="col-md-4">
             <div class="row">
               <h4 class="inline-text">
-                Start: <span>${borrow_nd.borrow_date}</span> End: <span id="endDate"></span>
+                Start: <span>${formattedDateND}</span><span id="endDate"></span>
               </h4>
               <h4 class="inline-text2">
-                End: <span>${borrow_rd.borrow_date}</span>
+                End: <span>${formattedDateRD}</span>
               </h4>
               <h4 class="inline-text3">
-                Start: <span>${borrow_th.borrow_date}</span><span id="endDate">1</span>
+                Start: <span>${formattedDateTH}</span><span id="endDate">1</span>
               </h4>
               <h4 class="inline-text4">
-                End: <span >${borrow.borrow_date}</span>
+                End: <span >${formattedDate}</span>
               </h4>
             </div>
           </div>

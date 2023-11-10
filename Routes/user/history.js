@@ -8,7 +8,7 @@ router.get('/history',function(req,res){
 })
 
 router.get('/history-info', function (req, res) {
-    const sql = `SELECT * FROM borrow borrow`;
+    const sql = `SELECT * FROM borrow`;
     con.query(sql,function(err,result){
         if(err){
             return res.status(500).send('<h1>Database Error!</h1>');

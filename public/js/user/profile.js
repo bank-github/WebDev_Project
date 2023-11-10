@@ -1,11 +1,11 @@
 
 getList();
 
+
 // all asset
 async function getList() {
   // use when error or success
   const info = document.querySelector('#info');
-
 
   try {
     const result = await fetch('/user/profile-info');
@@ -47,3 +47,49 @@ async function getList() {
     console.error(err);
   }
 }
+let userData = {
+  Name: '',
+  School: '',
+  Email: '',
+  Tel: ''
+};
+
+function editProfileInformation() {
+  Swal.fire({
+    title: 'Edit Profile Information',
+    html: `
+      <input id="Name" class="swal2-input" placeholder="Name" value="${userData.Name}">
+      <input id="School" class="swal2-input" placeholder="School" value="${userData.School}">
+      <input id="Email" class="swal2-input" placeholder="Email" value="${userData.Email}">
+      <input id="Tel" class="swal2-input" placeholder="Tel" value="${userData.Tel}">
+    `,
+    showCancelButton: true,
+    confirmButtonText: 'Save',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      userData.Name = document.getElementById("Name").value;
+      userData.School = document.getElementById("School").value;
+      userData.Email = document.getElementById("Email").value;
+      userData.Tel = document.getElementById("Tel").value;
+
+      // Send the updated data to the server (you'll need to implement this)
+      saveProfileInformation(userData);
+
+      // Display updated information to the user
+      Swal.fire({
+        title: 'Updated Profile Information',
+        html: `
+          <h3>Name: ${userData.Name}</h3>
+          <h3>School: ${userData.School}</h3>
+          <h3>Email: ${userData.Email}</h3>
+          <h3>Telephone: ${userData.Tel}</h3>
+        `,
+        icon: 'success',
+        confirmButtonText: 'OK'
+      });
+    }
+  });
+}
+
+// // Initial update
+// updateUserInfo();
