@@ -13,7 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         window.onload = function() {
-          showReadMailWarnDeadLine();
+          WarnDeadLine();
         };
       </script>
 </head>
@@ -71,21 +71,22 @@
         </header>             
         <div class="container mt-4 rounded-container dark">
             <div class="row">
-                <div class="col-md-8">
-                    <h2 class="msg-h">INBOX</h2>
-                    <h3 class="msg-2h">username Borrowing the Assets 1st.</h3>
+                <div class="col-md-8" id="message-borrow">
+                    <!-- <h2 class="msg-h" >INBOX</h2> -->
+                    <!-- <h3 class="msg-2h">username Borrowing the Assets 1st.</h3>
                     <h3 class="msg-3h">username Your  Assets 2nd has.</h3>
                     <h3 class="msg-4h">username Your Assets 3rd.</h3>
-                    <h3 class="msg-5h">username Your Assets 4th.</h3>
+                    <h3 class="msg-5h">username Your Assets 4th.</h3> -->
                 </div>
-                <div class="col-md-4">
-                   <button class="bx bx-check-double icon"id="green-chInbox" onclick="showReadMailConfirmation()">Approved</button>
+                <div class="col-md-4" id="message-status">
+                   <!-- <button class="bx bx-check-double icon"id="green-chInbox" onclick="showReadMailConfirmation()">Approved</button>
                    <button class="bx bx-error-alt icon"id="warning-chInbox" onclick="showReadMailNotApproved()" role="button">Not Approve</button>
                    <button class="bx bx-alarm-exclamation icon"id="aware-chInbox"onclick="showReadMailWarnDeadLine()">Close to Return</button>
-                   <button class="bx bx-calendar-x icon"id="problems-chInbox"onclick="showReadMailMissingRe()">Not Return</button>
+                   <button class="bx bx-calendar-x icon"id="problems-chInbox"onclick="showReadMailMissingRe()">Not Return</button> -->
                 </div>
             </div>
         </div>
     <script src="/public/js/user/script.js"></script>
+    <script src="/public/js/user/message.js"></script>
 </body>
 </html>

@@ -12,4 +12,14 @@ router.get('/list',function(req,res){
     }
 })
 
+router.get('/list-all', function (req, res) {
+    const sql = `SELECT * FROM borrow assets`;
+    con.query(sql,function(err,result){
+        if(err){
+            return res.status(500).send('<h1>Database Error!</h1>');
+        }
+        res.status(200).send(result);
+    })
+});
+
 module.exports = router;

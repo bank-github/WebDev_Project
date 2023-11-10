@@ -36,6 +36,7 @@ formLogin.onsubmit = async function (e) {
       text: err.message
     });
   }
+
 };
 
 // go to Landing
