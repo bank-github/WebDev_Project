@@ -6,7 +6,7 @@ async function getdata() {
         headers: { "Content-Type": "application/json" },
     }
     try {
-        const response = await fetch('/admin/list-getassets',options);
+        const response = await fetch('/assets',options);
         if (response.ok) {
             asset = await response.json();
             showTable();

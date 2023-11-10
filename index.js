@@ -5,6 +5,7 @@ const session = require('express-session');
 
                 // router \\
 const login = require('./Routes/login');
+const assets = require('./Routes/assets');
 //=== user===\\
 const forgotUser = require('./Routes/user/forgot');
 const repassUser = require('./Routes/user/repass');
@@ -47,6 +48,7 @@ app.use(session({
 
 // loginUser
 app.use(login) //user login
+app.use(assets) // get assets
 
 //===========user============\\
 app.use('/user', forgotUser); //user forgot password

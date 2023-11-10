@@ -7,7 +7,7 @@ async function getData() {
   const allAsset = document.querySelector('#all-asset');
 
   try {
-    const result = await fetch('/user/main-all');
+    const result = await fetch('/assets');
     if (result.ok) {
       const data = await result.json();
       let content = '';

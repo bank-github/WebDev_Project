@@ -27,10 +27,10 @@ async function getList() {
     </div> 
         <div class="row">
           <div class="col-md-4">
-            <h3 class="rounded-2heading">ASSET ${ AssetName(borrow_nd.asset_id)}</h3>
-            <h3 class="rounded-3heading">ASSET ${ AssetName(borrow_rd.asset_id)}</h3>
-            <h3 class="rounded-4heading">ASSET ${ AssetName(borrow_th.asset_id)}</h3>
-            <h3 class="rounded-5heading">ASSET ${ AssetName(borrow.asset_id)}</h3>
+            <h3 class="rounded-2heading">ASSET ${ AssetName(borrow_nd.borrow_id)}</h3>
+            <h3 class="rounded-3heading">ASSET ${ AssetName(borrow_rd.borrow_id)}</h3>
+            <h3 class="rounded-4heading">ASSET ${ AssetName(borrow_th.borrow_id)}</h3>
+            <h3 class="rounded-5heading">ASSET ${ AssetName(borrow.borrow_id)}</h3>
           </div>
           <div class="col-md-4">
             <div class="row">
