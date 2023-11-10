@@ -25,8 +25,11 @@ const historyAj = require('./Routes/aj/history');
 const listAj = require('./Routes/aj/list');
 
 //=== admin ===\\
-const loginAdmin = require('./Routes/admin/login')
 const mainAdmin = require('./Routes/admin/main');
+const listAdmin = require('./Routes/admin/list');
+const addAdmin = require('./Routes/admin/add');
+const historyAdmin = require('./Routes/admin/history');
+const editAdmin = require('./Routes/admin/edit');
 
 const app = express();
 // set public path
@@ -64,9 +67,12 @@ app.use('/aj',profileAj) // profile page
 app.use('/aj',historyAj) // history page
 app.use('/aj',listAj) // list page
 
-
 // ============ admin ===========\\
-app.use('/admin', mainAdmin)
+app.use('/admin',mainAdmin);
+app.use('/admin',listAdmin);
+app.use('/admin',addAdmin);
+app.use('/admin',historyAdmin);
+app.use('/admin',editAdmin);
 
 // logout and destroy session
 app.get('/logout',function(req,res){

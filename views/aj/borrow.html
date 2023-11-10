@@ -28,25 +28,25 @@
             <div class="d-flex justify-content mt-5">
                 <div class="card border-1 border-black rounded-5 shadow p-3 me-5" style="width: 400px;">
                     <div class="container">
-                        <h3>Assets Example 1</h3>
-                        <p class="card-text">Book name :.........</p>
-                        <p class="card-text">Return deadline : ............</p>
-                        <p class="card-text">Amount : ............</p>
-
+                        <h3 id="assetname">Assets Example 1</h3>
+                        <p class="card-text" id="username" >Username : .........</p>
+                        <p class="card-text" id="deadline">Return deadline : ............</p>
+                        <p class="card-text" id="detail">Detail : ............</p>
                     </div>
                 </div>
             </div>
 
             <div class="card border-1 border-black rounded-5 shadow p-3 my-5" style="width: 20rem;">
-                <img class="card-img-top" src="/public/img/bootstrap5.png" alt="asset img" width="500px">
+                <img class="card-img-top" id="img-asset" src="/public/img/bootstrap5.png" alt="asset img" width="500px">
             </div>
 
         </div>
 
         <!-- detail -->
         <div class="d-flex justify-content-sm-evenly p-5 my-5">
-            <a class="btn btn border-2 border-black rounded-5 fw-bold" style="background-color: #9CCC76;"
-                href="/views/aj/list.html">Approved</a>
+            <button type="button" class="btn btn border-2 border-black rounded-5 fw-bold" style="background-color: #9CCC76;" id="approved">
+                Approved
+            </button>
             <a class="btn btn border-2 border-black rounded-5 fw-bold" style="background-color: #D40E0E;" href="#re"
                 data-bs-toggle="modal">Reject</a>
         </div>
@@ -107,7 +107,7 @@
                 <button class="btn btn-sm border-2 border-dark rounded-5 fw-bold" data-bs-dismiss="modal"
                     style="background-color: #FFE6C7;">Cancel</button>
                 <a class="btn btn-sm border-2 border-dark rounded-5 fw-bold" style="background-color: #FFA559;"
-                    href="/views/aj/list.html" onclick="submitRejectionReason()">Confirm</a>
+                    href="aj/list" onclick="submitRejectionReason()">Confirm</a>
             </div>
         </div>
     </div>

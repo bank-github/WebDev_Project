@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/public/css/user/proj.css">
     <link rel="stylesheet" href="/public/css/bootstrap.min.css">
-    <title>Messages</title>
+    <title>List</title>
+    <link rel="stylesheet" href="/public/css/user/proj.css">
     <script src="/public/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css"> 
     <link rel="stylesheet" href="/public/css/bootstrap-icons-1.5.0/bootstrap-icons.css"> 
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="/public/css/aj/list.css">
 </head>
 <body>
     <!-- offcanvas -->
@@ -66,44 +66,37 @@
             <button class="bx bx-history icon moon ms-auto" id="hist-btn" onclick="showHistoryAlert()">History</button>
         </div>
     </header>
-    <div class="container mt-4 rounded-container dark">
-        <div class="row">
-            <div class="col-md-5">
-                <h2 class="rounded-heading">In Process</h2>
-                <h3 class="rounded-2heading">Assets Example 1</h3>
-                <h3 class="rounded-3heading">Assets Example 2</h3>
-                <h3 class="rounded-4heading">Assets Example 3</h3>
-                <h3 class="rounded-5heading">Assets Example 4</h3>
-            </div>
-            <div class="col-md-4">
-                <div class="row">
-                    <h4 class="inline-text">
-                        Start:<span id="startDate">2023-10-27</span> End: <span id="endDate"></span>
-                    </h4>
-
-                    <h4 class="inline-text2">
-                        End: <span id="endDate">2023-11-11</span>
-                    </h4>
-
-                    <h4 class="inline-text3">
-                        Start:<span id="startDate">2023-10-27</span>End:<span id="endDate"> 2023-11-11</span>
-                    </h4>
-
-                    <h4 class="inline-text4">
-                        End: <span id="endDate">Lost in !!! - 2023-11-03</span>
-                    </h4>
-
-                </div>
-            </div>
-            <div class="col-md-3">
-                <button class="btn" id="green-button" onclick="showReturned()">Returned</button>
-                <button class="btn" id="warning-button" onclick="showNotReturned()">Not Return</button>
-                <button class="btn" id="green2-button" onclick="showReturnedAgain()">Returned</button>
-                <button class="btn" id="problems-button" onclick="showAssetLost()">Asset Lost !</button>
-            </div>
+    
+    <!-- content -->
+    <div class="container mt-5 p-5 rounded-container dark">
+       <!-- ! content header -->
+        <div class="d-flex justify-content-between px-5">
+            <div class="circle-header" id="recently" >
+                <h3 id="">Recently</h3>
+            </div>        
+            <div class="circle-header" id="history">
+                <h3>History</h3>
+            </div>                
         </div>
+        <!-- ! content list -->
+        <div class="container listborrow px-5" id="">
+            <!-- <div class="d-flex justify-content-between align-items-center mt-5">
+                <div class="circle-listasset">
+                    <h4>
+                        Assets Example 1        
+                    </h4>
+                </div>
+                <div class="time">
+                    <h5>
+                        11/7/2023
+                    </h5>
+                </div>
+                    <button type="button" class="btn">Click Approve</button>
+            </div>
+      -->
     </div>
     <script src="/public/js/aj/script.js"></script>
+    <script src="/public/js/aj/list.js"></script>
 </body>
 
 </html>

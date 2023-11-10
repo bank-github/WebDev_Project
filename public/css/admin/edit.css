@@ -1,4 +1,8 @@
 
+label {
+    color: var(--primary-color);
+}
+
 #back{
     color: var(--sidebar-color);
     font-size: 1.5rem;
@@ -9,13 +13,17 @@
     border-radius: 0.4rem;
     height: 3rem;
     width: 13rem;
+    font-weight: bold;
+    color: var(--sidebar-color);
 }
 #edit-photo{
-    background-color:var(--sidebar-color);
+    background-color:var(--primary-color);
     border: none;
     border-radius: 0.4rem;
-    height: 15rem;
-    width: 20rem;
+    max-height: 30rem;
+    max-width: 30rem;
+    /* height: 15rem; */
+    /* width: 20rem; */
     color: var(--primary-color);
 }
 #edit-detail{

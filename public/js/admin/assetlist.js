@@ -1,52 +1,55 @@
-const data = [
-    { 'id': '62134xxx', 'photo': '', 'name': 'XXXX', 'status': 'avalible', 'enable': true },
-    { 'id': '62133xxx', 'photo': '', 'name': 'XXXX2', 'status': 'inprogress', 'enable': true },
-    { 'id': '62133xxx', 'photo': '', 'name': 'XXXX3', 'status': 'borrowed', 'enable': true },
-    { 'id': '62133xxx', 'photo': '', 'name': 'XXXX4', 'status': 'disable', 'enable': false },
-]
+var asset = []
+
+async function getdata() {
+    const options = {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+    }
+    try {
+        const response = await fetch('/admin/list-getassets',options);
+        if (response.ok) {
+            asset = await response.json();
+            showTable();
+        }
+        else {
+            throw Error('Connection error');``
+        }
+    } catch (error) {
+        console.error(error.message);
+        alert(error.message);
+    }
+}
 
 function showTable() {
+    console.log(asset); 
     var table = document.querySelector('tbody');
-    var i = 0;
     var dataTable = '';
-    for (const iterator of data) {
-        i += 1;
-        dataTable += `<tr data-href='/views/admin/edit.html'><td>${i}</td>`;
-        dataTable += `<td>${iterator.id}</td>`;
+    for (const iterator of asset) {
+        dataTable += `<tr onclick = sendData(${iterator.asset_id}) >`;
+        dataTable += `<td>${iterator.asset_id}</td>`;
         dataTable += `
         <td>
             <div class="imagetable-container">
-                <div class="imagetable d-flex align-items-center justify-content-center">
-                    image
-                    ${iterator.photo}
-                </div>
+                <image class=imagetable d-flex align-items-center justify-content-center src='/public/img/${iterator.image}'>
+                    </image>
             </div>
         </td>`;
-        dataTable += `<td>${iterator.name}</td>`;
-        if (iterator.status == 'avalible') {
-            dataTable += `<td><div class="circle-container"><div class="bg-success circle">
+        dataTable += `<td>${iterator.asset_name}</td>`;
+        if (iterator.status == 6 || iterator.status == 7) {
+            dataTable += `<td><div class="circle-container"><div class="bg-dark circle">
             </div></div></td>`;
-        } else if (iterator.status == 'inprogress') {
+        } else if (iterator.status == 1 ) {
             dataTable += `<td><div class="circle-container"><div class="bg-warning circle">
             </div></div></td>`;
-        } else if (iterator.status == 'borrowed') {
+        } else if (iterator.status == 2) {
             dataTable += `<td><div class="circle-container"><div class="bg-danger circle">
             </div></div></td>`;
         } else {
-            dataTable += `<td><div class="circle-container"><div class="bg-dark circle">
+            dataTable += `<td><div class="circle-container"><div class="bg-success circle">
             </div></div></td>`;
         }
-        if(iterator.enable){
-            dataTable += `
-            <td>
-                <div class="toggle-switch-container">
-                    <div class="toggle-switch">
-                        <span class="switch-on"></span>
-                    </div>        
-                </div>
-            </td></tr>`
-            ;
-        }else{
+        // ! 6 == disable
+        if(iterator.status == 6){
             dataTable += `
             <td>
                 <div class="toggle-switch-container">
@@ -56,10 +59,29 @@ function showTable() {
                 </div>
             </td></tr>`
             ;
+        }else{
+            dataTable += `
+            <td>
+                <div class="toggle-switch-container">
+                    <div class="toggle-switch">
+                        <span class="switch-on"></span>
+                    </div>        
+                </div>
+            </td></tr>`
+            ;
         }
     }
     table.innerHTML = dataTable;
 }
+
+function sendData(id) {
+    // alert('click');
+    sessionStorage.setItem('edit-id',id);
+    location.href = '/admin/edit' ;
+}
+
+getdata();
+
 var mode = document.querySelector('.toggle-switch');
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -70,5 +92,3 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-
-showTable();
