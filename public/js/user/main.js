@@ -14,12 +14,13 @@ async function getData() {
       data.forEach(asset => {
         content += `<tr class="text-start">
           <td class="text-center"><img src="/public/img/${asset.image}" alt="asset image" height="40px"></td>
-          <td id="name${asset.asset_id}"><a href="#" class="text-decoration-none text-dark">${asset.name}</a></td>
+          <td id="name${asset.asset_id}"><a href="#" class="text-decoration-none text-dark">${asset.asset_name}</a></td>
           <td><p>
           ${asset.detail}
           </p></td>
-          <td class="text-center"><a id="${asset.asset_id}" class="btn btn bg-success text-white" href="/user/borrow">Borrow</a></td>
+          <td class="text-center"><button id="${asset.asset_id}" class="btn btn bg-success text-white" onclick=getDetail(${JSON.stringify(asset)})>Borrow</button></td>
       </tr>`
+      //   data-bs-toggle="modal" data-bs-target="#modalId" ==> for modal
       });
       // console.log(content);
       return allAsset.innerHTML = content;
@@ -71,6 +72,15 @@ function searchAsset(){
   }
 }
 
+//get detail asset 
+function getDetail(asset){
+  const myModal = new bootstrap.Modal(document.getElementById('modalId'));
+  const title = document.querySelector('#modalTitleId');
+  title.innerText = `Borrow: ${asset.asset_name}`;
+  myModal.show();
+  console.log(asset);
+}
+
 function logout() {
   Swal.fire({
     title: 'Do you want to sign out',
@@ -84,7 +94,7 @@ function logout() {
 
   }).then((result) => {
     if (result.isConfirmed) {
-      window.location.replace('/');
+      window.location.replace('/logout');
     }
   });
   }

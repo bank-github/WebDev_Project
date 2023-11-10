@@ -1,15 +1,15 @@
-
 // register submit
 const formInput = document.querySelector('#formInput');
 formInput.onsubmit = async function (e) {
+    const password = formInput.elements['txtpassword'].value;
+    const conpassword = formInput.elements['txtconfirmpass'].value;
     // not refresh from
     e.preventDefault();
     // set data
     const data = {
         "name": formInput.elements['txtname'].value,
         "email": formInput.elements['txtemail'].value,
-        "password": formInput.elements['txtpassword'].value,
-        "conpass": formInput.elements['txtconfirmpass'].value,
+        "password": password,
         "major": formInput.elements['Major'].value,
         "year": formInput.elements['year'].value,
         "phoneNum": formInput.elements['txtphone'].value,
@@ -23,6 +23,10 @@ formInput.onsubmit = async function (e) {
     }
     // add data
     try {
+        // check password match or not
+        if(password != conpassword){
+            throw Error('Password not match!');
+        }
         const response = await fetch('/user/register', options);
         if (response.ok) {
             const data = await response.text();
@@ -39,7 +43,12 @@ formInput.onsubmit = async function (e) {
         }
     } catch (err) {
         console.error(err.message);
-        alert(err.message);
+        Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: err.message
+        }
+        );
     }
 }
 

@@ -4,7 +4,12 @@ const path = require('path');
 const con = require('../../config/db');
 
 router.get('/history',function(req,res){
-    res.sendFile(path.join(__dirname,'../../views/user/history.html'));
+    if(req.session.role =='0'){
+        res.sendFile(path.join(__dirname,'../../views/user/history.html'));
+    }
+    else{
+        res.redirect('/login');
+    }
 })
 
 module.exports = router;

@@ -2,7 +2,6 @@ const formForgot = document.querySelector('#forgot');
 formForgot.onsubmit = async function (e) {
     e.preventDefault();
     const email = formForgot.elements['txtemail'].value
-    // alert(email);
     const data = {
         "email": email
     }
@@ -15,9 +14,10 @@ formForgot.onsubmit = async function (e) {
         const response = await fetch('/user/forgot', options);
         if (response.ok) {
             const data = await response.text();
+            // save id user to localstorage
             localStorage.setItem("repassID",data);
             window.location.replace(`/user/repass`);
-        } else if (response.status == 401) {
+        } else if (response.status == 400 || response.status == 401) {
             const data = await response.text();
             throw Error(data);
         } else {

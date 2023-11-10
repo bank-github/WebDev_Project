@@ -10,11 +10,7 @@ router.get('/repass', function (req, res) {
 
 router.post('/repass/:id', function (req, res) {
     const id = req.params.id;
-    const { password, rePassword } = req.body;
-    // check pass word match or not
-    if (password != rePassword) {
-        return res.status(401).send('Password not match!');
-    }
+    const { password } = req.body;
     // find older password
     const sql = `SELECT password FROM user WHERE user_id = ?`
     con.query(sql, [id], function (err, result) {
