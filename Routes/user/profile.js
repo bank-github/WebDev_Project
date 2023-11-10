@@ -2,9 +2,15 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 const con = require('../../config/db');
+const { readdir } = require('fs');
 
 router.get('/profile',function(req,res){
-    res.sendFile(path.join(__dirname,'../../views/user/profile.html'));
+    if(req.session.role =='0'){
+        res.sendFile(path.join(__dirname,'../../views/user/profile.html'));
+    }
+    else{
+        res.redirect('/login');
+    }
 })
 
 module.exports = router;

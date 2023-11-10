@@ -1,9 +1,9 @@
 const express = require('express');
-const app = express();
 const path = require('path');
-const bcrypt = require('bcrypt');
+const session = require('express-session');
+// const bcrypt = require('bcrypt');
 
-// router \\
+                // router \\
 const login = require('./Routes/login');
 //=== user===\\
 const forgotUser = require('./Routes/user/forgot');
@@ -22,12 +22,19 @@ const mainAj = require('./Routes/aj/main');
 //=== admin ===\\
 const mainAdmin = require('./Routes/admin/main')
 
+const app = express();
 // set public path
 app.use("/public", express.static(path.join(__dirname, "public")));
-
 // json exchange
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// session
+app.use(session({
+    cookie: {maxAge: 24*60*60*1000},
+    secret: 'WebdevProject',
+    resave: false,
+    saveUninitialized: true
+}))
 
 // loginUser
 app.use(login) //user login
@@ -49,6 +56,17 @@ app.use('/aj', mainAj);
 // ============ admin ===========\\
 app.use('/admin', mainAdmin)
 
+// logout and destroy session
+app.get('/logout',function(req,res){
+    req.session.destroy(function(err,){
+        if(err){
+            console.error(err);
+            res.status(500).send('Cannot logout');
+        }else{
+            res.redirect('/');
+        }
+    })
+})
 // root file user
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, "views/landing.html"));

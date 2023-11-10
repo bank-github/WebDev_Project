@@ -5,7 +5,17 @@ const bcrypt = require('bcrypt');
 const path = require('path');
 
 router.get('/login',function(req,res){
-    res.sendFile(path.join(__dirname,'../views/login.html'));
+    if(req.session.role == '0'){
+        res.redirect('/user/main');
+    }
+    else if (req.session.role == '1') {
+        res.redirect('/aj/main');
+    }
+    else if (req.session.role == '2') {
+        res.redirect('/admin/main');
+    }else{
+        res.sendFile(path.join(__dirname,'../views/login.html'));
+    }
 })
 
 router.post('/login',function (req,res) {
@@ -25,7 +35,9 @@ router.post('/login',function (req,res) {
                     res.status(500).send('Password compare error');
                 }else{
                     if (same) {
-                        res.status(200).send(`${results[0].role}`);
+                        req.session.userID = results[0].user_id;
+                        req.session.role = results[0].role;
+                        res.status(200).send(`/user/main`);
                         // console.log(results[0].role);
                         // res.status(200).send('Login success');
                     }else{

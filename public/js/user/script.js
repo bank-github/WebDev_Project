@@ -85,7 +85,7 @@ function logout() {
 
   }).then((result) => {
     if (result.isConfirmed) {
-      window.location.replace('/');
+      window.location.replace('/logout');
     }
   });
   }

@@ -21,18 +21,7 @@ formLogin.onsubmit = async function (e) {
     const response = await fetch("/login", options);
     if (response.ok) {
       const data = await response.text();
-      // alert(data);
-      // ----- check role ----- 
-      // ----- 0 => user ----- 
-      // ----- 1 => aj ----- 
-      // ----- 2 => admin ----- 
-      if (data == '0') {
-        window.location.replace('/user/main');
-      } else if (data == '1') {
-        window.location.replace('/aj/main');
-      } else {
-        window.location.replace('/admin/main');
-      }
+      window.location.replace(data);
     } else if (response.status == 401) {
       const data = await response.text();
       throw Error(data);
