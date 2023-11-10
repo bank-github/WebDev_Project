@@ -19,7 +19,15 @@ const borrowUser = require('./Routes/user/borrow');
 //=== aj ===\\
 const mainAj = require('./Routes/aj/main');
 
-//=== admin ===\\
+//*add by palmmy*//
+
+const borrowAj = require('./Routes/aj/borrow');
+const historyAj = require('./Routes/aj/history');
+const listAj = require('./Routes/aj/list');
+const messageAj = require('./Routes/aj/message');
+const profileAj = require('./Routes/aj/profile');
+
+// //=== admin ===\\
 const loginAdmin = require('./Routes/admin/login')
 const mainAdmin = require('./Routes/admin/main')
 
@@ -46,6 +54,13 @@ app.use('/user',borrowUser) // borrow page
 
 //=============aj==========\\
 app.use('/aj',mainAj);
+
+//*****add by palmmy*//
+app.use('/aj',historyAj);// 
+app.use('/aj',messageAj);
+app.use('/aj',profileAj);
+app.use('/aj',borrowAj);
+app.use('/aj',listAj);
 
 // ============ admin ===========\\
 app.use('/admin',loginAdmin);
