@@ -61,6 +61,13 @@ app.use('/user', borrowUser) // borrow page
 
 //=============aj==========\\
 app.use('/aj',mainAj);
+
+//*****add by palmmy*//
+app.use('/aj',historyAj);// 
+app.use('/aj',messageAj);
+app.use('/aj',profileAj);
+app.use('/aj',borrowAj);
+app.use('/aj',listAj);
 app.use('/aj',borrowAj) // borrow page
 app.use('/aj',messageAj)// message page
 app.use('/aj',profileAj) // profile page
