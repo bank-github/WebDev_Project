@@ -20,7 +20,8 @@ const borrowUser = require('./Routes/user/borrow');
 const mainAj = require('./Routes/aj/main');
 
 //=== admin ===\\
-const mainAdmin = require('./Routes/admin/main')
+const loginAdmin = require('./Routes/admin/login')
+const mainAdmin = require('./Routes/admin/main');
 
 const app = express();
 // set public path
@@ -51,7 +52,13 @@ app.use('/user', historyUser) // history page
 app.use('/user', borrowUser) // borrow page
 
 //=============aj==========\\
-app.use('/aj', mainAj);
+app.use('/aj',mainAj);
+app.use('/aj',borrowAj) // borrow page
+app.use('/aj',messageAj)// message page
+app.use('/aj',profileAj) // profile page
+app.use('/aj',historyAj) // history page
+app.use('/aj',listAj) // list page
+
 
 // ============ admin ===========\\
 app.use('/admin', mainAdmin)
