@@ -18,8 +18,9 @@ async function getData() {
           <td><p>
           ${asset.detail}
           </p></td>
-          <td class="text-center"><button id="${asset.asset_id}" class="btn btn bg-success text-white"  data-bs-toggle="modal" data-bs-target="#modalId">Borrow</button></td>
+          <td class="text-center"><button id="${asset.asset_id}" class="btn btn bg-success text-white" onclick=getDetail(${JSON.stringify(asset)})>Borrow</button></td>
       </tr>`
+      //   data-bs-toggle="modal" data-bs-target="#modalId" ==> for modal
       });
       // console.log(content);
       return allAsset.innerHTML = content;
@@ -69,6 +70,15 @@ function searchAsset(){
       tr[i].style.display = 'none';
     }
   }
+}
+
+//get detail asset 
+function getDetail(asset){
+  const myModal = new bootstrap.Modal(document.getElementById('modalId'));
+  const title = document.querySelector('#modalTitleId');
+  title.innerText = `Borrow: ${asset.asset_name}`;
+  myModal.show();
+  console.log(asset);
 }
 
 function logout() {
