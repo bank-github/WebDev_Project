@@ -24,6 +24,9 @@ const borrowAj = require('./Routes/aj/borrow');
 //=== admin ===\\
 const mainAdmin = require('./Routes/admin/main');
 const listAdmin = require('./Routes/admin/list');
+const addAdmin = require('./Routes/admin/add');
+const historyAdmin = require('./Routes/admin/history');
+const editAdmin = require('./Routes/admin/edit');
 
 // set public path
 app.use("/public", express.static(path.join(__dirname, "public")));
@@ -52,8 +55,11 @@ app.use('/aj',listAj);
 app.use('/aj',borrowAj);
 
 // ============ admin ===========\\
-app.use('/admin',mainAdmin)
-app.use('/admin',listAdmin)
+app.use('/admin',mainAdmin);
+app.use('/admin',listAdmin);
+app.use('/admin',addAdmin);
+app.use('/admin',historyAdmin);
+app.use('/admin',editAdmin);
 
 // root file user
 app.get('/', function (req, res) {
