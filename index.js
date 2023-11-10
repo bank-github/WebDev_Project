@@ -18,10 +18,16 @@ const borrowUser = require('./Routes/user/borrow');
 
 //=== aj ===\\
 const mainAj = require('./Routes/aj/main');
+const borrowAj = require('./Routes/aj/borrow');
+const messageAj = require('./Routes/aj/message');
+const profileAj = require('./Routes/aj/profile');
+const historyAj = require('./Routes/aj/history');
+const listAj = require('./Routes/aj/list');
 
 //=== admin ===\\
 const loginAdmin = require('./Routes/admin/login')
-const mainAdmin = require('./Routes/admin/main')
+const mainAdmin = require('./Routes/admin/main');
+const { request } = require('http');
 
 // set public path
 app.use("/public", express.static(path.join(__dirname, "public")));
@@ -46,6 +52,12 @@ app.use('/user',borrowUser) // borrow page
 
 //=============aj==========\\
 app.use('/aj',mainAj);
+app.use('/aj',borrowAj) // borrow page
+app.use('/aj',messageAj)// message page
+app.use('/aj',profileAj) // profile page
+app.use('/aj',historyAj) // history page
+app.use('/aj',listAj) // list page
+
 
 // ============ admin ===========\\
 app.use('/admin',loginAdmin);
