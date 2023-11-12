@@ -28,7 +28,7 @@ router.get('/borrows', function (req, res) {
         // const userID = 1;
         const { brDate, rtDate, asset_id } = req.body;
         // console.log(brDate + rtDate + asset_id)
-        const sql = `INSERT INTO borrow (borrow_date, return_date, status, user_id, asset_id) VALUES (?, ?, 0, ?, ?)`;
+        const sql = `INSERT INTO borrow (borrow_date, return_date, status, user_id, asset_id) VALUES (?, ?, 1, ?, ?)`;
         con.query(sql, [brDate, rtDate, userID, asset_id], function (err, result) {
             if (err) {
                 // console.error(err);
