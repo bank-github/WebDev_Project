@@ -1,4 +1,5 @@
-var asset = []
+var asset = [];
+var borrow = [];
 
 async function getdata() {
     const options = {
@@ -9,6 +10,7 @@ async function getdata() {
         const response = await fetch('/assets',options);
         if (response.ok) {
             asset = await response.json();
+            getBorrow();
             showTable();
         }
         else {
@@ -18,13 +20,36 @@ async function getdata() {
         console.error(error.message);
         alert(error.message);
     }
+
+}
+
+async function getBorrow() {
+    const options = {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+    }
+    try {
+        const response = await fetch('/borrows',options);
+        if (response.ok) {
+            borrow = await response.json();            
+        }
+        else {
+            throw Error('Connection error');
+        }
+    } catch (error) {
+        console.error(error.message);
+        alert(error.message);
+    }
+
 }
 
 function showTable() {
-    console.log(asset); 
+    // console.log(asset); 
     var table = document.querySelector('tbody');
     var dataTable = '';
+    
     for (const iterator of asset) {
+        const borrowstatus = borrow.find('status')
         dataTable += `<tr onclick = sendData(${iterator.asset_id}) >`;
         dataTable += `<td>${iterator.asset_id}</td>`;
         dataTable += `
@@ -35,7 +60,7 @@ function showTable() {
             </div>
         </td>`;
         dataTable += `<td>${iterator.asset_name}</td>`;
-        if (iterator.status == 6 || iterator.status == 7) {
+        if (iterator.asset_status == 0) {
             dataTable += `<td><div class="circle-container"><div class="bg-dark circle">
             </div></div></td>`;
         } else if (iterator.status == 1 ) {
@@ -48,8 +73,8 @@ function showTable() {
             dataTable += `<td><div class="circle-container"><div class="bg-success circle">
             </div></div></td>`;
         }
-        // ! 6 == disable
-        if(iterator.status == 6){
+        // ! 0 == disable
+        if(iterator.asset_status == 0){
             dataTable += `
             <td>
                 <div class="toggle-switch-container">
@@ -70,6 +95,7 @@ function showTable() {
             </td></tr>`
             ;
         }
+        i++;
     }
     table.innerHTML = dataTable;
 }
