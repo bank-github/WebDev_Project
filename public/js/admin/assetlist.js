@@ -12,7 +12,7 @@ async function getdata() {
             showTable();
         }
         else {
-            throw Error('Connection error');``
+            throw Error('Connection error');
         }
     } catch (error) {
         console.error(error.message);
