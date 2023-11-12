@@ -12,13 +12,14 @@ async function getData() {
       const data = await result.json();
       let content = '';
       data.forEach(asset => {
+        const assetData = JSON.stringify({"id":asset.asset_id, "name":asset.asset_name});
         content += `<tr class="text-start">
           <td class="text-center"><img src="/public/img/${asset.image}" alt="asset image" height="40px"></td>
           <td id="name${asset.asset_id}"><a href="#" class="text-decoration-none text-dark">${asset.asset_name}</a></td>
           <td><p>
           ${asset.detail}
           </p></td>
-          <td class="text-center"><button id="${asset.asset_id}" class="btn btn bg-success text-white" onclick=getDetail(${JSON.stringify(asset)})>Borrow</button></td>
+          <td class="text-center"><button id="${asset.asset_id}" class="btn btn bg-success text-white" onclick=getDetail(${assetData})>Borrow</button></td>
       </tr>`
       //   data-bs-toggle="modal" data-bs-target="#modalId" ==> for modal
       });
@@ -76,9 +77,9 @@ function searchAsset(){
 function getDetail(asset){
   const myModal = new bootstrap.Modal(document.getElementById('modalId'));
   const title = document.querySelector('#modalTitleId');
-  title.innerText = `Borrow: ${asset.asset_name}`;
+  title.innerText = `Borrow: ${asset.name}`;
   myModal.show();
-  console.log(asset);
+  console.log(asset.id);
 }
 
 function logout() {

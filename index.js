@@ -6,6 +6,7 @@ const session = require('express-session');
                 // router \\
 const login = require('./Routes/login');
 const assets = require('./Routes/assets');
+const profile = require('./Routes/profile');
 //=== user===\\
 const forgotUser = require('./Routes/user/forgot');
 const repassUser = require('./Routes/user/repass');
@@ -49,6 +50,7 @@ app.use(session({
 // loginUser
 app.use(login) //user login
 app.use(assets) // get assets
+app.use(profile)
 
 //===========user============\\
 app.use('/user', forgotUser); //user forgot password
@@ -90,7 +92,7 @@ app.get('/logout',function(req,res){
             console.error(err);
             res.status(500).send('Cannot logout');
         }else{
-            res.redirect('/');
+            res.redirect('/login');
         }
     })
 })

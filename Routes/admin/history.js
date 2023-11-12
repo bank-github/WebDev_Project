@@ -4,8 +4,12 @@ const con = require('../../config/db');
 const bcrypt = require('bcrypt');
 const path = require('path');
 
-router.get('/history',function(req,res){
-    res.sendFile(path.join(__dirname,'../../views/admin/history.html'))
+router.get('/history', function (req, res) {
+    if (req.session.role == '2') {
+        res.sendFile(path.join(__dirname, '../../views/admin/history.html'));
+    } else {
+        res.redirect('/login');
+    }
 });
 
 

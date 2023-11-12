@@ -21,7 +21,6 @@ async function getList() {
       <div class="container">
           <div class="col-md-4 rounded-info ">
               <h3 class="user">Name :  <span id="Name">${data[0].name}</span></h3>
-              <h3 class="school">Major : <span id="School">${data[0].major}</span></h3>
               <h3 class="mail">E-mail :  <span id="userEmail">${data[0].email}</span></h3>
               <h3 class="tel"> Tel. : <span id="Tel">${data[0].tel}</span></h3>
               <button class="bx bx bx-edit icon icon" id="edit-info-btn" onclick="editProfileInformation()">Edit</button>

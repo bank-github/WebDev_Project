@@ -4,7 +4,11 @@ const path = require('path');
 const db = require('../../config/db');
  
 router.get('/borrow',function (req,res) {
-    res.sendFile(path.join(__dirname,'../../views/aj/borrow.html'));
+    if(req.session.role == '1'){
+      res.sendFile(path.join(__dirname,'../../views/aj/borrow.html'));
+    }else{
+      res.redirect('/login');
+    }
 })
 
 router.get('/borrow-getdata-approve/:borrow_id', function (req, res) {
