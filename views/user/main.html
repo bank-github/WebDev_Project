@@ -132,8 +132,8 @@
                     <h5 class="modal-title" id="modalTitleId">Borrow</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form>
+                <form id="borrow">
+                    <div class="modal-body">
                         <!-- borrow -->
                         <div class="mb-3">
                             <h3>Borrow Date</h3>
@@ -148,12 +148,12 @@
                                 onfocus="(this.type='date')" onblur="(this.type='text')" id="rtdate"
                                 placeholder="Return date">
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save</button>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
