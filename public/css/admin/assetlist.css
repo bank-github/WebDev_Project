@@ -129,7 +129,7 @@ tr:hover {
 }
 
 /* ! edit&add page */
-.switch-off-edit::before{
+/* .switch-off-edit::before{
     font-weight: 600;
     font-size: small;
     text-align: center; 
@@ -145,4 +145,4 @@ tr:hover {
     transform: translateY(-50%);
     background-color: #FFFFFF;
     transition: var(--tran-03);
-}
+} */

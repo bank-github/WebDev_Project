@@ -7,6 +7,7 @@ const session = require('express-session');
 const login = require('./Routes/login');
 const assets = require('./Routes/assets');
 const profile = require('./Routes/profile');
+const borrows = require('./Routes/borrows');
 //=== user===\\
 const forgotUser = require('./Routes/user/forgot');
 const repassUser = require('./Routes/user/repass');
@@ -20,7 +21,6 @@ const borrowUser = require('./Routes/user/borrow');
 
 //=== aj ===\\
 const mainAj = require('./Routes/aj/main');
-const borrowAj = require('./Routes/aj/borrow');
 const messageAj = require('./Routes/aj/message');
 const profileAj = require('./Routes/aj/profile');
 const historyAj = require('./Routes/aj/history');
@@ -51,6 +51,7 @@ app.use(session({
 app.use(login) //user login
 app.use(assets) // get assets
 app.use(profile)
+app.use(borrows) // get borrow
 
 //===========user============\\
 app.use('/user', forgotUser); //user forgot password
@@ -70,9 +71,7 @@ app.use('/aj',mainAj);
 app.use('/aj',historyAj);// 
 app.use('/aj',messageAj);
 app.use('/aj',profileAj);
-app.use('/aj',borrowAj);
 app.use('/aj',listAj);
-app.use('/aj',borrowAj) // borrow page
 app.use('/aj',messageAj)// message page
 app.use('/aj',profileAj) // profile page
 app.use('/aj',historyAj) // history page

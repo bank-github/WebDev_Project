@@ -11,23 +11,7 @@ router.get('/list', function (req, res) {
     res.redirect('/login');
   }
 });
-// get data
-router.get('/list-getdata', function (req, res) {
-  const query = `
-    SELECT borrow.*, assets.*
-    FROM borrow
-    JOIN assets ON borrow.asset_id = assets.asset_id;
-  `;
-  db.query(query, (err, results) => {
-    if (err) {
-      console.error('Error querying MySQL:', err);
-      res.status(500).json({ error: 'Internal server error' });
-    } else {
-      res.json(results);
-      // console.log(results);
-    }
-  });
-})
+
 
 
 
