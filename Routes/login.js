@@ -3,7 +3,13 @@ const router = express.Router();
 const con = require('../config/db');
 const bcrypt = require('bcrypt');
 const path = require('path');
+const session = require('express-session');
 
+  router.use(session({
+    secret: 'keyUSerID',
+    resave: false,
+    saveUninitialized: true,
+  }));
 router.get('/login',function(req,res){
     if(req.session.role == '0'){
         res.redirect('/user/main');
@@ -35,6 +41,7 @@ router.post('/login',function (req,res) {
                     res.status(500).send('Password compare error');
                 }else{
                     if (same) {
+                        req.session.email = results[0].email;
                         req.session.userID = results[0].user_id;
                         req.session.role = results[0].role;
                         res.status(200).send(`/user/main`);

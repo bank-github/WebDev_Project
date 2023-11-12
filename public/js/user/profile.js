@@ -1,11 +1,5 @@
-
-getList();
-
-// all asset
 async function getList() {
-  // use when error or success
   const info = document.querySelector('#info');
-
 
   try {
     const result = await fetch('/profile');
@@ -31,10 +25,59 @@ async function getList() {
 
       info.innerHTML = content;
     } else {
-      const data = await result.text();
-      info.innerHTML = data;
+      const errorText = await result.text();
+      info.innerHTML = errorText;
     }
   } catch (err) {
     console.error(err);
   }
 }
+
+const editUserProfile = async () => {
+  // You can use the fetched data from getList() to pre-fill the form
+  const data = await fetch('/user/profile-info').then(response => response.json());
+
+  const { value: formValues } = await Swal.fire({
+    title: 'Edit Profile Information',
+    html: `
+      <input id="Name" class="swal2-input" placeholder="Name" value="${data.name}">
+      <input id="School" class="swal2-input" placeholder="Major" value="${data.major}">
+      <input id="Email" class="swal2-input" placeholder="Email" value="${data.email}">
+      <input id="Tel" class="swal2-input" placeholder="Tel" value="${data.tel}">
+    `,
+    showCancelButton: true,
+    confirmButtonText: 'Save',
+    focusConfirm: false,
+    preConfirm: () => {
+      return {
+        name: document.getElementById('Name').value,
+        major: document.getElementById('School').value,
+        email: document.getElementById('Email').value,
+        tel: document.getElementById('Tel').value,
+      };
+    },
+  });
+
+  if (formValues) {
+    
+    data.name = formValues.name;
+    data.major = formValues.major;
+    data.email = formValues.email;
+    data.tel = formValues.tel;
+
+    Swal.fire({
+      title: 'Updated Profile Information',
+      html: `
+        <h3>Name: ${data.name}</h3>
+        <h3>Major: ${data.major}</h3>
+        <h3>Email: ${data.email}</h3>
+        <h3>Telephone: ${data.tel}</h3>
+      `,
+      icon: 'success',
+      confirmButtonText: 'OK',
+    });
+  }
+}
+
+
+getList();
