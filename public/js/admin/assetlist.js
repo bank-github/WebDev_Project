@@ -49,7 +49,7 @@ function showTable() {
     var dataTable = '';
     
     for (const iterator of asset) {
-        const borrowstatus = borrow.find('status')
+        // const borrowstatus = borrow.find('status');
         dataTable += `<tr onclick = sendData(${iterator.asset_id}) >`;
         dataTable += `<td>${iterator.asset_id}</td>`;
         dataTable += `
