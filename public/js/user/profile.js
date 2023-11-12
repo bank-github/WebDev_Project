@@ -67,16 +67,12 @@ const editUserProfile = async () => {
   });
 
   if (formValues) {
-    // Send the updated data to the server (you'll need to implement this)
-    // You can make a fetch request to update the user data in your database here
-
-    // Update the user data locally (for demonstration purposes)
+    
     data.name = formValues.name;
     data.major = formValues.major;
     data.email = formValues.email;
     data.tel = formValues.tel;
 
-    // Display updated information to the user
     Swal.fire({
       title: 'Updated Profile Information',
       html: `
@@ -91,5 +87,5 @@ const editUserProfile = async () => {
   }
 }
 
-// Call the function when you want to display the user profile
+
 getList();
