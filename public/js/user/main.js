@@ -120,7 +120,7 @@ formBorrow.onsubmit = async function (e) {
     // console.log(data);
      // add data
      try {
-      const response = await fetch('/user/borrow', options);
+      const response = await fetch('/borrow', options);
       if (response.ok) {
           const data = await response.text();
           formBorrow.reset();
