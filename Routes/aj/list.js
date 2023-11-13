@@ -5,7 +5,11 @@ const db = require('../../config/db');
 
 // go to main page
 router.get('/list', function (req, res) {
-  res.sendFile(path.join(__dirname, "../../views/aj/list.html"));
+  if (req.session.role == '1') {
+    res.sendFile(path.join(__dirname, "../../views/aj/list.html"));
+  } else {
+    res.redirect('/login');
+  }
 });
 
 

@@ -5,7 +5,11 @@ const con = require('../../config/db');
 
 // go to main page
 router.get('/message', function (req, res) {
-    res.sendFile(path.join(__dirname, "../../views/aj/message.html"));
+    if (req.session.role == '1') {
+        res.sendFile(path.join(__dirname, "../../views/aj/message.html"));
+    } else {
+        res.redirect('/login');
+    }
 });
 
 module.exports = router;

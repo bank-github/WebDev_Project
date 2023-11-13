@@ -6,6 +6,7 @@ const session = require('express-session');
                 // router \\
 const login = require('./Routes/login');
 const assets = require('./Routes/assets');
+const profile = require('./Routes/profile');
 const borrows = require('./Routes/borrows');
 //=== user===\\
 const forgotUser = require('./Routes/user/forgot');
@@ -49,6 +50,7 @@ app.use(session({
 // loginUser
 app.use(login) //user login
 app.use(assets) // get assets
+app.use(profile)
 app.use(borrows) // get borrow
 
 //===========user============\\
@@ -89,7 +91,7 @@ app.get('/logout',function(req,res){
             console.error(err);
             res.status(500).send('Cannot logout');
         }else{
-            res.redirect('/');
+            res.redirect('/login');
         }
     })
 })
