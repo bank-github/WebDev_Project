@@ -29,6 +29,43 @@ router.put('/edit-assets/:asset_id',function (req,res) {
         }
     });
 
-})
+});
+router.delete('/assets/:id', function (req, res) {
+    const id = req.params.id;
+    const sqlbr = `DELETE FROM borrow WHERE asset_id = ?`;
+    con.query(sqlbr, [id], function (err, result) {
+        if (err) {
+            console.error(err);
+            return res.status(500).send('Database Error!');
+        }
+        const sql = `DELETE FROM assets WHERE asset_id = ?`;
+        con.query(sql, [id], function (err, result) {
+            if (err) {
+                console.error(err);
+                return res.status(500).send('Database Error!');
+            }
+            res.send('Deleted!');
+        })
+    })
+});
+router.post('/add-assets',function (req,res){
+    const asset_id = req.params.asset_id;
+    const update = req.body;
+    const query = `INSERT INTO assets SET asset_name = ?,detail=?,asset_status = 1,image = ? `; 
+    con.query(query, [update.asset_name,update.detail,update.image] , function (err,result) {
+        if (err) {
+            console.error(err);
+            return res.status(500).send('Database server error');
+        }else if(result.affectedRows != 1){
+            console.error('Row update is not 1');
+            return res.status(500).send('Update failed');
+
+        }else{
+            res.send('Update succesfully');
+        }
+        
+    })
+});
+
 
 module.exports = router;

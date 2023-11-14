@@ -62,7 +62,6 @@ router.post('/borrows/:borrow_id' ,function (req,res) {
         }else if(result.affectedRows != 1){
             console.error('Row update is not 1');
             return res.status(500).send('Update failed');
-
         }else{
             res.send('Update succesfully');
         }

@@ -5,6 +5,7 @@ var asset = [];
 var mode = '';
 
 
+
 modeswitch.addEventListener('click',()=>{
     span.classList.toggle("switch-off");
     if(span.className == 'switch-on switch-off'){
@@ -18,13 +19,6 @@ modeswitch.addEventListener('click',()=>{
 });
 
 
-async function editdata() {
-  // const name = document.querySelector('#edit-name');
-  // const photo = document.querySelector('#edit-photo');
-  // const detail = document.querySelector('#edit-detail');
-
-}
-
 async function getdata() {
   const options = {
       method: "GET",
@@ -35,6 +29,7 @@ async function getdata() {
       if (response.ok) {
           asset = await response.json();
           if (asset) {
+            
             showData();
           } else {
               location.replace('/admin/list')            
@@ -50,14 +45,16 @@ async function getdata() {
     }
     
     function showData() {
-    console.log(asset);;
+      console.log(asset);;
+    const reader = new FileReader();
     var name = document.querySelector('#edit-name');
     var photo = document.querySelector('#edit-photo');
     var detail = document.querySelector('#edit-detail');
-  
+    let sendData = {'asset_name':asset[0].asset_name,'detail':asset[0].detail,'asset_status':asset[0].asset_status,'image':asset[0].image};
     name.innerHTML = asset[0].asset_name;
     name.onclick = async function () {
       const { value: name } = await Swal.fire({
+        color:"#FFE6C7",
         input: "text",
         background:"#454545",
         inputLabel: `${asset[0].asset_name}`,
@@ -82,13 +79,15 @@ async function getdata() {
         showCancelButton: true
       });
       if (name) {
-        Swal.fire(name);
+        // Swal.fire(name);
+        sendData.asset_name = name;
+        console.log(sendData.asset_name);
       }
     }
-
+    let { value: file } = Object;
     photo.src = `/public/img/${asset[0].image}`; 
     photo.onclick = async function () {
-      const { value: file } = await Swal.fire({
+    file = await Swal.fire({
         title: "Select image",
         input: "file",
         background:"#454545",
@@ -116,18 +115,8 @@ async function getdata() {
           `
         },
       });
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = (e) => {
-          Swal.fire({
-            title: "Your uploaded picture",
-            imageUrl: e.target.result,
-            imageAlt: "The uploaded picture"
-          });
-        };
-        reader.readAsDataURL(file);
-      }
-    }
+      console.log(file.value.name);
+    };
 
     detail.innerHTML = asset[0].detail;
     detail.onclick = async function () {
@@ -205,6 +194,16 @@ document.querySelector('#confirm').onclick = function () {
       ,cancelButtonText: 'No'
     }).then((result) => {
       if (result.isConfirmed) {
+        if (file) {
+          reader.onload = (e) => {
+            Swal.fire({
+              title: "Your uploaded picture",
+              imageUrl: e.target.result,
+              imageAlt: "The uploaded picture"
+            });
+          };
+          reader.readAsDataURL(file);
+        }
         window.location.replace('/admin/list');
       }
     });
