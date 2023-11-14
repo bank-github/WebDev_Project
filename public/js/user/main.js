@@ -150,8 +150,11 @@ formBorrow.onsubmit = async function (e) {
           title: "Error",
           text: err.message
       }
-      );
-      window.location.replace('/logout');
+      ).then((result) =>{
+        if(result.isConfirmed){
+         window.location.replace('/logout');
+        }})
+      
   }
   }
 
