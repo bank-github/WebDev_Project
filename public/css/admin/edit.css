@@ -22,6 +22,7 @@ label {
     border-radius: 0.4rem;
     max-height: 30rem;
     max-width: 30rem;
+    padding: 4rem;
     /* height: 15rem; */
     /* width: 20rem; */
     color: var(--primary-color);

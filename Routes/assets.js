@@ -30,5 +30,23 @@ router.delete('/assets/:id', function (req, res) {
         })
     })
 })
+router.put('/edit-assets/:asset_id', function (req, res) {
+    const asset_id = req.params.asset_id;
+    // res.send(asset_id)
+    const { asset_name, detail, asset_status, image } = req.body;
+    const sql = "UPDATE assets SET asset_name = ?, detail = ?, asset_status = ?, image = ? WHERE assets.asset_id = ? ;"
+    con.query(sql, [asset_name, detail, asset_status, image, asset_id], function (err, result) {
+        if (err) {
+            console.error(err);
+            return res.status(500).send('Database server error');
+        } else if (result.affectedRows != 1) {
+            console.error('Row update is not 1');
+            return res.status(500).send('Update failed');
+        } else {
+            res.send('Update succesfully');
+        }
+    });
+
+})
 
 module.exports = router;
