@@ -12,8 +12,8 @@ router.get('/assets', function (req, res) {
     })
 });
 
-router.put('/edit-assets/:asset_id',function (req,res) {
-    const asset_id = req.params.asset_id;
+router.put('/assets/:id',function (req,res) {
+    const asset_id = req.params.id;
     // res.send(asset_id)
     const { asset_name , detail , asset_status ,image} = req.body;
     const sql = "UPDATE assets SET asset_name = ?, detail = ?, asset_status = ?, image = ? WHERE assets.asset_id = ? ;"
@@ -48,8 +48,7 @@ router.delete('/assets/:id', function (req, res) {
         })
     })
 });
-router.post('/add-assets',function (req,res){
-    const asset_id = req.params.asset_id;
+router.post('/assets',function (req,res){
     const update = req.body;
     const query = `INSERT INTO assets SET asset_name = ?,detail=?,asset_status = 1,image = ? `; 
     con.query(query, [update.asset_name,update.detail,update.image] , function (err,result) {
