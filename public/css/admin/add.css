@@ -11,11 +11,14 @@
     width: 13rem;
 }
 #edit-photo{
-    background-color:var(--sidebar-color);
+    background-color:var(--primary-color);
     border: none;
     border-radius: 0.4rem;
-    height: 15rem;
-    width: 20rem;
+    max-height: 30rem;
+    max-width: 30rem;
+    padding: 4rem;
+    /* height: 15rem; */
+    /* width: 20rem; */
     color: var(--primary-color);
 }
 #edit-detail{
@@ -43,4 +46,70 @@
     border-radius: 0.4rem;
     height: 2.5rem;
     width: 8rem;
+}
+
+.toggle-switch-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.toggle-switch{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 2rem;
+    cursor: pointer;
+    width:  5.5rem;
+}
+.toggle-switch .switch-on{
+    position: relative;
+    height: 2rem;
+    width: 5.5rem;
+    border-radius: 0.7rem;
+    background-color: var(--sidebar-color);
+    
+}
+.switch-on::before{
+    font-weight: 600;
+    font-size: small;
+    text-align: center; 
+    line-height: 2rem;
+    color: var(--sidebar-color);
+    height: 2rem;
+    width: 3.5rem;
+    content: 'ON';
+    position: absolute;
+    border-radius: 0.7rem;
+    top: 50%;
+    right: 50%;
+    transform: translateY(-50%);
+    background-color: #FFFFFF;
+    transition: var(--tran-03);
+}
+
+.switch-off{
+    position: relative;
+    height: 2rem;
+    width: 5.5rem;
+    border-radius: 0.7rem;
+    background-color: var(--sidebar-color);   
+}
+
+.switch-off::before{
+    font-weight: 600;
+    font-size: small;
+    text-align: center; 
+    line-height: 2rem;
+    color: var(--sidebar-color);
+    height: 2rem;
+    width: 3.5rem;
+    content: 'OFF';
+    position: absolute;
+    border-radius: 0.7rem;
+    top: 50%;
+    right: -10% ;
+    transform: translateY(-50%);
+    background-color: #FFFFFF;
+    transition: var(--tran-03);
 }

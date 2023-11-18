@@ -47,7 +47,6 @@ function showTable() {
     var table = document.querySelector('tbody');
     var dataTable = '';
     for (const iterator of asset) {
-
         const borrowstatus = borrow.find((element)=> element.asset_id == iterator.asset_id);
         dataTable += `<tr onclick = sendData(${iterator.asset_id}) >`;
         dataTable += `<td>${iterator.asset_id}</td>`;
@@ -109,15 +108,56 @@ function showTable() {
     table.innerHTML = dataTable;
 }
 
+function search() {
+    const search = document.querySelector('.searchinput');
+    
+    const filter = search.value.toLowerCase();
+    console.log(filter);
+    const table = document.querySelector('table');
+    var rows = table.querySelectorAll('tbody tr'); // Select rows only from tbody
+    var textValue;
+
+    rows.forEach(function(row) {
+        var cells = row.getElementsByTagName('td');
+        console.log(cells);
+        var matchFound = false;
+
+        for (var j = 0; j < cells.length; j++) {
+            textValue = cells[j].textContent || cells[j].innerText;
+            if (textValue.toLowerCase().indexOf(filter) > -1) {
+                matchFound = true;
+                break; // Break out of the loop if a match is found in any cell
+            }
+        }
+
+        if (matchFound) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
+
+
 function sendData(id) {
     // alert('click');
     sessionStorage.setItem('edit-id',id);
     location.href = '/admin/edit' ;
 }
 
+
+
+
 getdata();
 
+
+
+
+
 var mode = document.querySelector('.toggle-switch');
+
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const tableRows = document.querySelectorAll("tbody tr[data-href]");
