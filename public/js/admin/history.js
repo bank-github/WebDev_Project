@@ -1,60 +1,69 @@
-const data = [
-    { 'id': '62134xxx', 'photo': '', 'name': 'XXXX', 'status': 'avalible', 'enable': true ,'date':'20/10/2023' },
-]
+var data = [];
 
-function showTable() {
+async function getBorrow() {
+    const options = {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+    }
+    try {
+        const response = await fetch('/borrows',options);
+        if (response.ok) {
+            data = await response.json();                           
+            console.log(data);
+            showTable();
+        }
+        else {
+            throw Error('Connection error');
+        }
+    } catch (error) {
+        console.error(error.message);
+        alert(error.message);
+    }
+  
+  }
+
+  function showTable() {
     var table = document.querySelector('tbody');
     var dataTable = '';
     for (const iterator of data) {
-        dataTable += `<tr data-href='/views/admin/edit.html'>`;
-        dataTable += `<td>${iterator.id}</td>`;
+        dataTable += `<tr>`;
+        dataTable += `<td>${iterator.asset_id}</td>`;
         dataTable += `
         <td>
-            <div class="imagetable-container">
-                <div class="imagetable d-flex align-items-center justify-content-center">
-                    image
-                    ${iterator.photo}
-                </div>
-            </div>
+        <div class="imagetable-container">
+        <image class=imagetable d-flex align-items-center justify-content-center src='/public/img/${iterator.image}'>
+        </image>
+        </div>
         </td>`;
-        dataTable += `<td>${iterator.name}</td>`;
-        if (iterator.status == 'avalible') {
-            dataTable += `<td><div class="circle-container"><div class="bg-success circle">
-            </div></div></td>`;
-        } else if (iterator.status == 'inprogress') {
-            dataTable += `<td><div class="circle-container"><div class="bg-warning circle">
-            </div></div></td>`;
-        } else if (iterator.status == 'borrowed') {
-            dataTable += `<td><div class="circle-container"><div class="bg-danger circle">
-            </div></div></td>`;
-        } else {
-            dataTable += `<td><div class="circle-container"><div class="bg-dark circle">
-            </div></div></td>`;
+        dataTable += `<td>${iterator.asset_name}</td>`;
+        if(iterator.asset_status == 1){
+            if (iterator.status == 0) {
+                dataTable += `<td><div class="circle-container"><div class="bg-success circle">
+                </div></div></td>`;
+            } else if (iterator.status == 1 ) {
+                console.log(iterator.asset_name +'status = 1');
+                dataTable += `<td><div class="circle-container"><div class="bg-warning circle">
+                </div></div></td>`;
+            } else {
+                console.log(iterator.asset_name +'status = 0');
+                dataTable += `<td><div class="circle-container"><div class="bg-danger circle">
+                </div></div></td>`;
+            }
+        }else {
+                if(iterator.asset_status == 0){
+                    console.log(iterator.asset_name+'status = 0');
+                    dataTable += `<td><div class="circle-container"><div class="bg-dark circle">
+                    </div></div></td>`;
+                }
+                else {
+                dataTable += `<td><div class="circle-container"><div class="bg-success circle">
+                </div></div></td>`;            
+                }
         }
-        if(iterator.enable){
-            dataTable += `
-            <td>
-                <div class="toggle-switch-container">
-                    <div class="toggle-switch">
-                        <span class="switch-on"></span>
-                    </div>        
-                </div>
-            </td>`
-            ;
-        }else{
-            dataTable += `
-            <td>
-                <div class="toggle-switch-container">
-                    <div class="toggle-switch">
-                        <span class="switch-off"></span>
-                    </div>        
-                </div>
-            </td>`
-            ;
-        }
-        dataTable += `<td>${iterator.date}</td></tr>`
+        const date = new Date(iterator.borrow_date);
+        dataTable += `<td>${date.getDay()}/${date.getMonth()}/${date.getFullYear()}</td>`;
     }
-    console.log(dataTable);
     table.innerHTML = dataTable;
 }
-showTable();
+
+getBorrow()

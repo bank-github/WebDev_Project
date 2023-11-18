@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const con = require('../config/db');
 
-router.get('/profile', function (req, res) {
+router.get('/data-profile', function (req, res) {
     if (req.session.userID) {
         const id = req.session.userID;
         const sql = `SELECT * FROM user WHERE user_id = ?`;
