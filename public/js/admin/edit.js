@@ -242,8 +242,9 @@ function showData() {
     }).then((result) => {
       if (result.isConfirmed) {
         // console.log(sendData.image.name);
+        // console.log(sendData.image.name);
         deleteasset(sendData.image.name)
-        window.location.replace('/admin/list');
+        // window.location.replace('/admin/list');
       }
     });
     // console.log('Test');
@@ -337,6 +338,7 @@ async function updateAsset(sendData) {
 }
 
 async function deleteasset(photoname) {
+  console.log(photoname);
   const options = {
     method: 'DELETE',
     body: JSON.stringify({

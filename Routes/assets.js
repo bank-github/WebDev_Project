@@ -34,7 +34,7 @@ router.put('/assets/:id',function (req,res) {
 });
 router.delete('/assets/:id', function (req, res) {
     const id = req.params.id;
-    const { photoname } = req.body;
+    const  photoname  = req.body;
     console.log(photoname);
     const sqlbr = `DELETE FROM borrow WHERE asset_id = ?`;
     con.query(sqlbr, [id], function (err, result) {
@@ -51,9 +51,9 @@ router.delete('/assets/:id', function (req, res) {
             res.send('Deleted!');
 
             // Specify the path to your files
-            const filePath = `./public/img/${photoname}`;
+            const filePath = `./public/img/${photoname.photoname}`;
             // Delete the file
-            // console.log(filePath);
+            console.log(filePath);
             await fs.unlink(filePath);
 
         })

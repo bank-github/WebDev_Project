@@ -20,7 +20,7 @@ router.post('/uploading',function (req,res) {
         console.log(err);
         res.status(500).send('Upload failed');
       }else{
-        console.log(req);
+        // console.log(req);
         res.send('Upload is succesful!');
       }
     })
