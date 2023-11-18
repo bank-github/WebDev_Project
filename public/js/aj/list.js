@@ -10,38 +10,45 @@ async function getdata() {
             const data = await response.json();
             let content = '';
             // console.log(data);
-            for (const list of data) {
-                const formatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-                const returnDate = new Date(list.return_date).toLocaleString(undefined, formatOptions);
-                const color = colorStatus(list.status);
-                const late = checkLate(list.return_date);
-                const id = list.borrow_id;
-                if (late == "Late" && list.status == 2) {
-                    updateStatusandMessage(5, id, 2);
-                    getdata();
-                }
-                const status = textStatus(list.status);
-                const returnAsset = {
-                    "id": id,
-                    "status": status
-                }
-                // if(status != )
-                if (list.status == 1 || list.status == 2 || list.update_status == null) {
-                    content += `
-                    <div class="d-flex justify-content-between align-items-center mt-5">
-                        <div class="circle-listasset col-6">
-                            <h4>Assets: ${list.asset_name}</h4>
-                        </div>
-                        <div class="time col-4">
-                            <h5 class="text-danger">Return date: <span>${returnDate}</span></h5>
-                        </div>`
-                    if (list.status == 1) {
-                        content += `<button type="button" class="btn col-2" onclick="openModal(${id})" ${color}>${status}</button>`
-                    } else {
-                        content += `<button type="button" class="btn col-2" onclick=returnAsset(${JSON.stringify(returnAsset)}) ${color}>${status}</button>`
+            if(data.length > 0){
+                for (const list of data) {
+                    const formatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+                    const returnDate = new Date(list.return_date).toLocaleString(undefined, formatOptions);
+                    const color = colorStatus(list.status);
+                    const late = checkLate(list.return_date);
+                    const id = list.borrow_id;
+                    if (late == "Late" && list.status == 2) {
+                        updateStatusandMessage(5, id, 2);
+                        getdata();
                     }
-                    content += `</div>`;
+                    const status = textStatus(list.status);
+                    const returnAsset = {
+                        "id": id,
+                        "status": status
+                    }
+                    // if(status != )
+                    if (list.status == 1 || list.status == 2 || list.update_status == null) {
+                        content += `
+                        <div class="d-flex justify-content-between align-items-center mt-5">
+                            <div class="circle-listasset col-6">
+                                <h4>Assets: ${list.asset_name}</h4>
+                            </div>
+                            <div class="time col-4">
+                                <h5 class="text-danger">Return date: <span>${returnDate}</span></h5>
+                            </div>`
+                        if (list.status == 1) {
+                            content += `<button type="button" class="btn col-2" onclick="openModal(${id})" ${color}>${status}</button>`
+                        } else {
+                            content += `<button type="button" class="btn col-2" onclick=returnAsset(${JSON.stringify(returnAsset)}) ${color}>${status}</button>`
+                        }
+                        content += `</div>`;
+                    }
                 }
+            }else{
+                content = `<hr><h1 class="text-center">Has no borrow assets</h1>`;
+            }
+            if(content == ''){
+                content = `<hr><h1 class="text-center">Has no pending assets</h1>`;
             }
             listborrow.innerHTML = content;
         }
