@@ -261,7 +261,7 @@ async function addAsset(sendData) {
         },
       })
         .then(function (value) {
-          location.replace('/admin/list');
+          // location.replace('/admin/list');
         }
         );
       // alert(data);
