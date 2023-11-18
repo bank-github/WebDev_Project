@@ -30,11 +30,11 @@ async function getHisInfo() {
                                     <h2 class="d-flex justify-content-between"><span>Asset: ${history.asset_name}</span><span ${color}>${status}</span></h2>`
                         // if reject
                         if (history.status == 3) {
-                            content += `<h4 class="d-flex justify-content-between" ${color}><span>Return date: ${returnDate}</span><span>Reject when: ${lastReturnDate} By: Aj.${history.admin_name}</h4>`;
+                            content += `<h4 class="d-flex justify-content-between" ${color}><span>Return date: ${returnDate}</span><span>Reject when: ${lastReturnDate} By: aj</h4>`;
                         }
                         // if not reject
                         else {
-                            content += `<h4 class="d-flex justify-content-between"${color}><span>Return date: ${returnDate}</span><span>You return when: ${lastReturnDate}</h4>`;
+                            content += `<h4 class="d-flex justify-content-between"${color}><span>Return date: ${returnDate}</span><span>${history.name} return when: ${lastReturnDate}</h4>`;
                         }
                         // have message or not
                         if (history.message != null) {

@@ -10,7 +10,7 @@ async function getData() {
     const result = await fetch('/assets');
     if (result.ok) {
       const data = await result.json();
-      console.log(data);
+      // console.log(data);
       let content = '';
       data.forEach(asset => {
         if(asset.asset_status == 1){

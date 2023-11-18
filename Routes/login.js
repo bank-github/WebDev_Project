@@ -44,7 +44,8 @@ router.post('/login',function (req,res) {
                         req.session.email = results[0].email;
                         req.session.userID = results[0].user_id;
                         req.session.role = results[0].role;
-                        console.log(results[0].user_id)
+                        req.session.name = results[0].name;
+                        // console.log(results[0].user_id)
                         res.status(200).send(`/user/main`);
                         // console.log(results[0].role);
                         // res.status(200).send('Login success');
