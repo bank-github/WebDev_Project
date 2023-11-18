@@ -3,12 +3,13 @@ const router = express.Router();
 // const path = require('path');
 const con = require('../config/db');
 
-// ! get all data in borrow and get data from FK 
+// ! get all data in borrow and get data from FK
 router.get('/borrows', function (req, res) {
     const query = `
-    SELECT borrow.*, assets.*,user.name FROM borrow 
+    SELECT borrow.*, assets.*,user.name userName, admin.name adminName FROM borrow 
     JOIN assets ON borrow.asset_id = assets.asset_id
-    JOIN user ON borrow.user_id = user.user_id;
+    JOIN user ON borrow.user_id = user.user_id
+    JOIN user admin ON borrow.admin_id = admin.user_id;
     `;
     con.query(query, (err, results) => {
       if (err) {
@@ -20,6 +21,7 @@ router.get('/borrows', function (req, res) {
       }
     });
   })
+
 
   // borrow asset
   router.post('/borrow', function (req, res) {
@@ -56,8 +58,8 @@ router.get('/borrows', function (req, res) {
 router.post('/borrows/:borrow_id' ,function (req,res) {
     const borrow_id = req.params.borrow_id;
     const update = req.body;
-    const query = `UPDATE borrow,assets SET borrow.status = ?, borrow.message = ?, borrow.update_status = ?, assets.asset_status = ?, borrow.admin_name = ? WHERE assets.asset_id = borrow.asset_id AND borrow.borrow_id = ? `; 
-    con.query(query, [update.status,update.message,update.update_status,update.asset,req.session.name,borrow_id] , function (err,result) {
+    const query = `UPDATE borrow,assets SET borrow.status = ?, borrow.message = ?, borrow.update_status = ?, assets.asset_status = ?, borrow.admin_id = ? WHERE assets.asset_id = borrow.asset_id AND borrow.borrow_id = ? `; 
+    con.query(query, [update.status,update.message,update.update_status,update.asset,req.session.userID,borrow_id] , function (err,result) {
         if (err) {
             console.error(err);
             return res.status(500).send('Database server error');

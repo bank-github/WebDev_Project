@@ -22,7 +22,7 @@ async function getList() {
           <div class="col-md-4 rounded-info ">
               <h3 class="user">Name :  <span id="Name">${data[0].name}</span></h3>
               <h3 class="mail">E-mail :  <span id="userEmail">${data[0].email}</span></h3>
-              <h3 class="tel"> Tel. : <span id="Tel">${data[0].tel}</span></h3>
+              <h3 class="tel"> Tel. : <span id="Tel">${data[0].tel_phone}</span></h3>
               <button class="bx bx bx-edit icon icon" id="edit-info-btn" onclick="editUserProfile()">Edit</button>
           </div>
       </div>
@@ -55,7 +55,7 @@ const editUserProfile = async () => {
         </div>
         <div class="form-floating">
           <input class="form-control mb-3 border-2 border-black rounded-pill shadow" type="text" id="Tel" name="txtphone"
-            placeholder="${data[0].tel}" maxlength="10" minlength="10" pattern="[0-9]{10}" title="Format (0xxxxxxxxx)" value="${data[0].tel}" required>
+            placeholder="${data[0].tel_phone}" maxlength="10" minlength="10" pattern="[0-9]{10}" title="Format (0xxxxxxxxx)" value="${data[0].tel}" required>
           <label class="ms-2 fw-bold" for="txtphone">Phone Number</label>
         </div>
         <div>

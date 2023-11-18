@@ -27,7 +27,7 @@ router.post('/register', function (req, res) {
                 if (err) {
                     return res.status(500).send("Hash error!");
                 }
-                const sql = `INSERT INTO user (name, email, password, major, year, tel, stu_id, role) VALUES (?,?,?,?,?,?,?,0)`;
+                const sql = `INSERT INTO user (name, email, password, major, year, tel_phone, stu_id, role) VALUES (?,?,?,?,?,?,?,0)`;
                 con.query(sql, [name, email, hash, major, year, phoneNum, stu_id], function (err, result) {
                     if (err) {
                         console.error(err);

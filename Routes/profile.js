@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const con = require('../config/db');
 
-router.get('/data-profile', function (req, res) {
+router.get('/profile', function (req, res) {
     if (req.session.userID) {
         const id = req.session.userID;
         const sql = `SELECT * FROM user WHERE user_id = ?`;
@@ -53,7 +53,7 @@ router.put('/profile/:id', function (req, res) {
       }
 
 
-      const sqlUpdate = 'UPDATE user SET name=?, major=?, tel=? WHERE user_id = ?';
+      const sqlUpdate = 'UPDATE user SET name=?, major=?, tel_phone=? WHERE user_id = ?';
       con.query(sqlUpdate, [name, major, tel, id], function (err, result) {
         if (err) {
           console.error(err);
