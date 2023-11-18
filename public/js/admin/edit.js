@@ -282,7 +282,7 @@ async function uploadimage(image) {
 }
 
 async function updateAsset(sendData) {
-  const url = `/edit-assets/${asset_id}`;
+  const url = `/assets/${asset_id}`;
   // let data = '';
   const options = {
     method: 'PUT',
