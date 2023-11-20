@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="/public/css/admin/dashboard.css" />
     <link rel="stylesheet" href="/public/css/admin/bar.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
   </head>
   <body>
     <!-- ! side bar -->
@@ -67,28 +69,28 @@
         <div class="container p-5">
             <div class="d-flex flex-md-row justify-content-center ">
                 <div class="contents_left ">
-                    <div class="amount d-flex align-items-center justify-content-center">
+                    <div class="amount d-flex align-items-center justify-content-center" id="amount-borrow">
                         <!-- <img src="" alt="Amount_of_borrowing" > -->
-                        <h4 class="content_text">Amount of borrowing</h4>
+                        <h4 class="content_text" >Amount of borrowing</h4>
                     </div>
-                    <div class="graph d-flex align-items-center justify-content-center">
+                    <canvas class="graph d-flex align-items-center justify-content-center" id="rate-of-returned">
                         <!-- <img src="" alt="Rate_of_returned_asset_not_on_time">     -->
-                        <h4 class="content_text">Rate of returned asset not on time</h4>
-                    </div>
+                        
+                    </canvas>
                 </div>
                 <div class="contents_right">
-                    <div class="graph d-flex align-items-center justify-content-center">
+                    <canvas class="graph d-flex align-items-center justify-content-center" id="rate-of-approve">
                             <!-- <img src="" alt="Rate_of_approve">     -->
-                            <h4 class="content_text">Rate of approve</h4>
-                    </div>                    
-                    <div class="amount d-flex align-items-center justify-content-center">
+                    </canvas>                    
+                    <div class="amount d-flex align-items-center justify-content-center"id="amount-assets">
                         <!-- <img src="" alt="Amount_of_assets" > -->
-                        <h4 class="content_text">Amount of assets</h4>
+                        <!-- <h4 class="content_text">Amount of assets</h4> -->
                     </div>
                 </div>
             </div>
         </div>
     </section>
         <script src="/public/js/admin/main.js"></script>
+        <script src="/public/js/admin/bar.js"></script>
   </body>
 </html>

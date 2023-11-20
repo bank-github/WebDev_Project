@@ -1,4 +1,5 @@
-var asset = []
+let asset = [];
+let borrow = [];
 
 async function getdata() {
     const options = {
@@ -9,6 +10,27 @@ async function getdata() {
         const response = await fetch('/assets',options);
         if (response.ok) {
             asset = await response.json();
+            getBorrow();
+        }
+        else {
+            throw Error('Connection error');
+        }
+    } catch (error) {
+        console.error(error.message);
+        alert(error.message);
+    }
+
+}
+
+async function getBorrow() {
+    const options = {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+    }
+    try {
+        const response = await fetch('/borrows',options);
+        if (response.ok) {
+            borrow = await response.json();                           
             showTable();
         }
         else {
@@ -18,38 +40,50 @@ async function getdata() {
         console.error(error.message);
         alert(error.message);
     }
+
 }
 
 function showTable() {
-    console.log(asset); 
     var table = document.querySelector('tbody');
     var dataTable = '';
     for (const iterator of asset) {
+        const borrowstatus = borrow.find((element)=> element.asset_id == iterator.asset_id);
         dataTable += `<tr onclick = sendData(${iterator.asset_id}) >`;
         dataTable += `<td>${iterator.asset_id}</td>`;
         dataTable += `
         <td>
-            <div class="imagetable-container">
-                <image class=imagetable d-flex align-items-center justify-content-center src='/public/img/${iterator.image}'>
-                    </image>
-            </div>
+        <div class="imagetable-container">
+        <image class=imagetable d-flex align-items-center justify-content-center src='/public/img/${iterator.image}'>
+        </image>
+        </div>
         </td>`;
         dataTable += `<td>${iterator.asset_name}</td>`;
-        if (iterator.status == 6 || iterator.status == 7) {
-            dataTable += `<td><div class="circle-container"><div class="bg-dark circle">
-            </div></div></td>`;
-        } else if (iterator.status == 1 ) {
-            dataTable += `<td><div class="circle-container"><div class="bg-warning circle">
-            </div></div></td>`;
-        } else if (iterator.status == 2) {
-            dataTable += `<td><div class="circle-container"><div class="bg-danger circle">
-            </div></div></td>`;
-        } else {
-            dataTable += `<td><div class="circle-container"><div class="bg-success circle">
-            </div></div></td>`;
+        if(borrowstatus  && iterator.asset_status == 1){
+            if (borrowstatus.status == 0) {
+                dataTable += `<td><div class="circle-container"><div class="bg-success circle">
+                </div></div></td>`;
+            } else if (borrowstatus.status == 1 ) {
+                console.log(iterator.asset_name +'status = 1');
+                dataTable += `<td><div class="circle-container"><div class="bg-warning circle">
+                </div></div></td>`;
+            } else {
+                console.log(iterator.asset_name +'status = 0');
+                dataTable += `<td><div class="circle-container"><div class="bg-danger circle">
+                </div></div></td>`;
+            }
+        }else {
+                if(iterator.asset_status == 0){
+                    console.log(iterator.asset_name+'status = 0');
+                    dataTable += `<td><div class="circle-container"><div class="bg-dark circle">
+                    </div></div></td>`;
+                }
+                else {
+                dataTable += `<td><div class="circle-container"><div class="bg-success circle">
+                </div></div></td>`;            
+                }
         }
-        // ! 6 == disable
-        if(iterator.status == 6){
+        // ! 0 == disable
+        if(iterator.asset_status == 0){
             dataTable += `
             <td>
                 <div class="toggle-switch-container">
@@ -74,15 +108,56 @@ function showTable() {
     table.innerHTML = dataTable;
 }
 
+function search() {
+    const search = document.querySelector('.searchinput');
+    
+    const filter = search.value.toLowerCase();
+    console.log(filter);
+    const table = document.querySelector('table');
+    var rows = table.querySelectorAll('tbody tr'); // Select rows only from tbody
+    var textValue;
+
+    rows.forEach(function(row) {
+        var cells = row.getElementsByTagName('td');
+        console.log(cells);
+        var matchFound = false;
+
+        for (var j = 0; j < cells.length; j++) {
+            textValue = cells[j].textContent || cells[j].innerText;
+            if (textValue.toLowerCase().indexOf(filter) > -1) {
+                matchFound = true;
+                break; // Break out of the loop if a match is found in any cell
+            }
+        }
+
+        if (matchFound) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
+
+
 function sendData(id) {
     // alert('click');
     sessionStorage.setItem('edit-id',id);
     location.href = '/admin/edit' ;
 }
 
+
+
+
 getdata();
 
+
+
+
+
 var mode = document.querySelector('.toggle-switch');
+
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const tableRows = document.querySelectorAll("tbody tr[data-href]");

@@ -10,9 +10,10 @@ async function getData() {
     const result = await fetch('/assets');
     if (result.ok) {
       const data = await result.json();
+      // console.log(data);
       let content = '';
       data.forEach(asset => {
-        if(asset.status == 1){
+        if(asset.asset_status == 1){
           const assetData = JSON.stringify({ "id": asset.asset_id, "name": asset.asset_name });
         content += `<tr class="text-start">
           <td class="text-center"><img src="/public/img/${asset.image}" alt="asset image" height="40px"></td>
@@ -149,8 +150,11 @@ formBorrow.onsubmit = async function (e) {
           title: "Error",
           text: err.message
       }
-      );
-      window.location.replace('/logout');
+      ).then((result) =>{
+        if(result.isConfirmed){
+         window.location.replace('/logout');
+        }})
+      
   }
   }
 
