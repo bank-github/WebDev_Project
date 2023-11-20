@@ -3,8 +3,25 @@ const router = express.Router();
 // const path = require('path');
 const con = require('../config/db');
 
-// ! get all data in borrow and get data from FK
+// ! get all data in borrow and get data from FK => for list
 router.get('/borrows', function (req, res) {
+    const query = `
+    SELECT borrow.*, assets.*,user.name userName FROM borrow 
+    JOIN assets ON borrow.asset_id = assets.asset_id
+    JOIN user ON borrow.user_id = user.user_id
+    `;
+    con.query(query, (err, results) => {
+      if (err) {
+        console.error('Error querying MySQL:', err);
+        res.status(500).json({ error: 'Internal server error' });
+      } else {
+        res.json(results);
+        console.log(results);
+      }
+    });
+  })
+// for history
+  router.get('/borrow', function (req, res) {
     const query = `
     SELECT borrow.*, assets.*,user.name userName, admin.name adminName FROM borrow 
     JOIN assets ON borrow.asset_id = assets.asset_id
@@ -17,12 +34,10 @@ router.get('/borrows', function (req, res) {
         res.status(500).json({ error: 'Internal server error' });
       } else {
         res.json(results);
-        // console.log(results);
+        console.log(results);
       }
     });
   })
-
-
   // borrow asset
   router.post('/borrow', function (req, res) {
     if (req.session.userID) {

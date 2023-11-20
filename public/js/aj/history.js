@@ -8,7 +8,7 @@ async function getHisInfo() {
     // console.log('allList Element:', His);
 
     try {
-        const result = await fetch('/borrows');
+        const result = await fetch('/borrow');
         // console.log('Server Response:', result);
 
         if (result.ok) {
