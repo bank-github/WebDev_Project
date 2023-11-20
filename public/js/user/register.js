@@ -27,7 +27,7 @@ formInput.onsubmit = async function (e) {
         if(password != conpassword){
             throw Error('Password not match!');
         }
-        const response = await fetch('/user/register', options);
+        const response = await fetch('/register', options);
         if (response.ok) {
             const data = await response.text();
             formInput.reset();

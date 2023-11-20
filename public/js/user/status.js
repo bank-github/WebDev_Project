@@ -1,27 +1,24 @@
-
-getList();
-
-// all asset
+// get all asset
 async function getList() {
   // use when error or success
   const allList = document.querySelector('#all-list');
+  const userID = window.localStorage.getItem('userID');
   // console.log('allList Element:', allList);
-
   try {
     const result = await fetch('/borrows');
     // console.log('Server Response:', result);
-
     if (result.ok) {
       const data = await result.json();
+      const borrowUser = data.filter((dt)=> dt.user_id == userID);
       let content = '';
-      if (data.length > 0) {
-        data.forEach(borrow => {
+      if (borrowUser.length > 0) {
+        borrowUser.forEach(borrow => {
           const formatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
           const borrowDate = new Date(borrow.borrow_date).toLocaleString(undefined, formatOptions);
           const returnDate = new Date(borrow.return_date).toLocaleString(undefined, formatOptions);
           const color = colorStatus(borrow.status);
           const status = textStatus(borrow.status);
-          if (borrow.status == 1 || borrow.status == 2 || borrow.update_status == null) {
+          if (borrow.status != 4 && borrow.status != 5) {
             content += `
           <div class="d-flex">
             <div class="col-9 border border-3 border-dark rounded-pill m-3 p-2 bg-white shadow">
@@ -50,7 +47,7 @@ async function getList() {
       }
       // if borrow has data but has no status 1
       if (content == '') {
-        content = `<hr><h1 class="text-center">Has no pending assets</h1>`;
+        content = `<hr><h1 class="text-center">Has no borrow assets</h1>`;
       }
       allList.innerHTML = content;
     } else {
@@ -70,7 +67,7 @@ function colorStatus(statusCode) {
     case 2:
         return 'style="color: green;"';
     case 3:
-        return 'style="display:none"';
+        return 'style="color: red;"';
     case 4:
         return 'style="display:none"';
     case 5:
@@ -96,3 +93,25 @@ function textStatus(statusCode) {
           return 'unknow';
   }
 }
+
+// logout function
+function logout() {
+  Swal.fire({
+    title: 'Do you want to sign out',
+    color: '#FFA559',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#FFA559',
+    cancelButtonColor: '#FFE6C7',
+    cancelButtonText: 'Cancel',
+    confirmButtonText: 'Sure'
+
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.localStorage.clear();
+      window.location.replace('/logout');
+    }
+  });
+}
+
+getList();

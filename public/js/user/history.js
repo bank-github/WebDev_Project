@@ -1,21 +1,18 @@
-
-getHisInfo();
-
 // all asset
 async function getHisInfo() {
     // use when error or success
     const His = document.querySelector('#his-info');
+    const userID = window.localStorage.getItem('userID');
     // console.log('allList Element:', His);
-
     try {
         const result = await fetch('/borrow');
         // console.log('Server Response:', result);
-
         if (result.ok) {
             const data = await result.json();
+            const hisUser = data.filter((dt)=> dt.user_id == userID);
             let content = '';
-            if (data.length > 0) {
-                data.forEach(history => {
+            if (hisUser.length > 0) {
+                hisUser.forEach(history => {
                     const formatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
                     const lastReturnDate = new Date(history.update_status).toLocaleString(undefined, formatOptions);
                     const returnDate = new Date(history.return_date).toLocaleString(undefined, formatOptions);
@@ -63,7 +60,6 @@ async function getHisInfo() {
     }
 }
 
-
 function colorStatus(statusCode) {
     switch (statusCode) {
         case 1:
@@ -97,3 +93,25 @@ function textStatus(statusCode) {
             return 'unknow';
     }
 }
+
+// logout function
+function logout() {
+    Swal.fire({
+        title: 'Do you want to sign out',
+        color: '#FFA559',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#FFA559',
+        cancelButtonColor: '#FFE6C7',
+        cancelButtonText: 'Cancel',
+        confirmButtonText: 'Sure'
+
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.localStorage.clear();
+            window.location.replace('/logout');
+        }
+    });
+}
+
+getHisInfo();

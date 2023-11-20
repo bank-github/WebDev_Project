@@ -1,6 +1,4 @@
-
-getList();
-
+// get all asset
 async function getList() {
   const info = document.querySelector('#info');
   try {
@@ -37,8 +35,6 @@ async function getList() {
 }
 
 
-
-
 const editUserProfile = async () => {
   try {
     const response = await fetch('/profile');
@@ -47,6 +43,7 @@ const editUserProfile = async () => {
     await Swal.fire({
       title: 'Edit Profile Information',
       html: `
+        <div class="container">
         <div class="row">
           <form class="d-flex flex-column justify-content-center" id="formInput">
           <div class="form-floating">
@@ -68,6 +65,7 @@ const editUserProfile = async () => {
           </select>
         </div>
           </form>
+        </div>
         </div>
       `,
       showCancelButton: true,
@@ -126,6 +124,26 @@ const editUserProfile = async () => {
     console.error('Error editing profile:', error);
   }
 };
+
+// logout function
+function logout() {
+  Swal.fire({
+    title: 'Do you want to sign out',
+    color: '#FFA559',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#FFA559',
+    cancelButtonColor: '#FFE6C7',
+    cancelButtonText: 'Cancel',
+    confirmButtonText: 'Sure'
+
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.localStorage.clear();
+      window.location.replace('/logout');
+    }
+  });
+}
 
 
 getList();

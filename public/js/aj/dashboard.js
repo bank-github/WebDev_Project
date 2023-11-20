@@ -1,21 +1,3 @@
-function logout() {
-    Swal.fire({
-        title: 'Do you want to sign out',
-        color: '#FFA559',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#FFA559',
-        cancelButtonColor: '#FFE6C7',
-        cancelButtonText: 'Cancel',
-        confirmButtonText: 'Sure'
-
-    }).then((result) => {
-        if (result.isConfirmed) {
-            window.location.replace('/logout');
-        }
-    });
-}
-
 async function readData() {
     try {
         const response = await fetch('/borrows');
@@ -24,6 +6,8 @@ async function readData() {
             let product_d = '';
             var status1 = 0;
             var status2 = 0;
+            var status3 = 0;
+            var status4 = 0;
             var status5 = 0;
 
             data.forEach(function (p) {
@@ -35,6 +19,12 @@ async function readData() {
                 if (p.status === 2) {
                     status2++;
                 }
+                if (p.status === 3) {
+                    status3++;
+                }
+                if (p.status === 4) {
+                    status4++;
+                }
                 if (p.status === 5) {
                     status5++;
                 }
@@ -44,7 +34,7 @@ async function readData() {
                     <div class="row content">
                         <div class="col-sm-9">
                             <div class="row d-flex justify-content-center align-items-center">
-                                <div class="col-sm-3">
+                                <div class="col">
                                     <div class="card custom-card">
                                         <div class="card-body">
                                             <h4 class="card-title">Amount: ${status1}</h4>
@@ -52,7 +42,7 @@ async function readData() {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col">
                                     <div class="card custom-card">
                                         <div class="card-body">
                                             <h4 class="card-title">Amount: ${status2}</h4>
@@ -60,7 +50,23 @@ async function readData() {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col">
+                                    <div class="card custom-card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Amount: ${status3}</h4>
+                                            <p class="card-text">Amount of reject</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card custom-card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Amount: ${status4}</h4>
+                                            <p class="card-text">Amount return on time</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
                                     <div class="card custom-card">
                                         <div class="card-body">
                                             <h4 class="card-title">Amount: ${status5}</h4>
@@ -83,12 +89,14 @@ async function readData() {
                     </div>
                 </div> `;
             document.querySelector('#item_list').innerHTML = product_d;
-                var xValues = ["Amount of request", "Amount of borrowing", "Amount of late return"];
-                var yValues = [status1, status2, status5];
+                var xValues = ["Amount of request", "Amount of borrowing", "Amount of reject", "Amount of late return", "Amount of late return"];
+                var yValues = [status1, status2, status3, status4, status5];
                 var barColors = [
-                    "#b91d47",
                     "#2b5797",
-                    "#00aba9"
+                    "#00aba9",
+                    "#c80815",
+                    "#FFA500",
+                    "#73da5b"
                 ];
 
                 new Chart("myChart", {
@@ -114,6 +122,26 @@ async function readData() {
         Notiflix.Report.failure('Error', err.message, 'Close');
     }
 }
+
+// logout function
+function logout() {
+    Swal.fire({
+      title: 'Do you want to sign out',
+      color: '#FFA559',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#FFA559',
+      cancelButtonColor: '#FFE6C7',
+      cancelButtonText: 'Cancel',
+      confirmButtonText: 'Sure'
+  
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.localStorage.clear();
+        window.location.replace('/logout');
+      }
+    });
+  }
 
 readData();
 

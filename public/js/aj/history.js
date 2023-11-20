@@ -17,12 +17,17 @@ async function getHisInfo() {
             if (data.length > 0) {
                 data.forEach(history => {
                     const formatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-                    const lastReturnDate = new Date(history.update_status).toLocaleString(undefined, formatOptions);
+                    let lastReturnDate = '';
+                    if(history.update_status){
+                        lastReturnDate = new Date(history.update_status).toLocaleString(undefined, formatOptions);
+                    }else{
+                        lastReturnDate = 'Not yet return'
+                    }
                     const returnDate = new Date(history.return_date).toLocaleString(undefined, formatOptions);
                     const color = colorStatus(history.status);
                     const status = textStatus(history.status);
                     // display only (late but returned, reject, returned) [all asset returned history.update_status != null]
-                    if (history.status != 1 && history.status != 2 && history.update_status != null) {
+                    if (history.status != 1 || history.update_status != null) {
                         content += `
                         <div class="d-flex justify-content-center">
                             <div class="col-12 border border-3 border-dark rounded-4 m-3 p-2 bg-white shadow">
@@ -69,7 +74,7 @@ function colorStatus(statusCode) {
         case 1:
             return 'style="display:none"';
         case 2:
-            return 'style="display:none"';
+            return 'style="color: green;"';
         case 3:
             return 'style="color: red;"';
         case 4:
@@ -90,10 +95,30 @@ function textStatus(statusCode) {
         case 3:
             return 'Reject';
         case 4:
-            return 'Returned';
+            return 'Approve (returned)';
         case 5:
-            return 'Late';
+            return 'Approve (late)';
         default:
             return 'unknow';
     }
 }
+
+// logout function
+function logout() {
+    Swal.fire({
+      title: 'Do you want to sign out',
+      color: '#FFA559',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#FFA559',
+      cancelButtonColor: '#FFE6C7',
+      cancelButtonText: 'Cancel',
+      confirmButtonText: 'Sure'
+  
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.localStorage.clear();
+        window.location.replace('/logout');
+      }
+    });
+  }

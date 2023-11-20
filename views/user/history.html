@@ -16,56 +16,15 @@
 </head>
 
 <body>
-    <!-- offcanvas -->
-    <div class="offcanvas offcanvas-start rounded-end-5" id="menu">
-        <div class="offcanvas-header">
-            <i class="bi bi-list offcanvas-title" style="font-size: 36px;"></i>
-            <h3 class="offcanvas-title">Menu</h3>
-            <button class="btn-close" data-bs-dismiss="offcanvas"></button>
-        </div>
-        <div class="offcanvas-body">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item my-2">
-                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
-                    <a class="text-decoration-none fw-bold text-dark" href="/user/main">Asset list</a>
-                </li>
-                <li class="list-group-item my-2">
-                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
-                    <a class="text-decoration-none fw-bold text-dark" href="/user/list">Status</a>
-                </li>
-                <li class="list-group-item my-2">
-                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
-                    <a class="text-decoration-none fw-bold text-dark" href="/user/profile">Profile</a>
-                </li>
-                <li class="list-group-item my-2 disabled" style="background-color: #FFE6C7;">
-                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
-                    <a class="text-decoration-none fw-bold text-dark" href="/user/history">History</a>
-                </li>
-                <li class="list-group-item my-2">
-                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
-                    <a class="text-decoration-none fw-bold text-dark"
-                        href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWtDpKsfRfdcRVpqTHkQTtgHKNdJlZQCWgnvKfDmxgjWCKbgscXFxkKnNVrpCFfpXPbnZgHtl">Contact</a>
-                </li>
-                <li class="list-group-item my-2">
-                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
-                    <a class="text-decoration-none fw-bold text-dark" href="#" onclick="logout()">Sign Out</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <header class="bg-dark ps-1 p-3">
-        <div class="d-flex justify-content-between align-items-center">
-            <a class="text-white" data-bs-toggle="offcanvas" href="#menu">
-                <i class="bi bi-list" style="font-size: 36px;color: #FFE6C7;"></i>
-            </a>
-            <div class="text-center">
-                <h1 class="heading">History</h1>
-            </div>
-            <button class="bx bx bx-log-out icon icon" id="hist-btn" onclick="logout()">Sign Out</button>
-        </div>
-    </header>
-
+    <!-- navbar -->
+    <nav class="navbar ps-1 pe-3 shadow sticky-top" style="background-color: #FFA559; height: 6rem;">
+        <a class="text-white" data-bs-toggle="offcanvas" href="#menu">
+            <i class="bi bi-list" style="font-size: 36px;"></i>
+        </a>
+        <h1>Profile</h1>
+        <button class="btn btn-sm border-2 border-black rounded-5 shadow fw-bold" onclick="logout()"
+            style="background-color: #FFE6C7;">Sign out</button>
+    </nav>
     <!-- Content -->
     <div class="container mt-4 rounded-container dark">
         <div class="d-flex flex-column" id="content">
@@ -89,7 +48,44 @@
             </div>
         </div>
     </div>
-    <script src="/public/js/user/script.js"></script>
+    <!-- offcanvas -->
+    <div class="offcanvas offcanvas-start rounded-end-5" id="menu">
+        <div class="offcanvas-header">
+            <i class="bi bi-list offcanvas-title" style="font-size: 36px;"></i>
+            <h3 class="offcanvas-title">Menu</h3>
+            <button class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item my-2">
+                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
+                    <a class="text-decoration-none fw-bold text-dark" href="/user/assetlist">Asset list</a>
+                </li>
+                <li class="list-group-item my-2">
+                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
+                    <a class="text-decoration-none fw-bold text-dark" href="/user/status">Status</a>
+                </li>
+                <li class="list-group-item my-2">
+                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
+                    <a class="text-decoration-none fw-bold text-dark" href="/user/profile">Profile</a>
+                </li>
+                <li class="list-group-item my-2 disabled" style="background-color: #FFE6C7;">
+                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
+                    <a class="text-decoration-none fw-bold text-dark" href="/user/history">History</a>
+                </li>
+                <li class="list-group-item my-2">
+                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
+                    <a class="text-decoration-none fw-bold text-dark"
+                        href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWtDpKsfRfdcRVpqTHkQTtgHKNdJlZQCWgnvKfDmxgjWCKbgscXFxkKnNVrpCFfpXPbnZgHtl">Contact</a>
+                </li>
+                <li class="list-group-item my-2">
+                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
+                    <a class="text-decoration-none fw-bold text-dark" href="#" onclick="logout()">Sign Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
     <script src="/public/js/user/history.js"></script>
 </body>
 

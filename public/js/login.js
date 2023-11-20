@@ -21,7 +21,8 @@ formLogin.onsubmit = async function (e) {
     const response = await fetch("/login", options);
     if (response.ok) {
       const data = await response.text();
-      window.location.replace(data);
+      window.localStorage.setItem('userID',data);
+      window.location.replace('/user/assetlist');
     } else if (response.status == 401) {
       const data = await response.text();
       throw Error(data);

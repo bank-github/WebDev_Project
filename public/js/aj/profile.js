@@ -11,7 +11,9 @@ async function getList() {
     const result = await fetch('/profile');
     if (result.ok) {
       const data = await result.json();
-      let content = `<div class="row">
+      let content = `
+      <div class="container">
+      <div class="row">
       <div class="col-md-8">
           <h2 class="per-head">Personal Information</h2>
           <div class="avatar text-center">
@@ -26,7 +28,9 @@ async function getList() {
               <button class="bx bx bx-edit icon icon" id="edit-info-btn" onclick="editUserProfile()">Edit</button>
           </div>
       </div>
-  </div>`;
+  </div>
+      </div>
+      `;
 
       info.innerHTML = content;
     } else {
@@ -125,3 +129,23 @@ const editUserProfile = async () => {
     console.error('Error editing profile:', error);
   }
 };
+
+// logout function
+function logout() {
+  Swal.fire({
+    title: 'Do you want to sign out',
+    color: '#FFA559',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#FFA559',
+    cancelButtonColor: '#FFE6C7',
+    cancelButtonText: 'Cancel',
+    confirmButtonText: 'Sure'
+
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.localStorage.clear();
+      window.location.replace('/logout');
+    }
+  });
+}

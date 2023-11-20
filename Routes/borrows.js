@@ -9,14 +9,14 @@ router.get('/borrows', function (req, res) {
     SELECT borrow.*, assets.*,user.name userName FROM borrow 
     JOIN assets ON borrow.asset_id = assets.asset_id
     JOIN user ON borrow.user_id = user.user_id
-    `;
+    ORDER BY borrow.borrow_id DESC`;
     con.query(query, (err, results) => {
       if (err) {
         console.error('Error querying MySQL:', err);
         res.status(500).json({ error: 'Internal server error' });
       } else {
         res.json(results);
-        console.log(results);
+        // console.log(results);
       }
     });
   })
@@ -26,7 +26,8 @@ router.get('/borrows', function (req, res) {
     SELECT borrow.*, assets.*,user.name userName, admin.name adminName FROM borrow 
     JOIN assets ON borrow.asset_id = assets.asset_id
     JOIN user ON borrow.user_id = user.user_id
-    JOIN user admin ON borrow.admin_id = admin.user_id;
+    JOIN user admin ON borrow.admin_id = admin.user_id
+    ORDER BY borrow.borrow_id DESC
     `;
     con.query(query, (err, results) => {
       if (err) {
@@ -34,7 +35,7 @@ router.get('/borrows', function (req, res) {
         res.status(500).json({ error: 'Internal server error' });
       } else {
         res.json(results);
-        console.log(results);
+        // console.log(results);
       }
     });
   })

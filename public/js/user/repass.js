@@ -18,7 +18,7 @@ formRepass.onsubmit = async function (e) {
         if (password != rePassword) {
             throw Error('Password not match!');
         }
-        const response = await fetch(`/user/repass/${repassID}`, options);
+        const response = await fetch(`/repass/${repassID}`, options);
         if (response.ok) {
             const data = await response.text();
             Swal.fire({
@@ -53,5 +53,6 @@ formRepass.onsubmit = async function (e) {
 
 // when click cancel
 function goBack() {
+    window.localStorage.removeItem('repassID');
     window.location.replace('/login');
 }

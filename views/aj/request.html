@@ -19,6 +19,43 @@
 </head>
 
 <body>
+    
+    <header class="bg-dark ps-1 p-3">
+        <div class="d-flex justify-content-between align-items-center">
+            <a class="text-white" data-bs-toggle="offcanvas" href="#menu">
+                <i class="bi bi-list" style="font-size: 36px;color: #FFE6C7;"></i>
+            </a>
+            <h1 class="h-profile">Request</h1>
+            <button class="bx bx bx-log-out icon icon" id="hist-btn" onclick="logout()">Sign Out</button>  
+        </div>
+    </header>
+
+    <!-- content -->
+    <div class="container mt-5 p-5 rounded-container dark">
+        <!-- ! content header -->
+        <div class="d-flex justify-content-between px-5">
+            <div class="circle-header" id="recently">
+                <h3 id="">Recently</h3>
+            </div>
+        </div>
+        <!-- ! content list -->
+        <div class="container listborrow p-5" id="borrow">
+            <!-- <div class="d-flex justify-content-between align-items-center mt-5">
+                <div class="circle-listasset col-6">
+                    <h4>Assets name</h4>
+                </div>
+                <div class="time col-4">
+                    <h5>Return date: <span>11/7/2023</span></h5>
+                </div>
+                <button type="button" class="btn col-2 bg-success" onclick="openModal()">Pending</button>
+            </div> -->
+            <!-- <button type="button" class="btn col-2 bg-warning">Borrowing</button> -->
+
+
+
+        </div>
+    </div>
+
     <!-- offcanvas -->
     <div class="offcanvas offcanvas-start rounded-end-5" id="menu">
         <div class="offcanvas-header">
@@ -30,11 +67,15 @@
             <ul class="list-group list-group-flush">
                 <li class="list-group-item my-2">
                     <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
-                    <a class="text-decoration-none fw-bold text-dark" href="/aj/main">Dashboard</a>
+                    <a class="text-decoration-none fw-bold text-dark" href="/aj/dashboard">Dashboard</a>
+                </li>
+                <li class="list-group-item my-2">
+                    <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
+                    <a class="text-decoration-none fw-bold text-dark" href="/aj/assetlist">Asset list</a>
                 </li>
                 <li class="list-group-item my-2" style="background-color: #FFE6C7;">
                     <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
-                    <a class="text-decoration-none fw-bold text-dark" href="/aj/list">Request</a>
+                    <a class="text-decoration-none fw-bold text-dark" href="#">Request</a>
                 </li>
                 <li class="list-group-item my-2">
                     <i class="bi bi-circle-fill pe-3" style="color: #FFA559;"></i>
@@ -56,48 +97,8 @@
             </ul>
         </div>
     </div>
-    <header class="bg-dark ps-1 p-3">
-        <div class="d-flex justify-content-between align-items-center">
-            <a class="text-white" data-bs-toggle="offcanvas" href="#menu">
-                <i class="bi bi-list" style="font-size: 36px;color: #FFE6C7;"></i>
-            </a>
-            <div class="text-center">
-                <h1 class="heading">Request</h1>
-            </div>
-            <button class="bx bx-history icon icon" id="hist-btn" onclick="logout()">Sign Out</button>
-        </div>
-    </header>
 
-    <!-- content -->
-    <div class="container mt-5 p-5 rounded-container dark">
-        <!-- ! content header -->
-        <div class="d-flex justify-content-between px-5">
-            <div class="circle-header" id="recently">
-                <h3 id="">Recently</h3>
-            </div>
-            <div class="circle-header" id="history">
-                <h3>History</h3>
-            </div>
-        </div>
-        <!-- ! content list -->
-        <div class="container listborrow p-5" id="borrow">
-            <!-- <div class="d-flex justify-content-between align-items-center mt-5">
-                <div class="circle-listasset col-6">
-                    <h4>Assets name</h4>
-                </div>
-                <div class="time col-4">
-                    <h5>Return date: <span>11/7/2023</span></h5>
-                </div>
-                <button type="button" class="btn col-2 bg-success" onclick="openModal()">Pending</button>
-            </div> -->
-            <!-- <button type="button" class="btn col-2 bg-warning">Borrowing</button> -->
-
-
-
-        </div>
-    </div>
-    <!-- Modal Body -->
-    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+    <!-- Modal -->
     <div class="modal fade" id="modalId" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
         aria-labelledby="modalTitleId" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
@@ -126,8 +127,8 @@
             </div>
         </div>
     </div>
-    <script src="/public/js/aj/script.js"></script>
-    <script src="/public/js/aj/list.js"></script>
+
+    <script src="/public/js/aj/request.js"></script>
 </body>
 
 </html>

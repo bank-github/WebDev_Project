@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const con = require('../config/db');
+const upload = require('../config/uploadConfig');
 // remove image
 const fs = require('fs/promises');
 
+// get all asset data
 router.get('/assets', function (req, res) {
     const sql = `SELECT * FROM assets`;
     con.query(sql, function (err, result) {
@@ -14,6 +16,7 @@ router.get('/assets', function (req, res) {
     })
 });
 
+// delete asset
 router.delete('/assets/:id', function (req, res) {
     const id = req.params.id;
     const sqlbr = `DELETE FROM borrow WHERE asset_id = ?`;
@@ -32,8 +35,10 @@ router.delete('/assets/:id', function (req, res) {
         })
     })
 })
-router.put('/edit-assets/:asset_id', function (req, res) {
-    const asset_id = req.params.asset_id;
+
+// update asset
+router.put('/assets/:id', function (req, res) {
+    const asset_id = req.params.id;
     // res.send(asset_id)
     const { asset_name, detail, asset_status, image } = req.body;
     const sql = "UPDATE assets SET asset_name = ?, detail = ?, asset_status = ?, image = ? WHERE assets.asset_id = ? ;"
@@ -50,26 +55,10 @@ router.put('/edit-assets/:asset_id', function (req, res) {
     });
 
 });
-router.delete('/assets/:id', function (req, res) {
-    const id = req.params.id;
-    const sqlbr = `DELETE FROM borrow WHERE asset_id = ?`;
-    con.query(sqlbr, [id], function (err, result) {
-        if (err) {
-            console.error(err);
-            return res.status(500).send('Database Error!');
-        }
-        const sql = `DELETE FROM assets WHERE asset_id = ?`;
-        con.query(sql, [id], function (err, result) {
-            if (err) {
-                console.error(err);
-                return res.status(500).send('Database Error!');
-            }
-            res.send('Deleted!');
-        })
-    })
-});
-router.post('/add-assets',function (req,res){
-    const asset_id = req.params.asset_id;
+
+// add asset
+router.post('/assets',function (req,res){
+    // const asset_id = req.params.asset_id;
     const update = req.body;
     const query = `INSERT INTO assets SET asset_name = ?,detail=?,asset_status = 1,image = ? `; 
     con.query(query, [update.asset_name,update.detail,update.image] , function (err,result) {
@@ -86,6 +75,19 @@ router.post('/add-assets',function (req,res){
         
     })
 });
+
+// add photo asset to floder => public img
+router.post('/uploading',function (req,res) {
+    upload(req,res,function (err) {
+      if (err) {
+        console.log(err);
+        res.status(500).send('Upload failed');
+      }else{
+        // console.log(req);
+        res.send('Upload is succesful!');
+      }
+    })
+})
 
 
 module.exports = router;

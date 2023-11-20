@@ -20,15 +20,13 @@ modeswitch.addEventListener('click', () => {
 
 
 async function getdata() {
-  const options = {
-    method: "GET",
-    headers: { "Content-Type": "application/json" },
-  }
   try {
-    const response = await fetch(`/admin/edit/${asset_id}`, options);
+    const response = await fetch(`/assets`);
     if (response.ok) {
-      asset = await response.json();
-      if (asset) {
+      const data = await response.json();
+      asset = data.filter((ass)=>ass.asset_id == asset_id)
+      console.log(asset.length)
+      if (asset.length > 0) {
         showData();
       } else {
         location.replace('/admin/list')

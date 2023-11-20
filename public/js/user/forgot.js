@@ -11,7 +11,7 @@ formForgot.onsubmit = async function (e) {
         body: JSON.stringify(data)
     }
     try {
-        const response = await fetch('/user/forgot', options);
+        const response = await fetch('/forgot', options);
         if (response.ok) {
             const data = await response.text();
             // save id user to localstorage
