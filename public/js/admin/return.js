@@ -29,7 +29,7 @@ async function getdata() {
                     }
                     // if(status != )
                     // list.status == 1 || list.status == 2 || list.update_status == null
-                    if (list.status == 2 || list.status == 5) {
+                    if (list.status == 2 || (list.status == 5 && list.update_status == null)) {
                         content += `
                         <div class="d-flex justify-content-between align-items-center mt-5">
                             <div class="circle-listasset col-6">

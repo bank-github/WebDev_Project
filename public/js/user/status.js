@@ -9,7 +9,7 @@ async function getList() {
     // console.log('Server Response:', result);
     if (result.ok) {
       const data = await result.json();
-      const borrowUser = data.filter((dt)=> dt.user_id == userID);
+      const borrowUser = data.filter((dt) => dt.user_id == userID);
       let content = '';
       if (borrowUser.length > 0) {
         borrowUser.forEach(borrow => {
@@ -18,7 +18,7 @@ async function getList() {
           const returnDate = new Date(borrow.return_date).toLocaleString(undefined, formatOptions);
           const color = colorStatus(borrow.status);
           const status = textStatus(borrow.status);
-          if (borrow.status != 4 && borrow.status != 5) {
+          if (borrow.status != 4 && (borrow.status != 5 || borrow.update_status == null)) {
             content += `
           <div class="d-flex">
             <div class="col-9 border border-3 border-dark rounded-pill m-3 p-2 bg-white shadow">
@@ -63,34 +63,34 @@ async function getList() {
 function colorStatus(statusCode) {
   switch (statusCode) {
     case 1:
-        return '';
+      return '';
     case 2:
-        return 'style="color: green;"';
+      return 'style="color: green;"';
     case 3:
-        return 'style="color: red;"';
+      return 'style="color: red;"';
     case 4:
-        return 'style="display:none"';
+      return 'style="display:none"';
     case 5:
-        return 'style="color: orange;"';
+      return 'style="color: orange;"';
     default:
-        return 'style="display:none"';
-}
+      return 'style="display:none"';
+  }
 }
 
 function textStatus(statusCode) {
   switch (statusCode) {
-      case 1:
-          return 'Pending';
-      case 2:
-          return 'Approve';
-      case 3:
-          return 'Reject';
-      case 4:
-          return 'Returned';
-      case 5:
-          return 'Late';
-      default:
-          return 'unknow';
+    case 1:
+      return 'Pending';
+    case 2:
+      return 'Approve';
+    case 3:
+      return 'Reject';
+    case 4:
+      return 'Returned';
+    case 5:
+      return 'Late';
+    default:
+      return 'unknow';
   }
 }
 
