@@ -36,7 +36,7 @@ async function getHisInfo() {
                                     <h4 class="d-flex justify-content-between"><span>User:${history.userName} <span class="text-black-50">borrow ${history.asset_name}</span></span><span ${color}>${status}</span></h4>
                                     <h5 class="d-flex justify-content-between" ${color}>borrow date: ${borrowDate}<span>Update when: ${lastReturnDate}</span></h5>`
                         // if reject
-                        if (history.status == 3 || history.status == 2) {
+                        if (history.status == 3 || history.status == 2 || (history.status == 5 && history.update_status == null)) {
                             content += `<h5 class="d-flex justify-content-between" ${color}><span>Return date: ${returnDate}</span><span>By: AJ.${history.adminName}</h5>`;
                         }
                         // if not reject
