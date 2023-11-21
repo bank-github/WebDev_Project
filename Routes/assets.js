@@ -3,7 +3,7 @@ const router = express.Router();
 const con = require('../config/db');
 const upload = require('../config/uploadConfig');
 // remove image
-const fs = require('fs/promises');
+const fs = require('fs');
 
 // get all asset data
 router.get('/assets', function (req, res) {
@@ -76,9 +76,39 @@ router.put('/assets/:id', function (req, res) {
 
 });
 
-// add asset
-router.post('/assets',function (req,res){
-    // const asset_id = req.params.asset_id;
+router.delete('/assets/:id', function (req, res) {
+    const id = req.params.id;
+    const { imagename } = req.body;
+    // console.log(imagename);
+    // res.send(imagename);
+    const sqlbr = `DELETE FROM borrow WHERE asset_id = ?`;
+    const imagePath = `./public/img/${imagename}`    ;
+
+    con.query(sqlbr, [id], function (err, result) {
+        if (err) {
+            console.error(err);
+            return res.status(500).send('Database Error!');
+        }
+        const sql = `DELETE FROM assets WHERE asset_id = ?`;
+        con.query(sql, [id], function (err, result) {
+            if (err) {
+                console.error(err);
+                return res.status(500).send('Database Error!');
+            }
+            fs.unlink(imagePath,(err)=>{
+                if (err) {
+                    console.error('Error deleting image: ', err);
+                }else{
+                    // console.log('Image deleted successfully.');
+                    res.send('Image deleted successfully!');
+                }
+            });
+        })
+    })
+});
+
+router.post('/add-assets',function (req,res){
+    const asset_id = req.params.asset_id;
     const update = req.body;
     const query = `INSERT INTO assets SET asset_name = ?,detail=?,asset_status = 1,image = ? `; 
     con.query(query, [update.asset_name,update.detail,update.image] , function (err,result) {
