@@ -9,6 +9,10 @@
     --horver-table-color:#fabb93;
 }
 
+
+.footertext{
+    color: var(--stripedcontrast-color);
+}
 table {
     width: 100%;
     border-collapse: collapse;
