@@ -18,7 +18,7 @@ router.get('/assets', function (req, res) {
 router.post('/add-assets',function (req,res){
     const asset_id = req.params.asset_id;
     const update = req.body;
-    const query = `INSERT INTO assets SET asset_name = ?,detail=?,status = 1,image = ? `; 
+    const query = `INSERT INTO assets SET asset_name = ?,detail=?,asset_status = 1,image = ? `; 
     con.query(query, [update.asset_name,update.detail,update.image] , function (err,result) {
         if (err) {
             console.error(err);
@@ -34,27 +34,6 @@ router.post('/add-assets',function (req,res){
     })
 })
 
-
-
-// delete asset
-router.delete('/assets/:id', function (req, res) {
-    const id = req.params.id;
-    const sqlbr = `DELETE FROM borrow WHERE asset_id = ?`;
-    con.query(sqlbr, [id], function (err, result) {
-        if (err) {
-            console.error(err);
-            return res.status(500).send('Database Error!');
-        }
-        const sql = `DELETE FROM assets WHERE asset_id = ?`;
-        con.query(sql, [id], function (err, result) {
-            if (err) {
-                console.error(err);
-                return res.status(500).send('Database Error!');
-            }
-            res.send('Deleted!');
-        })
-    })
-})
 
 // update asset
 router.put('/assets/:id', function (req, res) {

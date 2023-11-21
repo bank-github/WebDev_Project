@@ -1,19 +1,19 @@
-const modeswitch = document.querySelector('.toggle-switch');
+// const modeswitch = document.querySelector('.toggle-switch');
 const span = document.querySelector('#switch');
 // var asset = [];
 var mode = 1;
 
-modeswitch.addEventListener('click',()=>{
-    span.classList.toggle("switch-off");
-    if (span.className == 'switch-on switch-off') {
-      // alert(span.className);
-      mode = 0;
-    } else {
-      // alert(span.className);
-      mode = 1;
-    }
-    alert(mode);
-});
+// modeswitch.addEventListener('click',()=>{
+//     span.classList.toggle("switch-off");
+//     if (span.className == 'switch-on switch-off') {
+//       // alert(span.className);
+//       mode = 0;
+//     } else {
+//       // alert(span.className);
+//       mode = 1;
+//     }
+//     alert(mode);
+// });
 
 
 function showData() {
@@ -203,7 +203,7 @@ async function uploadimage(image) {
       method: 'POST',
       body: formData
     } 
-    const response = await fetch('/admin/uploading', option);
+    const response = await fetch('/uploading', option);
     if (response.ok) {
       const data = await response.text();
       // Swal.fire({
@@ -217,7 +217,7 @@ async function uploadimage(image) {
       // alert(data);
 
       // ! go back to list 
-      location.replace('/admin/list');
+      location.replace('/admin/assetlist');
     } else {
       throw Error('Upload error');
     }
@@ -236,7 +236,6 @@ async function addAsset(sendData) {
     body: JSON.stringify({
       "asset_name": sendData.asset_name,
       "detail": sendData.detail,
-      "asset_status": sendData.asset_status,
       "image":  sendData.image.name
     })
   };

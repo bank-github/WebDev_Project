@@ -29,7 +29,7 @@ async function getdata() {
       if (asset.length > 0) {
         showData();
       } else {
-        location.replace('/admin/list')
+        location.replace('/admin/assetlist')
       }
     }
     else {
@@ -329,7 +329,7 @@ async function updateAsset(sendData) {
         },
       })
         .then(function (value) {
-          location.replace('/admin/list');
+          location.replace('/admin/assetlist');
         }
         );
       // alert(data);
@@ -383,7 +383,7 @@ async function deleteasset(photoname) {
         },
       })
         .then(function (value) {
-          location.replace('/admin/list');
+          location.replace('/admin/assetlist');
         }
         );
       // alert(data);
