@@ -34,7 +34,7 @@ router.put('/assets/:asset_id', function (req, res) {
 });
 router.delete('/assets/:id', function (req, res) {
     const id = req.params.id;
-    const {imagename} = req.body;
+    const { imagename } = req.body;
     // console.log(imagename);
     // res.send(imagename);
     const sqlbr = `DELETE FROM borrow WHERE asset_id = ?`;

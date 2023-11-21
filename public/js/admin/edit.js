@@ -113,12 +113,20 @@ function showData() {
       },
     });
     if (file) {
+      
       const reader = new FileReader();
+       // ? Get the current timestamp
+       const timestamp = Date.now();
+
+      // ? Append the timestamp to the original file name
+      const editedFileName = `${timestamp}_${file.name}`;
+
+      
       reader.onload = (e) => {
         console.log(e);
         photo.src = e.target.result;
       };
-      sendData.image = file;
+      sendData.image = new File([file], editedFileName, { type: file.type });
       reader.readAsDataURL(file);
     }
   }
@@ -341,8 +349,11 @@ async function deleteasset(photoname) {
   console.log(photoname);
   const options = {
     method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify({
-      'photoname': photoname
+      'imagename': photoname
     })
   }
   try {
