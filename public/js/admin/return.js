@@ -8,12 +8,13 @@ async function getdata() {
         const response = await fetch('/borrows');
         if (response.ok) {
             const data = await response.json();
-            const returnAsset = data.filter((dt)=> data.update_status == null);
+            const returnAsset = data.filter((dt) => data.update_status == null);
             let content = '';
             // console.log(data);
-            if(returnAsset.length > 0){
+            if (returnAsset.length > 0) {
                 for (const list of returnAsset) {
                     const formatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+                    const borrowDate = new Date(list.borrow_date).toLocaleString(undefined, formatOptions);
                     const returnDate = new Date(list.return_date).toLocaleString(undefined, formatOptions);
                     const color = colorStatus(list.status);
                     const late = checkLate(list.return_date);
@@ -33,24 +34,26 @@ async function getdata() {
                         content += `
                         <div class="d-flex justify-content-between align-items-center mt-5">
                             <div class="circle-listasset col-6">
-                                <h4>Assets: ${list.asset_name}</h4>
+                            <h4>User ID: ${list.user_id} Name: ${list.userName}</h4>
+                            <h4 class="text-black-50">Borrow: ${list.asset_name}</h4>
                             </div>
                             <div class="time col-4">
+                                <h5 class="text-success">Borrow date: <span>${borrowDate}</span></h5>
                                 <h5 class="text-danger">Return date: <span>${returnDate}</span></h5>
                             </div>`
                         // if (list.status == 2) {
                         //     content += `<button type="button" class="btn col-2" onclick="openModal(${id})">${status}</button>`
                         // }
                         //  else {
-                            content += `<button type="button" class="btn col-2" onclick=returnAsset(${JSON.stringify(returnAsset)}) ${color}>${status}</button>`
+                        content += `<button type="button" class="btn col-2" onclick=returnAsset(${JSON.stringify(returnAsset)}) ${color}>${status}</button>`
                         // }
-                        content += `</div>`;
+                        content += `</div><hr>`;
                     }
                 }
-            }else{
+            } else {
                 content = `<hr><h1 class="text-center">Has no borrow assets</h1>`;
             }
-            if(content == ''){
+            if (content == '') {
                 content = `<hr><h1 class="text-center">Has no pending assets</h1>`;
             }
             listborrow.innerHTML = content;
@@ -68,7 +71,7 @@ function colorStatus(statusCode) {
         case 1:
             return 'style="display:none"';
         case 2:
-            return 'style="background-color: yellow;"';
+            return 'style="background-color: green;"';
         case 3:
             return 'style="display:none"';
         case 4:
@@ -85,13 +88,13 @@ function textStatus(statusCode) {
         case 1:
             return 'Pending';
         case 2:
-            return 'Borrowing';
+            return 'Return';
         case 3:
             return 'Reject';
         case 4:
             return 'Returned';
         case 5:
-            return 'Late';
+            return 'Return(Late)';
         default:
             return 'unknow';
     }
@@ -141,7 +144,7 @@ function returnAsset(data) {
     let color = "#0BDA51";
     let text = 'Returned';
     let status = 4;
-    if (data.status == 'Late') {
+    if (data.status == 'Return(Late)') {
         color = "#FFC300";
         text = 'Returned late';
         status = 5;
@@ -349,21 +352,21 @@ async function updateStatusandMessage(status, borrow_id, asset, update_status, m
 // logout function
 function logout() {
     Swal.fire({
-      title: 'Do you want to sign out',
-      color: '#FFA559',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#FFA559',
-      cancelButtonColor: '#FFE6C7',
-      cancelButtonText: 'Cancel',
-      confirmButtonText: 'Sure'
-  
+        title: 'Do you want to sign out',
+        color: '#FFA559',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#FFA559',
+        cancelButtonColor: '#FFE6C7',
+        cancelButtonText: 'Cancel',
+        confirmButtonText: 'Sure'
+
     }).then((result) => {
-      if (result.isConfirmed) {
-        window.localStorage.clear();
-        window.location.replace('/logout');
-      }
+        if (result.isConfirmed) {
+            window.localStorage.clear();
+            window.location.replace('/logout');
+        }
     });
-  }
+}
 
 getdata();

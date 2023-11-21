@@ -20,7 +20,7 @@ router.get('/borrows', function (req, res) {
       }
     });
   })
-// for history
+// for history admin id of borrow table not null
   router.get('/borrow', function (req, res) {
     const query = `
     SELECT borrow.*, assets.*,user.name userName, admin.name adminName FROM borrow 

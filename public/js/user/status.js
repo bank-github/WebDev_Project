@@ -94,7 +94,7 @@ function listCreate(borrowUser) {
             <div class="col m-3 p-2">
               <h4 class="text-center pt-1"  ${color}>${status}</h4>
             </div>
-          </div>`;
+          </div><hr>`;
     });
   }
   else {

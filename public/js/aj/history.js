@@ -23,6 +23,7 @@ async function getHisInfo() {
                     }else{
                         lastReturnDate = 'Not yet return'
                     }
+                    const borrowDate = new Date(history.borrow_date).toLocaleString(undefined, formatOptions);
                     const returnDate = new Date(history.return_date).toLocaleString(undefined, formatOptions);
                     const color = colorStatus(history.status);
                     const status = textStatus(history.status);
@@ -32,20 +33,22 @@ async function getHisInfo() {
                         <div class="d-flex justify-content-center">
                             <div class="col-12 border border-3 border-dark rounded-4 m-3 p-2 bg-white shadow">
                                 <div class="col mx-3">
-                                    <h2 class="d-flex justify-content-between"><span>Asset: ${history.asset_name}</span><span ${color}>${status}</span></h2>`
+                                    <h4 class="d-flex justify-content-between"><span>User:${history.userName} <span class="text-black-50">borrow ${history.asset_name}</span></span><span ${color}>${status}</span></h4>
+                                    <h5 class="d-flex justify-content-between" ${color}>borrow date: ${borrowDate}<span>Update when: ${lastReturnDate}</span></h5>`
                         // if reject
-                        if (history.status == 3) {
-                            content += `<h4 class="d-flex justify-content-between" ${color}><span>Return date: ${returnDate}</span><span>Reject when: ${lastReturnDate} By: AJ.${history.adminName}</h4>`;
+                        if (history.status == 3 || history.status == 2) {
+                            content += `<h5 class="d-flex justify-content-between" ${color}><span>Return date: ${returnDate}</span><span>By: AJ.${history.adminName}</h5>`;
                         }
                         // if not reject
                         else {
-                            content += `<h4 class="d-flex justify-content-between"${color}><span>Return date: ${returnDate}</span><span>${history.userName} return when: ${lastReturnDate}</h4>`;
+                            content += `<h5 class="d-flex justify-content-between"${color}><span>Return date: ${returnDate}</span><span>${history.userName} return when: ${lastReturnDate}<span></h5>
+                            <h5 class="d-flex justify-content-end"${color}><span><span>Accept by: Admin.${history.adminName}<span></h5>`;
                         }
                         // have message or not
-                        if (history.message != null) {
-                            content += `<h4>Message: ${history.message}</h4>`
+                        if (history.message != null && history.message != '') {
+                            content += `<h5>Message: ${history.message}</h5>`
                         } else {
-                            content += `<h4>Message: - </h4>`
+                            content += `<h5>Message: - </h5>`
                         }
                         content += `</div></div></div>`
                     }

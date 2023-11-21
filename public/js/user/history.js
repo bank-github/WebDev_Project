@@ -9,12 +9,13 @@ async function getHisInfo() {
         // console.log('Server Response:', result);
         if (result.ok) {
             const data = await result.json();
-            const hisUser = data.filter((dt)=> dt.user_id == userID);
+            const hisUser = data.filter((dt) => dt.user_id == userID);
             let content = '';
             if (hisUser.length > 0) {
                 hisUser.forEach(history => {
                     const formatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
                     const lastReturnDate = new Date(history.update_status).toLocaleString(undefined, formatOptions);
+                    const borrowDate = new Date(history.borrow_date).toLocaleString(undefined, formatOptions);
                     const returnDate = new Date(history.return_date).toLocaleString(undefined, formatOptions);
                     const color = colorStatus(history.status);
                     const status = textStatus(history.status);
@@ -24,20 +25,22 @@ async function getHisInfo() {
                         <div class="d-flex justify-content-center">
                             <div class="col-12 border border-3 border-dark rounded-4 m-3 p-2 bg-white shadow">
                                 <div class="col mx-3">
-                                    <h2 class="d-flex justify-content-between"><span>Asset: ${history.asset_name}</span><span ${color}>${status}</span></h2>`
-                        // if reject
-                        if (history.status == 3) {
-                            content += `<h4 class="d-flex justify-content-between" ${color}><span>Return date: ${returnDate}</span><span>Reject when: ${lastReturnDate} By: Aj.${history.adminName}</h4>`;
+                                    <h4 class="d-flex justify-content-between"><span>Asset: ${history.asset_name}</span><span ${color}>${status}</span></h4>
+                                    <h5 class="d-flex justify-content-between" ${color}><span>Return date: ${borrowDate}</span><span>Update when: ${lastReturnDate}</span></h5>`
+                        // if reject or pending (aj approve)
+                        if (history.status == 3 || history.status == 2) {
+                            content += `<h5 class="d-flex justify-content-between" ${color}><span>Return date: ${returnDate}</span><span>By: Aj.${history.adminName}</span></h5>`;
                         }
-                        // if not reject
+                        // if late
                         else {
-                            content += `<h4 class="d-flex justify-content-between"${color}><span>Return date: ${returnDate}</span><span>You return when: ${lastReturnDate}</h4>`;
+                            content += `<h5 class="d-flex justify-content-between"${color}><span>Return date: ${returnDate}</span><span>You return when: ${lastReturnDate}</span></h5>
+                            <h5 class="d-flex justify-content-end"${color}><span>Accept by: Admin.${history.adminName}</span></h5>`;
                         }
                         // have message or not
-                        if (history.message != null) {
-                            content += `<h4>Message: ${history.message}</h4>`
+                        if (history.message != null || history.message != null) {
+                            content += `<h5>Message: ${history.message}</h5>`
                         } else {
-                            content += `<h4>Message: - </h4>`
+                            content += `<h5>Message: - </h5>`
                         }
                         content += `</div></div></div>`
                     }

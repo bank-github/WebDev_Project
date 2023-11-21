@@ -13,6 +13,7 @@ async function getdata() {
             if(data.length > 0){
                 for (const list of data) {
                     const formatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+                    const borrowDate = new Date(list.borrow_date).toLocaleString(undefined, formatOptions);
                     const returnDate = new Date(list.return_date).toLocaleString(undefined, formatOptions);
                     // const color = colorStatus(list.status);
                     // const late = checkLate(list.return_date);
@@ -32,9 +33,11 @@ async function getdata() {
                         content += `
                         <div class="d-flex justify-content-between align-items-center mt-5">
                             <div class="circle-listasset col-6">
-                                <h4>Assets: ${list.asset_name}</h4>
+                                <h4>User ID: ${list.user_id} Name: ${list.userName}</h4>
+                                <h4 class="text-black-50">Borrow: ${list.asset_name}</h4>
                             </div>
                             <div class="time col-4">
+                                <h5 class="text-success">Borrow date: <span>${borrowDate}</span></h5>
                                 <h5 class="text-danger">Return date: <span>${returnDate}</span></h5>
                             </div>`
                         // if (list.status == 1) {
@@ -42,7 +45,7 @@ async function getdata() {
                         // } else {
                         //     content += `<button type="button" class="btn col-2" onclick=returnAsset(${JSON.stringify(returnAsset)}) ${color}>${status}</button>`
                         // }
-                        content += `</div>`;
+                        content += `</div><hr>`;
                     }
                 }
             }else{
@@ -106,6 +109,7 @@ function textStatus(statusCode) {
 // }
 
 function openModal(id) {
+    document.getElementById('message').disabled = true;
     myModal.show();
 
     formUpdate.onsubmit = function (e) {
