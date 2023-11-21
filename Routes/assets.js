@@ -14,24 +14,6 @@ router.get('/assets', function (req, res) {
     })
 });
 
-router.delete('/assets/:id', function (req, res) {
-    const id = req.params.id;
-    const sqlbr = `DELETE FROM borrow WHERE asset_id = ?`;
-    con.query(sqlbr, [id], function (err, result) {
-        if (err) {
-            console.error(err);
-            return res.status(500).send('Database Error!');
-        }
-        const sql = `DELETE FROM assets WHERE asset_id = ?`;
-        con.query(sql, [id], function (err, result) {
-            if (err) {
-                console.error(err);
-                return res.status(500).send('Database Error!');
-            }
-            res.send('Deleted!');
-        })
-    })
-})
 router.put('/assets/:asset_id', function (req, res) {
     const asset_id = req.params.asset_id;
     // res.send(asset_id)
@@ -53,9 +35,11 @@ router.put('/assets/:asset_id', function (req, res) {
 router.delete('/assets/:id', function (req, res) {
     const id = req.params.id;
     const {imagename} = req.body;
-    console.log(imagename);
+    // console.log(imagename);
+    // res.send(imagename);
     const sqlbr = `DELETE FROM borrow WHERE asset_id = ?`;
-    const imagePath = `../public/img/${imagename}`    ;
+    const imagePath = `./public/img/${imagename}`    ;
+
     con.query(sqlbr, [id], function (err, result) {
         if (err) {
             console.error(err);
