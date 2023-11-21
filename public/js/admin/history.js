@@ -27,7 +27,7 @@ async function getBorrow() {
     var table = document.querySelector('tbody');
     var dataTable = '';
     for (const iterator of borrow) {
-        if (iterator.status > 2 && iterator.status < 6 ) {
+        if (iterator.status > 2 && iterator.status < 6  && iterator.update_status != null ) {
             dataTable += `<tr>`;
             dataTable += `<td>${iterator.user_id}</td>`;
             dataTable += `<td>${iterator.userName}</td>`;
@@ -56,7 +56,7 @@ async function getBorrow() {
                 const borrow_date = new Date(iterator.borrow_date);
                 dataTable += `<td>${borrow_date.getDate()}/${borrow_date.getMonth()+1}/${borrow_date.getFullYear()}</td>`;
                 const update_status_date = new Date(iterator.update_status);
-            if (iterator.status == 4 || iterator.status == 5 && iterator.update_status != null) {
+            if (iterator.status == 4 || iterator.status == 5) {
                 dataTable += `<td>${update_status_date.getDate()}/${update_status_date.getMonth()+1}/${update_status_date.getFullYear()}</td>`;
             }else if(iterator.status == 3){
                 dataTable += `<td>Reject when ${update_status_date.getDate()}/${update_status_date.getMonth()+1}/${update_status_date.getFullYear()} </td>`;
