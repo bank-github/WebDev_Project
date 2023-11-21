@@ -18,9 +18,9 @@ async function getHisInfo() {
                 data.forEach(history => {
                     const formatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
                     let lastReturnDate = '';
-                    if(history.update_status){
+                    if (history.update_status) {
                         lastReturnDate = new Date(history.update_status).toLocaleString(undefined, formatOptions);
-                    }else{
+                    } else {
                         lastReturnDate = 'Not yet return'
                     }
                     const borrowDate = new Date(history.borrow_date).toLocaleString(undefined, formatOptions);
@@ -33,16 +33,19 @@ async function getHisInfo() {
                         <div class="d-flex justify-content-center">
                             <div class="col-12 border border-3 border-dark rounded-4 m-3 p-2 bg-white shadow">
                                 <div class="col mx-3">
-                                    <h4 class="d-flex justify-content-between"><span>User:${history.userName} <span class="text-black-50">borrow ${history.asset_name}</span></span><span ${color}>${status}</span></h4>
-                                    <h5 class="d-flex justify-content-between" ${color}>borrow date: ${borrowDate}<span>Update when: ${lastReturnDate}</span></h5>`
+                                    <h4 class="d-flex justify-content-between"><span>User ID: ${history.user_id} | Name: ${history.userName}<span class="text-black-50"> | Borrow ${history.asset_name}</span></span><span ${color}>${status}</span></h4>`
                         // if reject
-                        if (history.status == 3 || history.status == 2 || (history.status == 5 && history.update_status == null)) {
-                            content += `<h5 class="d-flex justify-content-between" ${color}><span>Return date: ${returnDate}</span><span>By: AJ.${history.adminName}</h5>`;
+                        if (history.status == 3) {
+                            content += `<h5 class="d-flex justify-content-between" ${color}>borrow date: ${borrowDate}<span>Update when: ${lastReturnDate}</span></h5>
+                            <h5 class="d-flex justify-content-between" ${color}><span>Return date: ${returnDate}</span><span>By: AJ.${history.adminName}</h5>`;
+                        } else if ((history.status == 5 || history.status == 2) && history.update_status == null) {
+                            content += `<h5 class="d-flex justify-content-between" ${color}>borrow date: ${borrowDate}<span>${lastReturnDate}</span></h5>
+                            <h5 class="d-flex justify-content-between" ${color}><span>Return date: ${returnDate}</span><span>By: AJ.${history.adminName}</h5>`;
                         }
                         // if not reject
                         else {
-                            content += `<h5 class="d-flex justify-content-between"${color}><span>Return date: ${returnDate}</span><span>${history.userName} return when: ${lastReturnDate}<span></h5>
-                            <h5 class="d-flex justify-content-end"${color}><span><span>Accept by: Admin.${history.adminName}<span></h5>`;
+                            content += `<h5 class="d-flex justify-content-between" ${color}>borrow date: ${borrowDate}<span>Update when: ${lastReturnDate}</span></h5>
+                            <h5 class="d-flex justify-content-between"${color}><span>Return date: ${returnDate}</span><span>Accept by: Admin.${history.adminName}<span></h5>`;
                         }
                         // have message or not
                         if (history.message != null && history.message != '') {
@@ -109,19 +112,19 @@ function textStatus(statusCode) {
 // logout function
 function logout() {
     Swal.fire({
-      title: 'Do you want to sign out',
-      color: '#FFA559',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#FFA559',
-      cancelButtonColor: '#FFE6C7',
-      cancelButtonText: 'Cancel',
-      confirmButtonText: 'Sure'
-  
+        title: 'Do you want to sign out',
+        color: '#FFA559',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#FFA559',
+        cancelButtonColor: '#FFE6C7',
+        cancelButtonText: 'Cancel',
+        confirmButtonText: 'Sure'
+
     }).then((result) => {
-      if (result.isConfirmed) {
-        window.localStorage.clear();
-        window.location.replace('/logout');
-      }
+        if (result.isConfirmed) {
+            window.localStorage.clear();
+            window.location.replace('/logout');
+        }
     });
-  }
+}
