@@ -259,7 +259,7 @@ async function uploadimage(image) {
     const option = {
       method: 'POST',
       body: formData
-    }
+    } 
     const response = await fetch('/admin/uploading', option);
     if (response.ok) {
       const data = await response.text();
@@ -271,12 +271,12 @@ async function uploadimage(image) {
       //   timer: 1500
       // });          
 
-      // alert(data);
+      alert(data);
     } else {
       throw Error('Upload error');
     }
   } catch (error) {
-    console.error(error);
+    console.error(error.message);
     alert(error.message)
   }
 }

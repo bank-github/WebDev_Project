@@ -16,7 +16,7 @@ router.get('/borrows', function (req, res) {
         res.status(500).json({ error: 'Internal server error' });
       } else {
         res.json(results);
-        console.log(results);
+        // console.log(results);
       }
     });
   })
@@ -34,7 +34,7 @@ router.get('/borrows', function (req, res) {
         res.status(500).json({ error: 'Internal server error' });
       } else {
         res.json(results);
-        console.log(results);
+        //console.log(results);
       }
     });
   })

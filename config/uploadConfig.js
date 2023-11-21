@@ -6,7 +6,7 @@ const storageOption = multer.diskStorage({
     },
     filename: function (req, file, cb) {
         //rename file with timestamp as prefix
-        cb(null, file.originalname);
+        cb(null,file.originalname);
         // to get only file extension -> path.extname(file.originalname)
         // to get only filename -> path.basename(fileName, path.extname(
         // file.originalname))

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const con = require('../config/db');
 // remove image
-const fs = require('fs/promises');
+const fs = require('fs');
 
 router.get('/assets', function (req, res) {
     const sql = `SELECT * FROM assets`;
@@ -32,7 +32,7 @@ router.delete('/assets/:id', function (req, res) {
         })
     })
 })
-router.put('/edit-assets/:asset_id', function (req, res) {
+router.put('/assets/:asset_id', function (req, res) {
     const asset_id = req.params.asset_id;
     // res.send(asset_id)
     const { asset_name, detail, asset_status, image } = req.body;
@@ -52,7 +52,10 @@ router.put('/edit-assets/:asset_id', function (req, res) {
 });
 router.delete('/assets/:id', function (req, res) {
     const id = req.params.id;
+    const {imagename} = req.body;
+    console.log(imagename);
     const sqlbr = `DELETE FROM borrow WHERE asset_id = ?`;
+    const imagePath = `../public/img/${imagename}`    ;
     con.query(sqlbr, [id], function (err, result) {
         if (err) {
             console.error(err);
@@ -64,7 +67,14 @@ router.delete('/assets/:id', function (req, res) {
                 console.error(err);
                 return res.status(500).send('Database Error!');
             }
-            res.send('Deleted!');
+            fs.unlink(imagePath,(err)=>{
+                if (err) {
+                    console.error('Error deleting image: ', err);
+                }else{
+                    // console.log('Image deleted successfully.');
+                    res.send('Image deleted successfully!');
+                }
+            });
         })
     })
 });

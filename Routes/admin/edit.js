@@ -24,7 +24,7 @@ router.post('/uploading',function (req,res) {
         res.send('Upload is succesful!');
       }
     })
-})
+});
 
 router.get('/edit/:asset_id', function (req, res) {
   const asset_id = req.params.asset_id;
