@@ -27,19 +27,19 @@ async function getList() {
             <div class="col-9 border border-3 border-dark rounded-pill m-3 p-2 bg-white shadow">
               <div class="row">
                   <div class="col-4">
-                      <h4 class="pt-1 ps-5">Asset: ${borrow.asset_name}</h4>
+                      <h4 class="pt-1 ps-5 bold">Asset: ${borrow.asset_name}</h4>
                   </div>
                   <div class="col-8 text-end">
                       <div class="border border-3 border-dark rounded-pill" style="background-color: #FFE6C7;">
                           <h4 class="text-center">
-                              <span class="text-success">Start: ${borrowDate}</span> <i class="bi bi-arrow-right" style="font-size = 5rem"></i> <span class="text-danger">End: ${returnDate}</span>
+                              <span class="text-success ">Start: ${borrowDate}</span> <i class="bi bi-arrow-right" style="font-size = 5rem"></i> <span class="text-danger">End: ${returnDate}</span>
                           </h4>
                       </div>
                   </div>
               </div>
             </div>
             <div class="col m-3 p-2">
-              <h4 class="text-center pt-1"  ${color}>${status}</h4>
+              <h4 class="text-center pt-1 bold"  ${color}>${status}</h4>
             </div>
           </div>`;
           }

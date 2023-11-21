@@ -49,20 +49,21 @@ const editUserProfile = async () => {
       title: 'Edit Profile Information',
       html: `
     <div class="row">
+
       <form class="d-flex flex-column justify-content-center" id="formInput">
         <div class="form-floating">
           <input class="form-control mb-3 border-2 border-black rounded-pill shadow" type="text" id="Name" name="txtname"
             placeholder="${data[0].name}" value="${data[0].name}" required>
-          <label class="ms-2 fw-bold" for="txtname">Name</label>
+          <label class="ms-3 fw-bold" for="txtname">Name</label>
         </div>
         <div class="form-floating">
           <input class="form-control mb-3 border-2 border-black rounded-pill shadow" type="text" id="Tel" name="txtphone"
             placeholder="${data[0].tel}" maxlength="10" minlength="10" pattern="[0-9]{10}" title="Format (0xxxxxxxxx)"
             value="${data[0].tel}" required>
-          <label class="ms-2 fw-bold" for="txtphone">Phone Number</label>
+          <label class="ms-3 fw-bold" for="txtphone">Phone Number</label>
         </div>
         <div>
-          <label class="fw-bold mt-3" for="slcMajor">Major</label>
+          <label class="fw-bold my-5" for="slcMajor">Major</label>
           <select class="border-2 border-black shadow" id="School" name="Major" value="${data[0].major}" required>
             <option value="CE">Computer Engineer</option>
             <option value="SE">Software Engineer</option>

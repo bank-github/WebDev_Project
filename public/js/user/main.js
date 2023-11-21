@@ -16,12 +16,12 @@ async function getData() {
         if(asset.asset_status == 1){
           const assetData = JSON.stringify({ "id": asset.asset_id, "name": asset.asset_name });
         content += `<tr class="text-start">
-          <td class="text-center"><img src="/public/img/${asset.image}" alt="asset image" height="40px"></td>
-          <td id="name${asset.asset_id}"><a href="#" class="text-decoration-none text-dark">${asset.asset_name}</a></td>
-          <td><p>
+          <td class="text-center"><img src="/public/img/${asset.image}" alt="asset image" height="150px"></td>
+          <td id="name${asset.asset_id}"><a href="#" class="text-decoration-none text-dark text">${asset.asset_name}</a></td>
+          <td><p class="text-ligther">
           ${asset.detail}
           </p></td>
-          <td class="text-center"><button id="${asset.asset_id}" class="btn btn bg-success text-white" onclick=getDetail(${assetData})>Borrow</button></td>
+          <td class="text-center text"><button id="${asset.asset_id} " class="br-btn" onclick=getDetail(${assetData})>Borrow</button></td>
       </tr>`
         }
         //   data-bs-toggle="modal" data-bs-target="#modalId" ==> for modal
