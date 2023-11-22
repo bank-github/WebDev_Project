@@ -92,7 +92,7 @@
 }
 .rounded-container {
 	position: absolute;
-	top: 80%;
+	top: 50%;
 	left: 50%;
 	transform: translate(-50%,-50%);
 	border-radius: 20px;
@@ -489,8 +489,8 @@
 /* Profile Page */
 .rounded-info {
 	position: absolute;
-	top: 70%;
-	left: 25%;
+	top: 65%;
+	left: 30%;
 	transform: translate(-50%,-50%);
 	border-radius: 20px;
 	/* Rounded corners for the container */
@@ -676,7 +676,7 @@
 	padding: 15px 20px;
 	cursor: pointer;
 	margin-top: 420px;
-	margin-left: 500px;
+	margin-left: 560px;
 }
 #edit-info-btn:hover {
     background-color: rgb(214, 38, 38); 
