@@ -76,7 +76,7 @@ router.post('/borrows/:borrow_id' ,function (req,res) {
     const update = req.body;
     if(update.update_status == null){
       const query = `UPDATE borrow,assets SET borrow.status = ?, borrow.message = ?, borrow.update_status = ?, assets.asset_status = ? WHERE assets.asset_id = borrow.asset_id AND borrow.borrow_id = ? `; 
-    con.query(query, [update.status,update.message,new update.update_status,update.asset,borrow_id] , function (err,result) {
+    con.query(query, [update.status,update.message,new Date(update.update_status),update.asset,borrow_id] , function (err,result) {
         if (err) {
             console.error(err);
             return res.status(500).send('Database server error');

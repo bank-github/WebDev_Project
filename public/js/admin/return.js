@@ -35,7 +35,7 @@ async function getdata() {
                         <div class="d-flex justify-content-between align-items-center mt-5">
                             <div class="circle-listasset col-6">
                             <h4>User ID: ${list.user_id} Name: ${list.userName}</h4>
-                            <h4 class="text-black-50">Borrow: ${list.asset_name}</h4>
+                            <h4 class="text-black-50" value="${list.asset_name}">Borrow: ${list.asset_name}</h4>
                             </div>
                             <div class="time col-4">
                                 <h5 class="text-success">Borrow date: <span>${borrowDate}</span></h5>
@@ -368,5 +368,29 @@ function logout() {
         }
     });
 }
+
+function searchBorrowedItems() {
+    // Get the search input value
+    var searchValue = document.querySelector(".searchinput").value.toLowerCase().trim();
+
+    // Get all items with class 'circle-listasset'
+    var items = document.querySelectorAll(".circle-listasset");
+
+    // Loop through each item
+    items.forEach(function (item) {
+        // Get the text from the 'h4' element with class 'text-black-50'
+        var borrowText = item.querySelector(".text-black-50").textContent.toLowerCase().trim();
+
+        // Check if the text includes the search value
+        if (borrowText.includes(searchValue)) {
+            // If it matches, display the item
+            item.closest(".d-flex").style.display = "flex";
+        } else {
+            // If it doesn't match, hide the item
+            item.closest(".d-flex").style.display = "none";
+        }
+    });
+}
+
 
 getdata();

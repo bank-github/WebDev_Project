@@ -11,10 +11,15 @@ function showdata() {
     amount_asset.onclick = function () {
       location.replace('/admin/assetlist');
     }
-
+    var borrowing = 0;
+    for (const iterator of borrow) {
+      if (iterator.status >0 && iterator.status <3) {
+        borrowing+=1;
+      }
+    }
     // ! Amount of borrowing
     var amount_borrow  = document.querySelector('#amount-borrow');
-    amount_borrow.innerHTML = `<h4 class="content_text" >Borrow of assets : ${borrow.length} </h4> `;
+    amount_borrow.innerHTML = `<h4 class="content_text" >Borrow of assets : ${borrowing} </h4> `;
     amount_borrow.onclick = function () {
       location.replace('/admin/history');
     }
@@ -26,10 +31,10 @@ function showdata() {
     var asset_avaliable = 0;
     var asset_disavaliable = 0;
     for (const iterator of asset) {
-        if (iterator.asset_status == 1) {
-            asset_avaliable+=1;
+        if (iterator.asset_status == 0) {
+          asset_disavaliable+=1;
         }else{
-            asset_disavaliable+=1;
+          asset_avaliable+=1;
         }
     }
 
@@ -80,7 +85,7 @@ function showdata() {
             }
         }
     
-    avaliable = asset.length - borrow.length;
+    avaliable = asset.length - borrowing ;
     console.log(avaliable + ' '+pending+' '+approve +' '+reject+' '+late+' '+missing);
     console.log();
     var xValues = ["avaliable","approve", "reject", "pending", "late", "missing"];
