@@ -35,44 +35,54 @@ async function readData() {
                         <div class="col-sm-9">
                             <div class="row d-flex justify-content-center align-items-center">
                                 <div class="col">
+                                <a href="/aj/request" class="text-decoration-none">
                                     <div class="card custom-card">
                                         <div class="card-body">
                                             <h4 class="card-title">Amount: ${status1}</h4>
                                             <p class="card-text">Amount of request</p>
                                         </div>
                                     </div>
+                                </a>
                                 </div>
                                 <div class="col">
+                                <a href="/aj/history" class="text-decoration-none">
                                     <div class="card custom-card">
                                         <div class="card-body">
                                             <h4 class="card-title">Amount: ${status2}</h4>
                                             <p class="card-text">Amount of borrowing</p>
                                         </div>
                                     </div>
+                                </a>
                                 </div>
                                 <div class="col">
+                                <a href="/aj/history" class="text-decoration-none">
                                     <div class="card custom-card">
                                         <div class="card-body">
                                             <h4 class="card-title">Amount: ${status3}</h4>
                                             <p class="card-text">Amount of reject</p>
                                         </div>
                                     </div>
+                                </a>
                                 </div>
                                 <div class="col">
+                                <a href="/aj/history" class="text-decoration-none">
                                     <div class="card custom-card">
                                         <div class="card-body">
                                             <h4 class="card-title">Amount: ${status4}</h4>
                                             <p class="card-text">Amount return on time</p>
                                         </div>
                                     </div>
+                                </a>
                                 </div>
                                 <div class="col">
+                                <a href="/aj/history" class="text-decoration-none">
                                     <div class="card custom-card">
                                         <div class="card-body">
                                             <h4 class="card-title">Amount: ${status5}</h4>
                                             <p class="card-text">Amount of late return</p>
                                         </div>
                                     </div>
+                                </a>
                                 </div>
                             </div>
                         </div>

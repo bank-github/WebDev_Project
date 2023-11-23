@@ -13,7 +13,7 @@ function showdata() {
     }
     var borrowing = 0;
     for (const iterator of borrow) {
-      if (iterator.status >0 && iterator.status <3) {
+      if ((iterator.status == 2 || iterator.status == 5) && iterator.update_status == null) {
         borrowing+=1;
       }
     }
@@ -21,7 +21,7 @@ function showdata() {
     var amount_borrow  = document.querySelector('#amount-borrow');
     amount_borrow.innerHTML = `<h4 class="content_text" >Borrow of assets : ${borrowing} </h4> `;
     amount_borrow.onclick = function () {
-      location.replace('/admin/history');
+      location.replace('/admin/return');
     }
 
     // ! avaliable disavaliable

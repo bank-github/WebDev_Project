@@ -74,7 +74,7 @@ router.get('/borrows', function (req, res) {
 router.post('/borrows/:borrow_id' ,function (req,res) {
     const borrow_id = req.params.borrow_id;
     const update = req.body;
-    if(update.update_status == null){
+    if(update.update_status == null && update.status == 5){
       const query = `UPDATE borrow,assets SET borrow.status = ?, borrow.message = ?, borrow.update_status = ?, assets.asset_status = ? WHERE assets.asset_id = borrow.asset_id AND borrow.borrow_id = ? `; 
     con.query(query, [update.status,update.message,new Date(update.update_status),update.asset,borrow_id] , function (err,result) {
         if (err) {
