@@ -29,7 +29,7 @@
     font-family: sans-serif;
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-	border-radius: 50px;
+	border-radius: 30px;
 	overflow: hidden; /* Add this line */
 }
 /* header */
@@ -51,7 +51,7 @@
 }
 
 .styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid rgb(255, 96, 0);
+    border-bottom: 4px solid rgb(255, 230, 199);
 }
 .styled-table tbody tr.active-row {
     font-weight: bold;
@@ -62,17 +62,16 @@
 .br-btn{
 	font-weight: bold;
 	font-size: 15px;
-	background-color: #009879;
 	border: 2px solid black;
-	box-shadow: 0 0 0 rgba(0, 0, 0, 0.3), 5px 5px 0 rgba(0, 0, 0, 0.3),
-		-5px 5px 10px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 0 0 rgba(0, 0, 0, 0.3), 3px 3px 0 rgba(0, 0, 0, 0.3),
+		-3px 3px 7px rgba(0, 0, 0, 0.3);
 	border-radius: 20px;
 	/* Rounded corners */
 	padding: 15px 15px;
 	cursor: pointer;
 }
 .br-btn:hover {
-    background-color:#2d5d14; 
+    background-color:rgb(69, 69, 69); 
 	color: #ffffff;
 }
 				

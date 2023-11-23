@@ -10,19 +10,19 @@ async function getData() {
       let content = '';
       data.forEach(asset => {
           const assetData = JSON.stringify({ "id": asset.asset_id, "name": asset.asset_name });
-          content += `<tr class="text-start">
+          content += `<tr class="text-start ">
           <td><p>${asset.asset_id}</p></td>
-          <td class="text-center"><img src="/public/img/${asset.image}" alt="asset image" height="40px"></td>
-          <td id="name${asset.asset_id}"><a href="#" class="text-decoration-none text-dark">${asset.asset_name}</a></td>
-          <td><p>${asset.detail}</p></td>`
+          <td class="text-center"><img src="/public/img/${asset.image}" alt="asset image" height="100px"></td>
+          <td id="name${asset.asset_id}"><a href="#" class="text-decoration-none text-dark text">${asset.asset_name}</a></td>
+          <td><p class="text-ligther">${asset.detail}</p></td>`
           if (asset.asset_status == 0) {
             content += `<td class="text-center"><button class="btn btn-danger" disabled>Disable</button></td></tr>`;
           }
           else if (asset.asset_status == 1) {
-            content += `<td class="text-center"><button id="${asset.asset_id}" class="btn bg-success text-white" onclick=getDetail(${assetData})>Borrow</button></td></tr>`;
+            content += `<td class="text-center"><button id="${asset.asset_id}" class="btn bg-success text-white br-btn" onclick=getDetail(${assetData})>Borrow</button></td></tr>`;
           }
           else {
-            content += `<td class="text-center"><button class="btn btn-secondary" disabled>Borrow</button></td></tr>`;
+            content += `<td class="text-center"><button class="btn btn-secondary br-btn" disabled>Borrow</button></td></tr>`;
           }
       });
       // console.log(content);
