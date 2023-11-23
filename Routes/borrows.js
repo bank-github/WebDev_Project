@@ -74,7 +74,24 @@ router.get('/borrows', function (req, res) {
 router.post('/borrows/:borrow_id' ,function (req,res) {
     const borrow_id = req.params.borrow_id;
     const update = req.body;
-    const query = `UPDATE borrow,assets SET borrow.status = ?, borrow.message = ?, borrow.update_status = ?, assets.asset_status = ?, borrow.admin_id = ? WHERE assets.asset_id = borrow.asset_id AND borrow.borrow_id = ? `; 
+    if(update.update_status == null){
+      const query = `UPDATE borrow,assets SET borrow.status = ?, borrow.message = ?, borrow.update_status = ?, assets.asset_status = ? WHERE assets.asset_id = borrow.asset_id AND borrow.borrow_id = ? `; 
+    con.query(query, [update.status,update.message,update.update_status,update.asset,borrow_id] , function (err,result) {
+        if (err) {
+            console.error(err);
+            return res.status(500).send('Database server error');
+        }
+        // else if(result.affectedRows != 1){
+        //     console.error('Row update is not 1');
+        //     return res.status(500).send('Update failed');
+        // }
+        else{
+            res.send('Update succesfully');
+        }
+        
+    })
+    }else{
+      const query = `UPDATE borrow,assets SET borrow.status = ?, borrow.message = ?, borrow.update_status = ?, assets.asset_status = ?, borrow.admin_id = ? WHERE assets.asset_id = borrow.asset_id AND borrow.borrow_id = ? `; 
     con.query(query, [update.status,update.message,update.update_status,update.asset,req.session.userID,borrow_id] , function (err,result) {
         if (err) {
             console.error(err);
@@ -89,7 +106,7 @@ router.post('/borrows/:borrow_id' ,function (req,res) {
         }
         
     })
-
+    }
 })
 
 

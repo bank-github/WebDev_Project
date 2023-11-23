@@ -51,8 +51,7 @@ const editUserProfile = async () => {
     const result = await Swal.fire({
       title: 'Edit Profile Information',
       html: `
-    <div class="row">
-
+    <div class="container">
       <form class="d-flex flex-column justify-content-center" id="formInput">
         <div class="form-floating">
           <input class="form-control mb-3 border-2 border-black rounded-pill shadow" type="text" id="Name" name="txtname"

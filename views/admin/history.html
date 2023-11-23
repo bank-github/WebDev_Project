@@ -75,11 +75,14 @@
             <table class="">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
+                        <th scope="col">USERID</th>
+                        <th scope="col">USERNAME</th>
+                        <th scope="col">ASSET ID</th>
                         <th scope="col">PHOTO</th>
                         <th scope="col">NAME</th>
                         <th scope="col">STATUS</th>
-                        <th scope="col">DATE</th>
+                        <th scope="col">BORROWDATE</th>
+                        <th scope="col">RETURNDATE</th>
                     </tr>
                 </thead>
                 <tbody class="">
@@ -92,31 +95,25 @@
                 <div class="d-flex me-4 ">
                     <div class="bg-success circle">
                     </div>
-                    <div class="me-2">
-                        Avalible
+                    <div class="me-2 footertext">
+                        Returned
                     </div>
                 </div>
                 <div class="d-flex me-4 ">
                     <div class="bg-warning circle">
                     </div>
-                    <div class="me-2">
-                        Inprogress
+                    <div class="me-2 footertext">
+                        Late
                     </div>
                 </div>
                 <div class="d-flex me-4 ">
                     <div class="bg-danger circle">
                     </div>
-                    <div class="me-2">
-                        Borrowed
+                    <div class="me-2 footertext">
+                        Reject
                     </div>
                 </div>
-                <div class="d-flex me-4 ">
-                    <div class="bg-dark circle">
-                    </div>
-                    <div class="me-2">
-                        disable
-                    </div>
-                </div>
+                
             </footer>
         </div>
     </section>

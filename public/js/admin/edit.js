@@ -29,7 +29,7 @@ async function getdata() {
       if (asset.length > 0) {
         showData();
       } else {
-        location.replace('/admin/list')
+        location.replace('/admin/assetlist')
       }
     }
     else {
@@ -111,12 +111,20 @@ function showData() {
       },
     });
     if (file) {
+      
       const reader = new FileReader();
+       // ? Get the current timestamp
+       const timestamp = Date.now();
+
+      // ? Append the timestamp to the original file name
+      const editedFileName = `${timestamp}_${file.name}`;
+
+      
       reader.onload = (e) => {
         console.log(e);
         photo.src = e.target.result;
       };
-      sendData.image = file;
+      sendData.image = new File([file], editedFileName, { type: file.type });
       reader.readAsDataURL(file);
     }
   }
@@ -257,7 +265,7 @@ async function uploadimage(image) {
     const option = {
       method: 'POST',
       body: formData
-    }
+    } 
     const response = await fetch('/admin/uploading', option);
     if (response.ok) {
       const data = await response.text();
@@ -269,12 +277,12 @@ async function uploadimage(image) {
       //   timer: 1500
       // });          
 
-      // alert(data);
+      alert(data);
     } else {
       throw Error('Upload error');
     }
   } catch (error) {
-    console.error(error);
+    console.error(error.message);
     alert(error.message)
   }
 }
@@ -321,7 +329,7 @@ async function updateAsset(sendData) {
         },
       })
         .then(function (value) {
-          location.replace('/admin/list');
+          location.replace('/admin/assetlist');
         }
         );
       // alert(data);
@@ -339,8 +347,11 @@ async function deleteasset(photoname) {
   console.log(photoname);
   const options = {
     method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify({
-      'photoname': photoname
+      'imagename': photoname
     })
   }
   try {
@@ -372,7 +383,7 @@ async function deleteasset(photoname) {
         },
       })
         .then(function (value) {
-          location.replace('/admin/list');
+          location.replace('/admin/assetlist');
         }
         );
       // alert(data);

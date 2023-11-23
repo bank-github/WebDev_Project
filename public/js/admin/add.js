@@ -1,19 +1,19 @@
-const modeswitch = document.querySelector('.toggle-switch');
+// const modeswitch = document.querySelector('.toggle-switch');
 const span = document.querySelector('#switch');
 // var asset = [];
 var mode = 1;
 
-modeswitch.addEventListener('click',()=>{
-    span.classList.toggle("switch-off");
-    if (span.className == 'switch-on switch-off') {
-      // alert(span.className);
-      mode = 0;
-    } else {
-      // alert(span.className);
-      mode = 1;
-    }
-    alert(mode);
-});
+// modeswitch.addEventListener('click',()=>{
+//     span.classList.toggle("switch-off");
+//     if (span.className == 'switch-on switch-off') {
+//       // alert(span.className);
+//       mode = 0;
+//     } else {
+//       // alert(span.className);
+//       mode = 1;
+//     }
+//     alert(mode);
+// });
 
 
 function showData() {
@@ -93,11 +93,19 @@ function showData() {
     });
     if (file) {
       const reader = new FileReader();
+       // ? Get the current timestamp
+       const timestamp = Date.now();
+
+      // ? Append the timestamp to the original file name
+      const editedFileName = `${timestamp}_${file.name}`;
+
       reader.onload = (e) => {
         console.log(e);
         photo.src = e.target.result;
       };
-      sendData.image = file;
+
+
+      sendData.image = new File([file], editedFileName, { type: file.type });
       reader.readAsDataURL(file);
     }
   }
@@ -177,8 +185,6 @@ function showData() {
         console.log(sendData.detail);
         console.log(sendData.asset_status);
         addAsset(sendData);
-        uploadimage(sendData.image);
-        window.location.replace('/admin/list');
       }
     });
     // console.log('Test');
@@ -189,7 +195,6 @@ function showData() {
 
 showData();
 
-
 async function uploadimage(image) {
   try {
     const formData = new FormData();
@@ -197,8 +202,8 @@ async function uploadimage(image) {
     const option = {
       method: 'POST',
       body: formData
-    }
-    const response = await fetch('/admin/uploading', option);
+    } 
+    const response = await fetch('/uploading', option);
     if (response.ok) {
       const data = await response.text();
       // Swal.fire({
@@ -210,6 +215,9 @@ async function uploadimage(image) {
       // });          
 
       // alert(data);
+
+      // ! go back to list 
+      location.replace('/admin/assetlist');
     } else {
       throw Error('Upload error');
     }
@@ -228,8 +236,7 @@ async function addAsset(sendData) {
     body: JSON.stringify({
       "asset_name": sendData.asset_name,
       "detail": sendData.detail,
-      "asset_status": sendData.asset_status,
-      "image": sendData.image.name
+      "image":  sendData.image.name
     })
   };
   try {
@@ -261,7 +268,7 @@ async function addAsset(sendData) {
         },
       })
         .then(function (value) {
-          // location.replace('/admin/list');
+          uploadimage(sendData.image);
         }
         );
       // alert(data);

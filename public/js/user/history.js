@@ -25,16 +25,16 @@ async function getHisInfo() {
                         <div class="d-flex justify-content-center">
                             <div class="col-12 border border-3 border-dark rounded-4 m-3 p-2 bg-white shadow">
                                 <div class="col mx-3">
-                                    <h4 class="d-flex justify-content-between"><span>Asset: ${history.asset_name}</span><span ${color}>${status}</span></h4>
-                                    <h5 class="d-flex justify-content-between" ${color}><span>Return date: ${borrowDate}</span><span>Update when: ${lastReturnDate}</span></h5>`
+                                    <h4 class="d-flex justify-content-between"><span>Asset: ${history.asset_name}</span><span ${color}>${status}</span></h4>`
                         // if reject or pending (aj approve)
-                        if (history.status == 3 || history.status == 2) {
-                            content += `<h5 class="d-flex justify-content-between" ${color}><span>Return date: ${returnDate}</span><span>By: Aj.${history.adminName}</span></h5>`;
+                        if (history.status == 3) {
+                            content += `<h5 class="d-flex justify-content-between" ${color}><span>Return date: ${borrowDate}</span><span>Update when: ${lastReturnDate}</span></h5>
+                            <h5 class="d-flex justify-content-between" ${color}><span>Return date: ${returnDate}</span><span>By: Aj.${history.adminName}</span></h5>`;
                         }
                         // if late
                         else {
-                            content += `<h5 class="d-flex justify-content-between"${color}><span>Return date: ${returnDate}</span><span>You return when: ${lastReturnDate}</span></h5>
-                            <h5 class="d-flex justify-content-end"${color}><span>Accept by: Admin.${history.adminName}</span></h5>`;
+                            content += `<h5 class="d-flex justify-content-between" ${color}><span>Return date: ${borrowDate}</span><span>Update when: ${lastReturnDate}</span></h5>
+                            <h5 class="d-flex justify-content-between"${color}><span>Return date: ${returnDate}</span><span>Accept by: Admin.${history.adminName}</span></h5>`;
                         }
                         // have message or not
                         if (history.message != null || history.message != null) {

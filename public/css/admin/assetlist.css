@@ -56,6 +56,10 @@ tr:hover {
     height: 100%;
 }
 
+.footertext{
+    color: var(--stripedcontrast-color);
+}
+
 .imagetable-container{
     display: flex;
     align-items: center;
