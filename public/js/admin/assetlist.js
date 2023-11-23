@@ -150,6 +150,9 @@ function search() {
     });
 }
 
+document.querySelector('#add').onclick = function () {
+    location.href = '/admin/add';
+}
 
 function sendData(id) {
     // alert('click');

@@ -7,7 +7,7 @@
 
 .amount{
     height: 10rem;
-    width: 25;
+    width: 15;
     background-color: var(--primary-color);
     border-radius: 0.3rem;
     color: var(--sidebar-color);
@@ -20,7 +20,7 @@
 
 .graph{
     padding: 1rem;
-    height: 20rem;
+    height: 40rem;
     width: 30rem;
     background-color: var(--primary-color);
     border-radius: 0.3rem;
