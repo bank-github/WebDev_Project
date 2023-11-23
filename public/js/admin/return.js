@@ -122,7 +122,7 @@ function openModal(id) {
             date = new Date();
             assteStatus = 1
         }
-        // console.log(date);
+        console.log(date);
         // console.log(status)
         // console.log(message);
         e.preventDefault();

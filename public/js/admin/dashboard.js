@@ -9,7 +9,7 @@ function showdata() {
     
     amount_asset.innerHTML = `<h4 class="content_text">Amount of assets : ${asset.length} </h4> `;
     amount_asset.onclick = function () {
-      location.replace('/admin/list');
+      location.replace('/admin/assetlist');
     }
 
     // ! Amount of borrowing

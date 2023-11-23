@@ -11,6 +11,12 @@ async function getBorrow() {
         if (response.ok) {
             borrow = await response.json();                           
             console.log(borrow);
+            borrow.sort(function(a, b) {
+                const dateA = new Date(a.update_status);
+                const dateB = new Date(b.update_status);
+              
+                return dateB - dateA;
+              });
             showTable();
         }
         else {
@@ -24,6 +30,7 @@ async function getBorrow() {
   }
 
   function showTable() {
+    console.log(borrow);
     var table = document.querySelector('tbody');
     var dataTable = '';
     for (const iterator of borrow) {
@@ -70,4 +77,35 @@ async function getBorrow() {
     table.innerHTML = dataTable;
 }
 
-getBorrow()
+function search() {
+    const search = document.querySelector('.searchinput');
+    
+    const filter = search.value.toLowerCase();
+    console.log(filter);
+    const table = document.querySelector('table');
+    var rows = table.querySelectorAll('tbody tr'); // Select rows only from tbody
+    var textValue;
+
+    rows.forEach(function(row) {
+        var cells = row.getElementsByTagName('td');
+        console.log(cells);
+        var matchFound = false;
+
+        for (var j = 0; j < cells.length; j++) {
+            textValue = cells[j].textContent || cells[j].innerText;
+            if (textValue.toLowerCase().indexOf(filter) > -1) {
+                matchFound = true;
+                break; // Break out of the loop if a match is found in any cell
+            }
+        }
+
+        if (matchFound) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
+
+
+getBorrow();

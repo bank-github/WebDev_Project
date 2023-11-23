@@ -1,5 +1,5 @@
-let asset = [];
 let borrow = [];
+let asset = [];
 
 async function getdata() {
     const options = {
@@ -43,12 +43,43 @@ async function getBorrow() {
 
 }
 
+function alerts() {
+    Swal.fire({
+        icon: "error",
+        title: "Asset has been borrowed...",
+        text: "You can't edit!",
+        background: "#454545",
+      confirmButtonColor: "#D65A0F",
+      color: "#FFE6C7",
+        showClass: {
+            // ? amimation from package animate.css 
+            popup: `
+              animate__animated
+              animate__fadeInDown
+              animate__faster
+              `
+          },
+          
+          hideClass: {
+            popup: `
+              animate__animated
+              animate__fadeOutUp
+              animate__faster
+              `
+          },
+      });
+}
+
 function showTable() {
     var table = document.querySelector('tbody');
     var dataTable = '';
     console.log(asset);
     for (const iterator of asset) {
-        dataTable += `<tr onclick = sendData(${iterator.asset_id}) >`;
+        if (iterator.asset_status == 2) {
+            dataTable += `<tr onclick = alerts() >`;
+        } else {
+            dataTable += `<tr onclick = sendData(${iterator.asset_id}) >`;
+        }
         dataTable += `<td>${iterator.asset_id}</td>`;
         dataTable += `
         <td>
@@ -74,28 +105,13 @@ function showTable() {
                     </div></div></td>`;
 
         }
-        // ! 0 == disable
-        if(iterator.asset_status == 0){
+        
             dataTable += `
             <td>
-                <div class="toggle-switch-container">
-                    <div class="toggle-switch">
-                        <span class="switch-off"></span>
-                    </div>        
-                </div>
+                <button type="button" class="btn btn-warning">Edit</button>               
             </td></tr>`
             ;
-        }else{
-            dataTable += `
-            <td>
-                <div class="toggle-switch-container">
-                    <div class="toggle-switch">
-                        <span class="switch-on"></span>
-                    </div>        
-                </div>
-            </td></tr>`
-            ;
-        }
+       
     }
     table.innerHTML = dataTable;
 }

@@ -81,6 +81,7 @@ body {
     color: var(--text-color);
     transition: var(--tran-03);
 }
+
 .home{
     position: relative;
     height: 100vh;
