@@ -1,6 +1,10 @@
 let borrow = [];
 let asset = [];
 
+document.querySelector('#add').onclick = function () {
+    location.href = '/admin/add';
+}
+
 async function getdata() {
     const options = {
         method: "GET",

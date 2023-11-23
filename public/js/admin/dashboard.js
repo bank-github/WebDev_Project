@@ -30,17 +30,21 @@ function showdata() {
     // var barColors = ["orange", "black"];
     var asset_avaliable = 0;
     var asset_disavaliable = 0;
+    var asset_borrowed = 0;
     for (const iterator of asset) {
         if (iterator.asset_status == 0) {
           asset_disavaliable+=1;
-        }else{
+        }else if(iterator.asset_status == 2){
+          asset_borrowed+=1;
+        }
+        else{
           asset_avaliable+=1;
         }
     }
 
-    var xassetstatus = ["asset-avaliable", "asset-disavaliable", ""];
-    var yassetstatus = [asset_avaliable, asset_disavaliable, 0];
-    var barColors = ["red", "black",""];
+    var xassetstatus = ["asset-avaliable", "asset-disavaliable", "asset_borrowed",""];
+    var yassetstatus = [asset_avaliable, asset_disavaliable, asset_borrowed,0];
+    var barColors = ["red", "black","orange",""];
     new Chart("rate-of-returned", {
     type: "bar",
     data: {

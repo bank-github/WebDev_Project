@@ -31,8 +31,34 @@ formInput.onsubmit = async function (e) {
         if (response.ok) {
             const data = await response.text();
             formInput.reset();
-            window.location.replace(data);
-            alert('OK');
+            Swal.fire({
+                color: '#D65A0F',
+                background: '#FFE6C7',
+                position: "center",
+                icon: "success",
+                title: data,
+                showConfirmButton: false,
+                timer: 1500,
+                showClass: {
+                  // ? amimation from package animate.css 
+                  popup: `
+                      animate__animated
+                      animate__fadeInDown
+                      animate__faster
+                      `
+                },
+                hideClass: {
+                  popup: `
+                      animate__animated
+                      animate__fadeOutUp
+                      animate__faster
+                      `
+                },
+              })
+                .then(function (value) {
+                  location.replace("/user/assetlist");
+                }
+                );
         } else if(response.status == 401){
             const data = await response.text();
             throw Error(data);

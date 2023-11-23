@@ -98,7 +98,7 @@ router.post('/register', function (req, res) {
                         console.error(err);
                         res.status(500).send("Server error insert data!");
                     } else {
-                        res.send('/user/assetlist');
+                        res.send('Register Success');
                     }
                 });
 
