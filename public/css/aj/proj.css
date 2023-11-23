@@ -1,3 +1,80 @@
+.bold{
+	font-weight: bolder;
+}
+
+.text{
+	font-size: 25px; 
+	font-weight: bolder;
+}
+.colors{
+	color: #2d5d14;
+}
+.text-ligther{
+	font-size: 25px; 
+	font-weight:lighter
+}
+.custom-thead {
+	height: 60px; /* Adjust the height as needed */
+	padding: 20px;
+}
+.custom-modal {
+    width: 100%; 
+    height: 1500px; 
+}
+/* Table */
+.styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+	border-radius: 30px;
+	overflow: hidden; /* Add this line */
+}
+/* header */
+.styled-table thead tr {
+    background-color: rgb(255, 154, 89);
+    color: #ffffff;
+    text-align: left;
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 4px solid rgb(255, 230, 199);
+}
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: rgb(255, 96, 0);
+}
+
+/* borrow btn */
+.br-btn{
+	font-weight: bold;
+	font-size: 15px;
+	border: 2px solid black;
+	box-shadow: 0 0 0 rgba(0, 0, 0, 0.3), 3px 3px 0 rgba(0, 0, 0, 0.3),
+		-3px 3px 7px rgba(0, 0, 0, 0.3);
+	border-radius: 20px;
+	/* Rounded corners */
+	padding: 15px 15px;
+	cursor: pointer;
+}
+.br-btn:hover {
+    background-color:rgb(69, 69, 69); 
+	color: #ffffff;
+}
+
 .pallete-colors {
 	background-color: rgb(255, 96, 0);
 	background-color: rgb(255, 230, 199);
