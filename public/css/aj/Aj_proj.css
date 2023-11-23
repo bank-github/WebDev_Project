@@ -1,3 +1,10 @@
+.contents{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+
 .bold{
 	font-weight: bolder;
 }
@@ -91,8 +98,9 @@
 	
 }
 .rounded-container {
+
 	position: absolute;
-	top: 60%;
+	top: 50%;
 	left: 50%;
 	transform: translate(-50%,-50%);
 	border-radius: 20px;
@@ -102,8 +110,8 @@
 	padding: 20px;
 	margin: 20px;
 	border: 2px solid black;
-	height:500px;
-	width: 300px;
+	height: 700px;
+	width: 500px ;
 	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.3), 5px 5px 0px rgba(0, 0, 0, 0.3), -5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 .heading{
@@ -509,7 +517,7 @@
 	width: 50px;
 	height: 50px;
 	margin-top: 150px;
-	margin-left: 200px;	
+	margin-left: 150px;	
 }
 .avatar img {	
 	width: 200px; 

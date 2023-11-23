@@ -30,6 +30,7 @@ async function getHisInfo() {
                     // display only (late but returned, reject, returned) [all asset returned history.update_status != null]
                     if (history.status != 1 || history.update_status != null) {
                         content += `
+                    
                         <div class="d-flex justify-content-center">
                             <div class="col-12 border border-3 border-dark rounded-4 m-3 p-2 bg-white shadow">
                                 <div class="col mx-3">

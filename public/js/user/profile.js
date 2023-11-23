@@ -1,3 +1,5 @@
+
+getList();
 // get all asset
 async function getList() {
   const info = document.querySelector('#info');
@@ -77,7 +79,7 @@ const editUserProfile = async () => {
         return {
           name: formInput.elements['txtname'].value,
           major: formInput.elements['Major'].value,
-          tel: formInput.elements['txtphone'].value,
+          tel_phone: formInput.elements['txtphone'].value,
         };
       },
     });
@@ -94,7 +96,7 @@ const editUserProfile = async () => {
           body: JSON.stringify({
             name: data[0].name,
             major: data[0].major,
-            tel: data[0].tel_phone,
+            tel_phone: data[0].tel_phone,
           }),
         }
         const updateResponse = await fetch(`/profile/${userId}`, options);
@@ -149,4 +151,3 @@ function logout() {
 }
 
 
-getList();

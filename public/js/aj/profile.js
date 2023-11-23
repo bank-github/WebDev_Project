@@ -60,7 +60,7 @@ const editUserProfile = async () => {
         </div>
         <div class="form-floating">
           <input class="form-control mb-3 border-2 border-black rounded-pill shadow" type="text" id="Tel" name="txtphone"
-            placeholder="${data[0].tel}" maxlength="10" minlength="10" pattern="[0-9]{10}" title="Format (0xxxxxxxxx)"
+            placeholder="${data[0].tel_phone}" maxlength="10" minlength="10" pattern="[0-9]{10}" title="Format (0xxxxxxxxx)"
             value="${data[0].tel_phone}" required>
           <label class="ms-3 fw-bold" for="txtphone">Phone Number</label>
         </div>
@@ -73,7 +73,7 @@ const editUserProfile = async () => {
       preConfirm: () => {
         return {
           name: formInput.elements['txtname'].value,
-          tel: formInput.elements['txtphone'].value,
+          tel_phone: formInput.elements['txtphone'].value,
         };
       },
     });
@@ -88,8 +88,7 @@ const editUserProfile = async () => {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             name: data[0].name,
-            major: null,
-            tel: data[0].tel_phone,
+            tel_phone: data[0].tel_phone,
           }),
         }
         const updateResponse = await fetch(`/profile/${userId}`, options);
