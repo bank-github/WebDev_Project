@@ -266,7 +266,7 @@ async function uploadimage(image) {
       method: 'POST',
       body: formData
     } 
-    const response = await fetch('/admin/uploading', option);
+    const response = await fetch('/uploading', option);
     if (response.ok) {
       const data = await response.text();
       // Swal.fire({
@@ -277,7 +277,7 @@ async function uploadimage(image) {
       //   timer: 1500
       // });          
 
-      alert(data);
+      // alert(data);
     } else {
       throw Error('Upload error');
     }
