@@ -40,7 +40,7 @@ router.put('/profile/:id', function (req, res) {
         }
   
         if (result.affectedRows === 0) {
-          res.status(400).json("Update failed");
+          res.status(500).json("Update failed");
         } else {
           res.status(200).json("Update successful");
         }
